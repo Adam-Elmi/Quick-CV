@@ -1,7 +1,33 @@
-import { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef} from "react";
 
 export default function Contact() {
-  
+
+  function storeValue(key, value) {
+    try {
+      if(value !== "undefined") {
+        sessionStorage.setItem(key, value);
+        setInputValue((prevValue => ({...prevValue, [key]: value})));
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const [inputValue, setInputValue] = useState({
+    fullname: "",
+    phone_number: "",
+    email: "",
+    country: "",
+    city: ""
+  });
+
+  useEffect(() => {
+    for(const key in inputValue) {
+      const value = sessionStorage.getItem(key) || "";
+      setInputValue((prevValue => ({...prevValue, [key]: value})));
+    }
+  }, []);
+
   return (
     <>
       <h1 className="mt-5 mb-2 font-bold text-[2rem] w-full text-center">
@@ -15,6 +41,8 @@ export default function Contact() {
             id="fullname"
             label="Enter your fullname"
             iconClass="fa-user"
+            onChange={(e) => storeValue("fullname", e.target.value)}
+            value={inputValue.fullname}
           />
           {/* Phone Number */}
           <InputField
@@ -22,6 +50,8 @@ export default function Contact() {
             label="Enter your phone number"
             iconClass="fa-phone"
             type="tel"
+            onChange={(e) => storeValue("phone_number", e.target.value)}
+            value={inputValue.phone_number}
           />
 
           {/* Email */}
@@ -30,18 +60,24 @@ export default function Contact() {
             label="Enter your email address"
             iconClass="fa-envelope"
             type="email"
+            onChange={(e) => storeValue("email", e.target.value)}
+            value={inputValue.email}
           />
           {/* Country */}
           <InputField
             id="country"
             label="Enter your country"
             iconClass="fa-globe"
+            onChange={(e) => storeValue("country", e.target.value)}
+            value={inputValue.country}
           />
           {/* City */}
           <InputField
             id="city"
             label="Enter your city"
             iconClass="fa-city"
+            onChange={(e) => storeValue("city", e.target.value)}
+            value={inputValue.city}
           />
         </div>
       </div>

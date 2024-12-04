@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 export default function Skills() {
     const skills = [
         { id: "skill-1", placeholder: "Write Skill 1" },
@@ -9,6 +11,41 @@ export default function Skills() {
         { id: "skill-7", placeholder: "Write Skill 7" },
         { id: "skill-8", placeholder: "Write Skill 8" },
     ];
+
+    const [inputValue, setInputValue] = useState(() => {
+      const savedData = sessionStorage.getItem("skills");
+      return savedData ? JSON.parse(savedData) : {
+        skill1: "",
+        skill2: "",
+        skill3: "",
+        skill4: "",
+        skill5: "",
+        skill6: "",
+        skill7: "",
+        skill8: "",
+      };
+    });
+  
+    useEffect(() => {
+      sessionStorage.setItem("skills", JSON.stringify(inputValue));
+    }, [inputValue]);
+
+    useEffect(() => {
+      const getValue = JSON.parse(sessionStorage.getItem("skills")) || "";
+      try {
+        if(getValue && getValue !== "undefined") {
+          for(const key in getValue) {
+            setInputValue(prev => ({...prev, [key]: getValue[key]}));
+          }
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }, [])
+
+    const handleSkill = (e) => {
+      setInputValue(prev => ({...prev, [e.target.id]: e.target.value}));
+    };
   return (
     <>
       {/* Skills */}
@@ -27,103 +64,97 @@ export default function Skills() {
               <span className="fa-solid fa-feather"></span>
               <span>Enter your skill {id + 1}</span>
             </label>
-            <input
-              required
-              type="text"
-              placeholder={skill.placeholder}
-              id={skill.id}
-              className="border-2 w-full border-slate-100 py-2 px-4 rounded-md"
-            />
             <div className="relative">
               <select
+                onChange={handleSkill}
                 name="skills"
-                id="skills"
+                id={`skill${id + 1}`}
                 className="block appearance-none w-full bg-white border border-gray-300 text-indigo-500 py-3 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               >
-                <option disabled selected>
+                <option disabled>
                   Select a skill
                 </option>
-                <option value="effective-communication">
+                <option value="Effective Communication">
                   Effective Communication
                 </option>
-                <option value="collaborative-teamwork">
+                <option value="Collaborative Teamwork">
                   Collaborative Teamwork
                 </option>
-                <option value="creative-problem-solving">
+                <option value="Creative Problem Solving">
                   Creative Problem Solving
                 </option>
-                <option value="adaptability-in-change">
+                <option value="Adaptability in Change">
                   Adaptability in Changing Environments
                 </option>
-                <option value="innovative-thinking">Innovative Thinking</option>
-                <option value="efficient-time-management">
+                <option value="Innovative Thinking">Innovative Thinking</option>
+                <option value="Efficient-time-management">
                   Efficient Time Management
                 </option>
-                <option value="strategic-decision-making">
+                <option value="Strategic Decision Making">
                   Strategic Decision Making
                 </option>
-                <option value="leadership-initiative">
+                <option value="Leadership Initiative">
                   Leadership and Initiative
                 </option>
-                <option value="empathy-in-communication">
+                <option value="Empathy In Communication">
                   Empathy in Communication
                 </option>
-                <option value="strong-negotiation-skills">
+                <option value="Strong Negotiation Skills">
                   Strong Negotiation Skills
                 </option>
-                <option value="effective-collaboration">
+                <option value="Effective Collaboration">
                   Effective Collaboration
                 </option>
-                <option value="strong-work-ethic">Strong Work Ethic</option>
-                <option value="attention-to-detail">
+                <option value="Strong Work Ethic">Strong Work Ethic</option>
+                <option value="Attention To Detail">
                   Attention to Detail and Precision
                 </option>
-                <option value="proactive-decision-making">
+                <option value="Proactive Decision Making">
                   Proactive Decision Making
                 </option>
-                <option value="effective-interpersonal-skills">
+                <option value="Effective Interpersonal Skills">
                   Effective Interpersonal Skills
                 </option>
-                <option value="organizational-skills">
+                <option value="Organizational Skills">
                   Organizational and Planning Skills
                 </option>
-                <option value="resolving-conflicts">
+                <option value="Resolving Conflicts">
                   Resolving Conflicts Constructively
                 </option>
-                <option value="customer-centered-service">
+                <option value="Customer Centered Service">
                   Customer-Centered Service
                 </option>
-                <option value="long-term-strategic-planning">
+                <option value="Long-term Strategic Planning">
                   Long-term Strategic Planning
                 </option>
-                <option value="confident-public-speaking">
+                <option value="Confident Public Speaking">
                   Confident Public Speaking
                 </option>
-                <option value="structured-multitasking">
+                <option value="Structured Multitasking">
                   Structured Multitasking
                 </option>
-                <option value="stress-management-under-pressure">
+                <option value="Stress Management Under Pressure">
                   Stress Management Under Pressure
                 </option>
-                <option value="self-driven-motivation">
+                <option value="Self-driven Motivation">
                   Self-Driven Motivation
                 </option>
-                <option value="flexibility-with-deadlines">
+                <option value="Flexibility with Deadlines">
                   Flexibility with Tight Deadlines
                 </option>
-                <option value="positive-team-attitude">
+                <option value="Positive Team Attitude">
                   Positive Team Attitude
                 </option>
-                <option value="goal-oriented-work-approach">
+                <option value="Goal-Oriented Work Approach">
                   Goal-Oriented Work Approach
                 </option>
-                <option value="active-listening-skills">
+                <option value="Active Listening Skills">
                   Active Listening Skills
                 </option>
-                <option value="critical-analytical-skills">
+                <option value="Critical Analytical Skills">
                   Critical and Analytical Thinking
                 </option>
-                <option value="emotional-intelligence-awareness">
+                <option value="Emotional Intelligence Awareness">
                   Emotional Intelligence and Awareness
                 </option>
               </select>
@@ -137,6 +168,15 @@ export default function Skills() {
                 </svg>
               </div>
             </div>
+            <input
+              required
+              id={`skill${id + 1}`}
+              onChange={handleSkill}
+              value={inputValue[`skill${id + 1}`]}
+              type="text"
+              placeholder={skill.placeholder}
+              className="border-2 w-full border-slate-100 py-2 px-4 rounded-md"
+            />
           </div>
         ))}
       </div>

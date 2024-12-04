@@ -1,48 +1,23 @@
-import { useState, useEffect, useRef, useContext } from "react";
-import { InputContext } from "./InputContext";
+import { useState, useEffect, useRef } from "react";
 
-export default function Objective({objective}) {
-  const selectRef = useRef(null);
-  const inputRef = useRef(null);
+export default function Objective() {
+  const [inputValue, setInputValue] = useState("");
 
-  const { setValue6 } = useContext(InputContext);
-  console.log(setValue6);
-  
+  const handleSelection = (e) => {
+    setInputValue(e.target.value);
+    sessionStorage.setItem("objective", e.target.value);
+  };
 
   useEffect(() => {
-    const selectElement = selectRef.current;
-    const getValue = sessionStorage.getItem("objective") || "";
-
-    if(inputRef.current) {
-      inputRef.current.value = getValue;
-      console.log(getValue);
-    }
-
-    const handleSelection = (e) => {
-      sessionStorage.setItem("Objective", e.target.value);
-      console.log(e.target.value);
-      setValue6(e.target.value);
-      if(inputRef.current) {
-        inputRef.current.value = e.target.value;
-        inputRef.current.title = e.target.value;
+    let stored_value = sessionStorage.getItem("objective") || "";
+    try {
+      if(stored_value && stored_value !== "undefined") {
+        setInputValue(stored_value);
       }
-    };
-
-    if(selectElement) {
-      selectElement.addEventListener("change", handleSelection);
-    }
-    
-    return () => {
-      if(selectElement) {
-        selectElement.removeEventListener("change", handleSelection);
-      }
+    } catch (error) {
+      console.error(error);
     }
   }, []);
-
-  const handleInput = (e) => {
-    sessionStorage.setItem("Objective", e.target.value);
-    setValue6(e.target.value);
-  };
     return (
       <>
         {/* Objective */}
@@ -58,7 +33,7 @@ export default function Objective({objective}) {
               </h2>
               <div className="relative">
                 <select
-                  ref={selectRef}
+                  onChange={handleSelection}
                   name="goals"
                   id="goals"
                   className="block appearance-none w-full bg-white border border-gray-300 py-3 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-indigo-500"
@@ -113,9 +88,9 @@ export default function Objective({objective}) {
                   </span>
                 </label>
                 <input
-                ref={inputRef}
-                  onChange={handleInput}
                   required
+                  onChange={handleSelection}
+                  value={inputValue}
                   type="text"
                   placeholder="Enter your goal"
                   id="goal"

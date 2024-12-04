@@ -1,25 +1,6 @@
-import { useContext, useState, useEffect } from "react";
-import { InputContext } from "./InputContext";
+import { useState, useEffect } from "react";
 
 export default function GenerateCV() {
-  const { value1, value2, value3, value4, value5 } = useContext(InputContext);
-  const [isVisible, setIsVisible] = useState(false);
-
-  function changeVisibilty() {
-    setIsVisible(!isVisible);
-  }
-
-  function check() {
-    if (
-      value1 === "" ||
-      value2 === "" ||
-      value3 === "" ||
-      value4 === "" ||
-      value5 === ""
-    ) {
-      setIsVisible(true);
-    }
-  }
   return (
     <>
       <div className="flex flex-col p-2 gap-5 justify-center items-center m-2">
@@ -41,45 +22,34 @@ export default function GenerateCV() {
           </svg>
           <p className="text-[1.2rem]">Create generate your cv</p>
         </div>
-        <button
-          onClick={check}
-          className="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-indigo-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50"
-        >
+        <button className="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-indigo-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50">
           Generate CV
         </button>
       </div>
-      <div
-        className={`fixed bottom-0 inset-0 ${
-          isVisible ? "flex" : "hidden"
-        } items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
+      {/* <div
+        className={`fixed bottom-0 inset-0 items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
       >
         <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative mx-2">
-          {/* Close Button */}
-          <button
-            onClick={changeVisibilty}
-            className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
-          >
+         
+          <button className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
             <i className="fas fa-times text-xl"></i>
           </button>
 
-          {/* Modal Header */}
+          
           <div className="text-center mb-4">
             <i className="fas fa-exclamation-circle text-yellow-500 text-3xl mb-2"></i>
             <h2 className="text-2xl font-semibold text-gray-800">
               Please Fill All Fields
             </h2>
           </div>
-          {/* Close Button */}
+          
           <div className="mt-6 text-center">
-            <button
-              onClick={changeVisibilty}
-              className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-            >
+            <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
               Close
             </button>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
