@@ -1,9 +1,34 @@
+import { useState, useEffect, useContext } from "react";
+import { InputContext } from "../App";
+
 export default function Certifications() {
+  const { setCertificateValue } = useContext(InputContext);
   const certificate = [
-    { id: "certificate-1" },
-    { id: "certificate-2" },
-    { id: "certificate-3" },
+    { id: "certificate1" },
+    { id: "certificate2" },
+    { id: "certificate3" },
   ];
+
+  const [inputValue, setInputValue] = useState(() => {
+    const savedData = sessionStorage.getItem("certificate");
+    return savedData 
+    ? JSON.parse(savedData)
+    : {
+      certificate1: "",
+      certificate2: "",
+      certificate3: "",
+    }
+  });
+
+  const handleCertificate = (e) => {
+    setInputValue(prev => ({...prev, [e.target.id] : e.target.value }));
+  };
+
+  useEffect(() => {
+    setCertificateValue(inputValue);
+    sessionStorage.setItem("certificate", JSON.stringify(inputValue));
+  }, [inputValue])
+
   return (
     <>
       {/* Certifications */}
@@ -28,8 +53,10 @@ export default function Certifications() {
               <div className="mb-6">
                 <input
                   required
+                  onChange={handleCertificate}
+                  value={inputValue[`certificate${id + 1}`]}
                   type="text"
-                  id="certification-name-1"
+                  id={`certificate${id + 1}`}
                   placeholder="Name of Certification"
                   className="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-3 mb-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />

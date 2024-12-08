@@ -64,9 +64,7 @@ export default function Resume() {
         </button>
       </div>
       {isPreview ? (
-        <Template 
-          
-         />
+        <Template/>
       ) : (
         <>
           {/* Input Form */}

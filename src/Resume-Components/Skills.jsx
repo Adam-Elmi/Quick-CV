@@ -1,51 +1,73 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { InputContext } from "../App";
 
 export default function Skills() {
-    const skills = [
-        { id: "skill-1", placeholder: "Write Skill 1" },
-        { id: "skill-2", placeholder: "Write Skill 2" },
-        { id: "skill-3", placeholder: "Write Skill 3" },
-        { id: "skill-4", placeholder: "Write Skill 4" },
-        { id: "skill-5", placeholder: "Write Skill 5" },
-        { id: "skill-6", placeholder: "Write Skill 6" },
-        { id: "skill-7", placeholder: "Write Skill 7" },
-        { id: "skill-8", placeholder: "Write Skill 8" },
-    ];
+  const { setSkillValue } = useContext(InputContext);
 
-    const [inputValue, setInputValue] = useState(() => {
-      const savedData = sessionStorage.getItem("skills");
-      return savedData ? JSON.parse(savedData) : {
-        skill1: "",
-        skill2: "",
-        skill3: "",
-        skill4: "",
-        skill5: "",
-        skill6: "",
-        skill7: "",
-        skill8: "",
-      };
-    });
-  
-    useEffect(() => {
-      sessionStorage.setItem("skills", JSON.stringify(inputValue));
-    }, [inputValue]);
+  const skills = [
+    { id: "skill-1", placeholder: "Write Skill 1" },
+    { id: "skill-2", placeholder: "Write Skill 2" },
+    { id: "skill-3", placeholder: "Write Skill 3" },
+    { id: "skill-4", placeholder: "Write Skill 4" },
+    { id: "skill-5", placeholder: "Write Skill 5" },
+    { id: "skill-6", placeholder: "Write Skill 6" },
+    { id: "skill-7", placeholder: "Write Skill 7" },
+    { id: "skill-8", placeholder: "Write Skill 8" },
+  ];
 
-    useEffect(() => {
-      const getValue = JSON.parse(sessionStorage.getItem("skills")) || "";
-      try {
-        if(getValue && getValue !== "undefined") {
-          for(const key in getValue) {
-            setInputValue(prev => ({...prev, [key]: getValue[key]}));
-          }
+  const [defaultValue, setDefaultValue] = useState({
+    skill1: "Select a skill",
+    skill2: "Select a skill",
+    skill3: "Select a skill",
+    skill4: "Select a skill",
+    skill5: "Select a skill",
+    skill6: "Select a skill",
+    skill7: "Select a skill",
+    skill8: "Select a skill",
+  });
+
+  const [inputValue, setInputValue] = useState(() => {
+    const savedData = sessionStorage.getItem("skills");
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+          skill1: "",
+          skill2: "",
+          skill3: "",
+          skill4: "",
+          skill5: "",
+          skill6: "",
+          skill7: "",
+          skill8: "",
+        };
+  });
+
+  useEffect(() => {
+    sessionStorage.setItem("skills", JSON.stringify(inputValue));
+  }, [inputValue]);
+
+  useEffect(() => {
+    const getValue = JSON.parse(sessionStorage.getItem("skills")) || "";
+    try {
+      if (getValue && getValue !== "undefined") {
+        for (const key in getValue) {
+          setInputValue((prev) => ({ ...prev, [key]: getValue[key] }));
         }
-      } catch (error) {
-        console.error(error);
       }
-    }, [])
+    } catch (error) {
+      console.error(error);
+    }
+  }, []);
 
-    const handleSkill = (e) => {
-      setInputValue(prev => ({...prev, [e.target.id]: e.target.value}));
-    };
+  const handleSkill = (e) => {
+    setInputValue((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setDefaultValue((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  };
+
+  useEffect(() => {
+    setSkillValue(inputValue);
+  }, [inputValue]);
+
   return (
     <>
       {/* Skills */}
@@ -69,9 +91,10 @@ export default function Skills() {
                 onChange={handleSkill}
                 name="skills"
                 id={`skill${id + 1}`}
+                value={defaultValue[`skill${id + 1}`]}
                 className="block appearance-none w-full bg-white border border-gray-300 text-indigo-500 py-3 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
               >
-                <option disabled>
+                <option value="Select a skill" disabled>
                   Select a skill
                 </option>
                 <option value="Effective Communication">

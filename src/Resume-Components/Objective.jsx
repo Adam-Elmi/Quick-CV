@@ -1,10 +1,15 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useContext } from "react";
+import { InputContext } from "../App";
 
 export default function Objective() {
+
+  const { setObjectiveValue } = useContext(InputContext);
+
   const [inputValue, setInputValue] = useState("");
 
   const handleSelection = (e) => {
     setInputValue(e.target.value);
+    setObjectiveValue(e.target.value);
     sessionStorage.setItem("objective", e.target.value);
   };
 

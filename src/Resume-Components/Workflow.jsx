@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 export default function Workflow({ children }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Load the current index from sessionStorage on component mount
   useEffect(() => {
     const storedIndex = sessionStorage.getItem("current");
     if (storedIndex !== null) {

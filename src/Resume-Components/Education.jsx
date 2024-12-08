@@ -1,10 +1,43 @@
+import { useState, useEffect, useContext } from "react";
+import { InputContext } from "../App";
+
 export default function Education() {
+
+  const { setEducationValue } = useContext(InputContext);
+
   const education = [
-    { id: "college-1", placeholder: "Enter your college or school 1" },
-    { id: "college-2", placeholder: "Enter your college or school 2" },
-    { id: "college-3", placeholder: "Enter your college or school 3" },
-    { id: "college-4", placeholder: "Enter your college or school 4" },
+    { id: "school1", placeholder: "Enter your college or school 1" },
+    { id: "school2", placeholder: "Enter your college or school 2" },
+    { id: "school3", placeholder: "Enter your college or school 3" },
+    { id: "school4", placeholder: "Enter your college or school 4" },
   ];
+
+  const [inputValue, setInputValue] = useState(() => {
+    const savedData = sessionStorage.getItem("education");
+    return savedData
+      ? JSON.parse(savedData)
+      : [
+          { school1: "", start1: "", end1: "" },
+          { school2: "", start2: "", end2: "" },
+          { school3: "", start3: "", end3: "" },
+          { school4: "", start4: "", end4: "" },
+        ];
+  });
+
+  const handleEducation = (e, id) => {
+    const { id: fieldId, value } = e.target;
+    setInputValue((prev) =>
+      prev.map((entry, index) =>
+        index === id ? { ...entry, [fieldId]: value } : entry
+      )
+    );
+  };
+
+  useEffect(() => {
+    sessionStorage.setItem("education", JSON.stringify(inputValue));
+    setEducationValue(inputValue);
+  }, [inputValue]);
+
   return (
     <>
       {/* Education */}
@@ -26,9 +59,11 @@ export default function Education() {
             <div>
               <input
                 required
+                onChange={(e) => handleEducation(e, id)}
+                value={inputValue[id][`school${id + 1}`]}
                 type="text"
                 placeholder={ed.placeholder}
-                id={ed.id}
+                id={`school${id + 1}`}
                 className="border-2 w-full border-slate-100 py-2 px-4 rounded-md"
               />
               <div className="w-full max-w-md mx-auto my-5">
@@ -40,8 +75,10 @@ export default function Education() {
                 </label>
                 <input
                   required
+                  onChange={(e) => handleEducation(e, id)}
+                  value={inputValue[id][`start${id + 1}`]}
                   type="number"
-                  id="start-year"
+                  id={`start${id + 1}`}
                   name="start-year"
                   min="1900"
                   max="2100"
@@ -57,8 +94,10 @@ export default function Education() {
                 </label>
                 <input
                   required
+                  onChange={(e) => handleEducation(e, id)}
+                  value={inputValue[id][`end${id + 1}`]}
                   type="number"
-                  id="end-year"
+                  id={`end${id + 1}`}
                   name="end-year"
                   min="1900"
                   max="2100"

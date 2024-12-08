@@ -1,12 +1,33 @@
-import React, { useState } from "react";
-
+import { useEffect, useState, useContext } from "react";
+import { InputContext } from "../App";
 export default function Work() {
-  const workFields = [
-    { id: "work-1" },
-    { id: "work-2" },
-    { id: "work-3" },
-  ];
+  const { setWorkValue } = useContext(InputContext);
+  const workFields = [{ id: "work1" }, { id: "work2" }, { id: "work3" }];
 
+  const [inputValue, setInputValue] = useState(() => {
+    const savedData = sessionStorage.getItem("work-experience");
+    return savedData
+      ? JSON.parse(savedData)
+      : [
+        { job1: "Google", role1: "Web Developer", start1: "2020", end1: "2024" },
+        { job2: "Microsoft", role2: "Frontend Developer", start2: "2018", end2: "2022" },
+        { job3: "Apple", role3: "Backend Developer", start3: "2019", end3: "2023" },
+      ];
+  });
+
+  const handleWork = (e, index) => {
+    const { id: fieldId, value } = e.target;
+    setInputValue((prev) =>
+      prev.map((work, idx) =>
+        idx === index ? { ...work, [fieldId]: value } : work
+      )
+    );
+  };
+
+  useEffect(() => {
+    setWorkValue(inputValue);
+    sessionStorage.setItem("work-experience", JSON.stringify(inputValue));
+  }, [inputValue]);
   return (
     <>
       {/* Work Experience */}
@@ -20,7 +41,7 @@ export default function Work() {
             className="w-full max-w-md mx-auto mb-5 flex flex-col gap-2 border-[1.5px] p-2 border-indigo-400 rounded-md shadow-md"
           >
             <label
-              htmlFor={`job-title-${index}`}
+              htmlFor={`job${index + 1}`}
               className="font-bold text-slate-500 flex items-center gap-2 mt-3"
             >
               <span className="fa-solid fa-briefcase"></span>
@@ -30,8 +51,10 @@ export default function Work() {
               <div className="mb-6">
                 <input
                   required
+                  onChange={(e) => handleWork(e, index)}
+                  value={inputValue[index][`job${index + 1}`]}
                   type="text"
-                  id={`job-title-${index}`}
+                  id={`job${index + 1}`}
                   placeholder="Job Title"
                   className="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-3 mb-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
@@ -39,7 +62,9 @@ export default function Work() {
                 <input
                   required
                   type="text"
-                  id={`role-${index}`}
+                  onChange={(e) => handleWork(e, index)}
+                  value={inputValue[index][`role${index + 1}`]}
+                  id={`role${index + 1}`}
                   placeholder="Role/Position"
                   className="block w-full bg-white border border-gray-300 text-gray-700 py-2 px-3 mb-2 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                 />
@@ -47,7 +72,9 @@ export default function Work() {
                 <input
                   required
                   type="number"
-                  id={`start-year-${index}`}
+                  onChange={(e) => handleWork(e, index)}
+                  value={inputValue[index][`start${index + 1}`]}
+                  id={`start${index + 1}`}
                   placeholder="Start Year"
                   min="1900"
                   max="2100"
@@ -57,7 +84,9 @@ export default function Work() {
                 <input
                   required
                   type="number"
-                  id={`end-year-${index}`}
+                  onChange={(e) => handleWork(e, index)}
+                  value={inputValue[index][`end${index + 1}`]}
+                  id={`end${index + 1}`}
                   placeholder="End Year / Present"
                   min="1900"
                   max="2100"

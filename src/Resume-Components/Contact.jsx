@@ -1,33 +1,30 @@
-import { useEffect, useState, useRef} from "react";
+import { useEffect, useState, useContext } from "react";
+import { InputContext } from "../App";
 
 export default function Contact() {
+  const { setContactValue } = useContext(InputContext);
 
-  function storeValue(key, value) {
-    try {
-      if(value !== "undefined") {
-        sessionStorage.setItem(key, value);
-        setInputValue((prevValue => ({...prevValue, [key]: value})));
-      }
-    } catch (error) {
-      console.error(error);
+  const [inputValue, setInputValue] = useState(() => {
+    const storedData = JSON.parse(sessionStorage.getItem("contact"));
+    return storedData 
+    ? storedData
+    : {
+      fullname: "",
+      phone_number: "",
+      email: "",
+      country: "",
+      city: "",
     }
-  };
-
-  const [inputValue, setInputValue] = useState({
-    fullname: "",
-    phone_number: "",
-    email: "",
-    country: "",
-    city: ""
   });
 
-  useEffect(() => {
-    for(const key in inputValue) {
-      const value = sessionStorage.getItem(key) || "";
-      setInputValue((prevValue => ({...prevValue, [key]: value})));
-    }
-  }, []);
+  const handleInputValue = (e) => {
+    setInputValue(prev => ({...prev, [e.target.id]: e.target.value}));
+  };
 
+  useEffect(() => {
+    sessionStorage.setItem("contact", JSON.stringify(inputValue));
+    setContactValue(inputValue);
+  }, [inputValue]);
   return (
     <>
       <h1 className="mt-5 mb-2 font-bold text-[2rem] w-full text-center">
@@ -35,48 +32,41 @@ export default function Contact() {
       </h1>
       <div className="flex flex-col gap-5 w-full justify-center items-center">
         <div className="flex flex-col gap-5 w-full justify-center items-center max-w-[500px] p-4 border-[1.5px] border-blue-400 rounded-md shadow-md">
-          
-          {/* Fullname */}
           <InputField
             id="fullname"
             label="Enter your fullname"
             iconClass="fa-user"
-            onChange={(e) => storeValue("fullname", e.target.value)}
+            onChange={handleInputValue}
             value={inputValue.fullname}
           />
-          {/* Phone Number */}
           <InputField
-            id="phoneNumber"
+            id="phone_number"
             label="Enter your phone number"
             iconClass="fa-phone"
             type="tel"
-            onChange={(e) => storeValue("phone_number", e.target.value)}
+            onChange={handleInputValue}
             value={inputValue.phone_number}
           />
-
-          {/* Email */}
           <InputField
             id="email"
             label="Enter your email address"
             iconClass="fa-envelope"
             type="email"
-            onChange={(e) => storeValue("email", e.target.value)}
+            onChange={handleInputValue}
             value={inputValue.email}
           />
-          {/* Country */}
           <InputField
             id="country"
             label="Enter your country"
             iconClass="fa-globe"
-            onChange={(e) => storeValue("country", e.target.value)}
+            onChange={handleInputValue}
             value={inputValue.country}
           />
-          {/* City */}
           <InputField
             id="city"
             label="Enter your city"
             iconClass="fa-city"
-            onChange={(e) => storeValue("city", e.target.value)}
+            onChange={handleInputValue}
             value={inputValue.city}
           />
         </div>
@@ -85,16 +75,7 @@ export default function Contact() {
   );
 }
 
-// Reusable input component
-const InputField = ({
-  id,
-  label,
-  iconClass,
-  type = "text",
-  value,
-  onChange,
-  inputRef,
-}) => (
+const InputField = ({ id, label, iconClass, type = "text", value, onChange }) => (
   <div className="flex flex-col gap-2 w-full max-w-[400px]">
     <label
       htmlFor={id}
@@ -104,7 +85,6 @@ const InputField = ({
       <span>{label}</span>
     </label>
     <input
-      ref={inputRef}
       required
       type={type}
       placeholder={label}

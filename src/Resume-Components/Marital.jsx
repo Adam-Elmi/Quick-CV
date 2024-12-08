@@ -1,4 +1,25 @@
+import { useState, useEffect, useContext } from "react";
+import { InputContext } from "../App";
+
 export default function Marital() {
+  const { setMaritalValue } = useContext(InputContext);
+  const [selectValue, setSelectValue] = useState(() => {
+    const saveData = sessionStorage.getItem("marital");
+    return saveData 
+    ? saveData
+    : "Select your marital status"
+  }
+  );
+
+  const handleSelection = (e) => {
+    setSelectValue(e.target.value);
+  };
+
+  useEffect(() => {
+    setMaritalValue(selectValue);
+    sessionStorage.setItem("marital", selectValue);
+  }, [selectValue]);
+
   return (
     <>
       {/* Marital Status */}
@@ -17,11 +38,13 @@ export default function Marital() {
           </label>
           <div className="relative">
             <select
+            onChange={handleSelection}
+            value={selectValue}
               id="marital-status"
               name="marital-status"
               className="block appearance-none w-full bg-white border border-gray-300 text-indigo-500 py-2 px-3 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
             >
-              <option value="" disabled selected>
+              <option value="" disabled>
                 Select your marital status
               </option>
               <option value="single">Single</option>
