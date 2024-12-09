@@ -1,9 +1,11 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext} from "react";
 import { InputContext } from "../App";
+import { CheckContext } from "./Resume";
 
 export default function Contact() {
   const { setContactValue } = useContext(InputContext);
-
+  const { setCheckContact } = useContext(CheckContext);
+  
   const [inputValue, setInputValue] = useState(() => {
     const storedData = JSON.parse(sessionStorage.getItem("contact"));
     return storedData 
@@ -24,7 +26,9 @@ export default function Contact() {
   useEffect(() => {
     sessionStorage.setItem("contact", JSON.stringify(inputValue));
     setContactValue(inputValue);
+    setCheckContact(inputValue);
   }, [inputValue]);
+  
   return (
     <>
       <h1 className="mt-5 mb-2 font-bold text-[2rem] w-full text-center">
@@ -75,8 +79,8 @@ export default function Contact() {
   );
 }
 
-const InputField = ({ id, label, iconClass, type = "text", value, onChange }) => (
-  <div className="flex flex-col gap-2 w-full max-w-[400px]">
+const InputField = ({ id, label, iconClass, type = "text", value, onChange}) => (
+    <div className="flex flex-col gap-2 w-full max-w-[400px]">
     <label
       htmlFor={id}
       className="font-bold text-slate-500 flex items-center gap-2"

@@ -141,7 +141,7 @@ export default function Template() {
           Marital Status
         </h1>
         <ul className="pl-4">
-          <li className="list-disc">{(maritalValue[0]?.trim().toUpperCase() + maritalValue?.trim().slice(1)) || "Enter marital status"}</li>
+          <li className="list-disc">{(maritalValue?.trim()) || "Enter marital status"}</li>
         </ul>
 
         {/* Certifications */}

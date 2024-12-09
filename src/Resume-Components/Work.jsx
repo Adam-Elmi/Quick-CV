@@ -1,7 +1,10 @@
 import { useEffect, useState, useContext } from "react";
 import { InputContext } from "../App";
+import { CheckContext } from "./Resume";
+
 export default function Work() {
   const { setWorkValue } = useContext(InputContext);
+  const { setCheckWork } = useContext(CheckContext);
   const workFields = [{ id: "work1" }, { id: "work2" }, { id: "work3" }];
 
   const [inputValue, setInputValue] = useState(() => {
@@ -25,8 +28,9 @@ export default function Work() {
   };
 
   useEffect(() => {
-    setWorkValue(inputValue);
     sessionStorage.setItem("work-experience", JSON.stringify(inputValue));
+    setWorkValue(inputValue);
+    setCheckWork(inputValue);
   }, [inputValue]);
   return (
     <>

@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { InputContext } from "../App";
+import { CheckContext } from "./Resume";
 
 export default function Objective() {
-
   const { setObjectiveValue } = useContext(InputContext);
+  const { setCheckObjective } = useContext(CheckContext);
 
   const [inputValue, setInputValue] = useState("");
 
@@ -19,6 +20,7 @@ export default function Objective() {
       if(stored_value && stored_value !== "undefined") {
         setInputValue(stored_value);
       }
+      setCheckObjective(inputValue);
     } catch (error) {
       console.error(error);
     }

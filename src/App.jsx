@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext } from "react";
 import Resume from "./Resume-Components/Resume";
 import "./App.css";
 
@@ -6,6 +6,7 @@ import "./App.css";
 export const InputContext = createContext();
 
 function App() {
+
   // Contact values
   const [contactValue, setContactValue] = useState(() => {
     const initialValue = {
@@ -98,7 +99,7 @@ function App() {
   // Marital value
   const [maritalValue, setMaritalValue] = useState(() => {
     const storedData = sessionStorage.getItem("marital");
-    return storedData ? storedData : "Single";
+    return storedData ? storedData : "";
   });
   // Certification value
   const [certificateValue, setCertificateValue] = useState(() => {

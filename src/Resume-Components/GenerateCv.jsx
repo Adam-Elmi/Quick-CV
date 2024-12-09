@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-
 export default function GenerateCV() {
+
   return (
     <>
       <div className="flex flex-col p-2 gap-5 justify-center items-center m-2">
