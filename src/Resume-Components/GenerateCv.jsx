@@ -1,5 +1,165 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 export default function GenerateCV() {
+  function getSaveData(name) {
+    return JSON.parse(sessionStorage.getItem(name));
+  }
+
+  const [checkContact, setCheckContact] = useState(() => {
+    const savedData = getSaveData("contact");
+    return savedData
+      ? savedData
+      : {
+          fullname: "",
+          phone_number: "",
+          email: "",
+          country: "",
+          city: "",
+        };
+  });
+
+  const [checkObjective, setCheckObjective] = useState(() => {
+    const savedData = sessionStorage.getItem("objective");
+    return savedData ? savedData : "";
+  });
+
+  const [checkSkill, setCheckSkill] = useState(() => {
+    const savedData = getSaveData("skills");
+    return savedData
+      ? savedData
+      : {
+          skill1: "",
+          skill2: "",
+          skill3: "",
+          skill4: "",
+          skill5: "",
+          skill6: "",
+          skill7: "",
+          skill8: "",
+        };
+  });
+
+  const [checkEducation, setCheckEducation] = useState(() => {
+    const savedData = getSaveData("education");
+    return savedData
+      ? savedData
+      : [
+          { school1: "", start1: "", end1: "" },
+          { school2: "", start2: "", end2: "" },
+          { school3: "", start3: "", end3: "" },
+          { school4: "", start4: "", end4: "" },
+        ];
+  });
+
+  const [checkWork, setCheckWork] = useState(() => {
+    const savedData = getSaveData("work-experience");
+    return savedData
+      ? savedData
+      : [
+          {
+            job1: "",
+            role1: "",
+            start1: "",
+            end1: "",
+          },
+          {
+            job2: "",
+            role2: "",
+            start2: "",
+            end2: "",
+          },
+          {
+            job3: "",
+            role3: "",
+            start3: "",
+            end3: "",
+          },
+        ];
+  });
+
+  const [checkMarital, setCheckMarital] = useState(() => {
+    const savedData = sessionStorage.getItem("marital");
+    return savedData ? savedData : "";
+  });
+
+  const [checkCertificate, setCheckCertificate] = useState(() => {
+    const savedData = getSaveData("certificate");
+    return savedData
+      ? savedData
+      : {
+          certificate1: "",
+          certificate2: "",
+          certificate3: "",
+        };
+  });
+
+  const checkValues = {
+    ...checkContact,
+    objective: checkObjective,
+    ...checkSkill,
+    education: checkEducation,
+    work_experience: checkWork,
+    marital: checkMarital,
+    ...checkCertificate,
+  };
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [emptyField, setEmptyField] = useState([]);
+
+const handleClick = () => {
+  let hasInvalidValue = false;
+
+  if (checkValues && typeof checkValues === "object") {
+    Object.entries(checkValues).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        value.forEach((child) => {
+          Object.values(child).forEach((prop) => {
+            if (prop === "" || prop === "undefined" || prop == null) {
+              if(key === "work_experience") key = "work";
+              setEmptyField((prev) => {
+                if (!prev.includes(key)) {
+                  return [...prev, key];
+                }
+                return prev;
+              });
+              hasInvalidValue = true;
+            }
+          });
+        });
+      } else {
+        if (value === "" || value === "undefined" || value == null) {
+          // Map specific keys before processing
+          if (["fullname", "phone_number", "email", "country", "city"].includes(key)) {
+            key = "contact";
+          }
+          else if (["skill1", "skill2", "skill3", "skill4", "skill5", "skill6", "skill7", "skill8"].includes(key)) {
+            key = "skills";
+          } else if (["certificate1", "certificate2", "certificate3"].includes(key)) {
+            key = "certification";
+          }
+
+          // Add the updated key to emptyField if it's not already included
+          setEmptyField((prev) => {
+            if (!prev.includes(key)) {
+              return [...prev, key];
+            }
+            return prev;
+          });
+          hasInvalidValue = true;
+        }
+      }
+    });
+  }
+
+  setIsVisible(hasInvalidValue);
+};
+
+
+  const handleClose = () => {
+    setIsVisible(false);
+  };
+
+  console.log(emptyField);
 
   return (
     <>
@@ -22,34 +182,150 @@ export default function GenerateCV() {
           </svg>
           <p className="text-[1.2rem]">Create generate your cv</p>
         </div>
-        <button className="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-indigo-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50">
+        <button
+          onClick={handleClick}
+          className="bg-indigo-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-indigo-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50"
+        >
           Generate CV
         </button>
       </div>
-      {/* <div
-        className={`fixed bottom-0 inset-0 items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
+      <div
+        className={`fixed ${
+          isVisible ? "flex" : "hidden"
+        } bottom-0 inset-0 items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
       >
-        <div className="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative mx-2">
-         
-          <button className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
-            <i className="fas fa-times text-xl"></i>
-          </button>
-
-          
-          <div className="text-center mb-4">
-            <i className="fas fa-exclamation-circle text-yellow-500 text-3xl mb-2"></i>
-            <h2 className="text-2xl font-semibold text-gray-800">
-              Please Fill All Fields
-            </h2>
-          </div>
-          
-          <div className="mt-6 text-center">
-            <button className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded">
-              Close
-            </button>
+        <div className="bg-white shadow-lg mx-2 rounded-lg w-full max-w-md relative p-1 flex items-center justify-center">
+          <div className="bg-white rounded-lg w-full max-w-md pb-3 relative border-2">
+            <div className="text-center mb-4 flex items-center gap-4 border-b-2 py-3 px-2">
+              <i className="fas fa-exclamation-circle text-indigo-500 text-[1.2rem]"></i>
+              <h2 className="text-[1.2rem] font-semibold text-gray-800 font-mono">
+                Please Fill All Inputs
+              </h2>
+              <button className="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+                <span
+                  onClick={handleClose}
+                  className="fas fa-times text-xl"
+                ></span>
+              </button>
+            </div>
+            <div className="w-full p-2">
+              <div className="flex items-center justify-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width={24}
+                  height={24}
+                  viewBox="0 0 22 22"
+                >
+                  <defs>
+                    <linearGradient id="a">
+                      <stop
+                        offset={0}
+                        style={{
+                          stopColor: "#fcd994",
+                          stopOpacity: 1,
+                        }}
+                      />
+                      <stop
+                        offset={1}
+                        style={{
+                          stopColor: "#fff6e1",
+                          stopOpacity: 1,
+                        }}
+                      />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    d="m11 1032.362-10 18h20zm0 2 8 15H3z"
+                    style={{
+                      fill: "#ffc35a",
+                      fillOpacity: 1,
+                      stroke: "none",
+                      strokeWidth: 1,
+                      strokeLinecap: "butt",
+                      strokeLinejoin: "miter",
+                      strokeOpacity: 1,
+                    }}
+                    transform="translate(0 -1030.362)"
+                  />
+                  <path
+                    d="M10 1046.362h2v2h-2zM10 1045.362h2v-6h-2z"
+                    style={{
+                      fill: "#373737",
+                      fillOpacity: 0.94117647,
+                      stroke: "none",
+                      strokeWidth: 1,
+                      strokeLinecap: "butt",
+                      strokeLinejoin: "miter",
+                      strokeOpacity: 1,
+                    }}
+                    transform="translate(0 -1030.362)"
+                  />
+                </svg>
+                <h2 className="font-semibold text-slate-700">
+                  Inputs that have not been filled
+                </h2>
+              </div>
+              <div className="w-full max-h-[380px] overflow-y-scroll">
+                {emptyField
+                  ? emptyField.map((field, id) => (
+                      <div
+                        key={id}
+                        className="w-full flex items-center gap-2 my-2 border-[1.5px] hover:border-indigo-500 p-2 rounded-lg"
+                      >
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width={24}
+                          height={24}
+                          className="icon flat-line"
+                          data-name="Flat Line"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            d="M3 12h18"
+                            style={{
+                              fill: "none",
+                              stroke: "#777",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                            }}
+                          />
+                          <path
+                            d="m18 15 3-3-3-3"
+                            data-name="primary"
+                            style={{
+                              fill: "none",
+                              stroke: "#777",
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                            }}
+                          />
+                        </svg>
+                        <div className="w-full flex items-center gap-2">
+                          <p className="font-semibold text-indigo-600 text-[0.9rem]">{`${
+                            field[0].toUpperCase() + field.slice(1)
+                          } Section`}</p>
+                          <span className="text-[0.7rem] text-slate-500 font-mono">
+                            - Fill this section.
+                          </span>
+                        </div>
+                      </div>
+                    ))
+                  : ""}
+              </div>
+            </div>
+            <div className="mt-2 text-center">
+              <button
+                onClick={handleClose}
+                className="bg-slate-800 font-mono shadow-md hover:bg-indigo-500 transition duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-50 text-white py-2 px-4 rounded"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

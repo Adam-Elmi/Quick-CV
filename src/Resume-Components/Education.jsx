@@ -1,9 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { InputContext } from "../App";
-import { CheckContext } from "./Resume";
 
 export default function Education() {
-  const { setCheckEducation } = useContext(CheckContext);
   const { setEducationValue } = useContext(InputContext);
 
   const education = [

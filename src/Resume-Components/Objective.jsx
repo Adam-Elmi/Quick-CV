@@ -1,30 +1,24 @@
 import { useState, useEffect, useContext } from "react";
 import { InputContext } from "../App";
-import { CheckContext } from "./Resume";
 
 export default function Objective() {
   const { setObjectiveValue } = useContext(InputContext);
-  const { setCheckObjective } = useContext(CheckContext);
 
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState(() => {
+    const storedData = sessionStorage.getItem("objective");
+    return storedData
+    ? storedData
+    : ""
+  });
 
   const handleSelection = (e) => {
     setInputValue(e.target.value);
-    setObjectiveValue(e.target.value);
-    sessionStorage.setItem("objective", e.target.value);
   };
-
+  
   useEffect(() => {
-    let stored_value = sessionStorage.getItem("objective") || "";
-    try {
-      if(stored_value && stored_value !== "undefined") {
-        setInputValue(stored_value);
-      }
-      setCheckObjective(inputValue);
-    } catch (error) {
-      console.error(error);
-    }
-  }, []);
+    sessionStorage.setItem("objective", inputValue);
+    setObjectiveValue(inputValue);
+  }, [inputValue]);
     return (
       <>
         {/* Objective */}

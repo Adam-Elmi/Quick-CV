@@ -1,16 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import { InputContext } from "../App";
-import { CheckContext } from "./Resume";
 
 export default function Marital() {
   const { setMaritalValue } = useContext(InputContext);
-  const { setCheckMarital } = useContext(CheckContext);
 
   const [selectValue, setSelectValue] = useState(() => {
     const saveData = sessionStorage.getItem("marital");
     return saveData 
     ? saveData
-    : "Select your marital status"
+    : ""
   }
   );
 
@@ -21,7 +19,6 @@ export default function Marital() {
   useEffect(() => {
     sessionStorage.setItem("marital", selectValue);
     setMaritalValue(selectValue);
-    setCheckMarital(selectValue);
   }, [selectValue]);
 
   return (

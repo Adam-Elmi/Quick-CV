@@ -25,8 +25,10 @@ export default function Certifications() {
   };
 
   useEffect(() => {
-    setCertificateValue(inputValue);
     sessionStorage.setItem("certificate", JSON.stringify(inputValue));
+    setTimeout(() => {
+      setCertificateValue(inputValue);
+    })
   }, [inputValue])
 
   return (

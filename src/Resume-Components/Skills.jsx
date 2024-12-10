@@ -1,10 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { InputContext } from "../App";
-import { CheckContext } from "./Resume";
 
 export default function Skills() {
   const { setSkillValue } = useContext(InputContext);
-  const { setCheckSkill } = useContext(CheckContext);
 
   const skills = [
     { id: "skill-1", placeholder: "Write Skill 1" },
@@ -46,7 +44,6 @@ export default function Skills() {
 
   useEffect(() => {
     sessionStorage.setItem("skills", JSON.stringify(inputValue));
-    setCheckSkill(inputValue);
   }, [inputValue]);
 
   useEffect(() => {
