@@ -128,7 +128,6 @@ const handleClick = () => {
         });
       } else {
         if (value === "" || value === "undefined" || value == null) {
-          // Map specific keys before processing
           if (["fullname", "phone_number", "email", "country", "city"].includes(key)) {
             key = "contact";
           }
@@ -138,7 +137,6 @@ const handleClick = () => {
             key = "certification";
           }
 
-          // Add the updated key to emptyField if it's not already included
           setEmptyField((prev) => {
             if (!prev.includes(key)) {
               return [...prev, key];
