@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { InputContext } from "../App";
+import { InputContext } from "../../App";
 
 export default function Objective() {
   const { setObjectiveValue } = useContext(InputContext);

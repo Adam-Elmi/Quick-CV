@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { InputContext } from "../App";
+import { InputContext } from "../../App";
 
-export default function Template() {
+export default function BasicTemplate() {
   const {
     contactValue,
     objectiveValue,

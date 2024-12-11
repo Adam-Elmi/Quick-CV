@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { InputContext } from "../App";
+import { InputContext } from "../../App";
 
 export default function Work() {
   const { setWorkValue } = useContext(InputContext);

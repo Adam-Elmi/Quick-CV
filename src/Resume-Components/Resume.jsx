@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import Contact from "./Contact";
-import Objective from "./Objective";
-import Skills from "./Skills";
-import Education from "./Education";
-import Work from "./Work";
-import Marital from "./Marital";
-import Certifications from "./Certifications";
-import Template from "./Template";
+import Contact from "./Input-Components/Contact";
+import Objective from "./Input-Components/Objective";
+import Skills from "./Input-Components/Skills";
+import Education from "./Input-Components/Education";
+import Work from "./Input-Components/Work";
+import Marital from "./Input-Components/Marital";
+import Certifications from "./Input-Components/Certifications";
+import BasicTemplate from "./Templates/Basic-Template";
 import Workflow from "./Workflow";
 import GenerateCV from "./GenerateCv";
 
@@ -63,7 +63,7 @@ export default function Resume() {
           </button>
         </div>
         {isPreview ? (
-          <Template />
+          <BasicTemplate />
         ) : (
           <>
             {/* Input Form */}
