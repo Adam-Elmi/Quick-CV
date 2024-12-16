@@ -8,13 +8,6 @@ import Home from "./Site-Components/Home";
 export const InputContext = createContext();
 
 function App() {
-  // Objective values
-  const [objectiveValue, setObjectiveValue] = useState(() => {
-    const storedData = sessionStorage.getItem("objective");
-    return storedData
-      ? storedData
-      : "";
-  });
   // Skills values
   const [skillValue, setSkillValue] = useState(() => {
     const storedData = JSON.parse(sessionStorage.getItem("skills"));

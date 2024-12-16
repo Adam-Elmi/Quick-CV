@@ -15,7 +15,13 @@ export default function BasicTemplate() {
     const storedData = JSON.parse(sessionStorage.getItem("contact"));
     return storedData ? storedData : initialValue;
   });
-  
+  // Objective values
+  const [objectiveValue, setObjectiveValue] = useState(() => {
+    const storedData = sessionStorage.getItem("objective");
+    return storedData
+      ? storedData
+      : "";
+  });
   return (
     <>
       {/* CV */}
