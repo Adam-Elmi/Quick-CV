@@ -9,11 +9,6 @@ export const InputContext = createContext();
 
 function App() {
   
-  // Marital value
-  const [maritalValue, setMaritalValue] = useState(() => {
-    const storedData = sessionStorage.getItem("marital");
-    return storedData ? storedData : "";
-  });
   // Certification value
   const [certificateValue, setCertificateValue] = useState(() => {
     const storedData = JSON.parse(sessionStorage.getItem("certificate"));

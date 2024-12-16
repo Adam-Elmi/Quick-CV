@@ -92,6 +92,11 @@ export default function BasicTemplate() {
           },
         ];
   });
+   // Marital value
+   const [maritalValue, setMaritalValue] = useState(() => {
+    const storedData = sessionStorage.getItem("marital");
+    return storedData ? storedData : "";
+  });
   return (
     <>
       {/* CV */}
