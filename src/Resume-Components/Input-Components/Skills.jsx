@@ -61,9 +61,6 @@ export default function Skills() {
     setDefaultValue((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  useEffect(() => {
-  }, [inputValue]);
-
   return (
     <>
       {/* Skills */}
