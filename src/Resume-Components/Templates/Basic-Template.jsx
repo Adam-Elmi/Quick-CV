@@ -1,16 +1,21 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { InputContext } from "../../App";
 
 export default function BasicTemplate() {
-  const {
-    contactValue,
-    objectiveValue,
-    skillValue,
-    educationValue,
-    workValue,
-    maritalValue,
-    certificateValue
-  } = useContext(InputContext);
+
+  // Contact values
+  const [contactValue, setContactValue] = useState(() => {
+    const initialValue = {
+      fullname: "",
+      phone_number: "",
+      email: "",
+      country: "",
+      city: "",
+    };
+    const storedData = JSON.parse(sessionStorage.getItem("contact"));
+    return storedData ? storedData : initialValue;
+  });
+  
   return (
     <>
       {/* CV */}

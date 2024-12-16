@@ -8,18 +8,6 @@ import Home from "./Site-Components/Home";
 export const InputContext = createContext();
 
 function App() {
-  // Contact values
-  const [contactValue, setContactValue] = useState(() => {
-    const initialValue = {
-      fullname: "",
-      phone_number: "",
-      email: "",
-      country: "",
-      city: "",
-    };
-    const storedData = JSON.parse(sessionStorage.getItem("contact"));
-    return storedData ? storedData : initialValue;
-  });
   // Objective values
   const [objectiveValue, setObjectiveValue] = useState(() => {
     const storedData = sessionStorage.getItem("objective");
@@ -117,8 +105,6 @@ function App() {
   return (
     <InputContext.Provider
       value={{
-        contactValue,
-        setContactValue,
         objectiveValue,
         setObjectiveValue,
         skillValue,
@@ -134,8 +120,8 @@ function App() {
       }}
     >
       <Routes>
-        <Route path="/" element={<Resume />}/>
-        <Route path="/tool" element={<Home />}/>
+        <Route path="/" element={<Home />}/>
+        <Route path="/cv" element={<Resume />}/>
       </Routes>
     </InputContext.Provider>
   );

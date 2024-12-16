@@ -8,6 +8,7 @@ import SvgTmeplate from "../Svg-Components/Svg-Template";
 import SvgEdit from "../Svg-Components/Svg-Edit";
 import SvgDownload from "../Svg-Components/Svg-Download";
 
+// Used in Header and Sidebar components
 const sections = [
   {
     section_name: "Home",
@@ -36,6 +37,7 @@ const sections = [
   },
 ];
 
+// Used in Hero-Section Component
 const features = [
   {
     icon: <SvgAd />,
@@ -69,6 +71,7 @@ const features = [
   },
 ];
 
+// Used in Steps-Section Component
 const steps = [
   { 
     step: "1ST Step", 

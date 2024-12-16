@@ -1,8 +1,6 @@
-import { useEffect, useState, useContext} from "react";
-import { InputContext } from "../../App";
+import { useEffect, useState} from "react";
 
 export default function Contact() {
-  const { setContactValue } = useContext(InputContext);
   
   const [inputValue, setInputValue] = useState(() => {
     const storedData = JSON.parse(sessionStorage.getItem("contact"));
@@ -23,7 +21,6 @@ export default function Contact() {
 
   useEffect(() => {
     sessionStorage.setItem("contact", JSON.stringify(inputValue));
-    setContactValue(inputValue);
   }, [inputValue]);
   
   return (
