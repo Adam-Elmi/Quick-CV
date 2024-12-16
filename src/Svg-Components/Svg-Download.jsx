@@ -1,5 +1,6 @@
 export default function SvgDownload() {
   return (
+    // Download Icon (SVG)
     <svg
       width={24}
       height={24}

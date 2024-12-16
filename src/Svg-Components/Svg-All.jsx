@@ -1,5 +1,6 @@
 export default function SvgAll() {
   return (
+    // Circle Icon with open paths (SVG)
     <svg
       width={24}
       height={24}

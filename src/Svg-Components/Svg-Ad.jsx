@@ -1,5 +1,6 @@
 export default function SvgAd() {
   return (
+    // Ad Icon (SVG)
     <svg
       width={24}
       height={24}

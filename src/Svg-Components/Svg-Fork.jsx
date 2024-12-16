@@ -1,5 +1,6 @@
 export default function SvgFork() {
   return (
+    // Branch/Git Merge Icon (SVG)
     <svg
       width={24}
       height={24}

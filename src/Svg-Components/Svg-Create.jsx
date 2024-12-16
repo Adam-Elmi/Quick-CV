@@ -1,5 +1,6 @@
 export default function SvgCreate() {
   return (
+    // Create/Write Icon (SVG)
     <svg
       width={24}
       height={24}

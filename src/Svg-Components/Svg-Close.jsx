@@ -1,5 +1,6 @@
 export default function SvgClose() {
     return (
+      // Close/Cancle Icon (SVG)
         <svg
         width={24}
         height={24}

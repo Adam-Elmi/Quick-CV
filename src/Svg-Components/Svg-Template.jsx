@@ -1,5 +1,6 @@
 export default function SvgTmeplate() {
   return (
+    // Template/Paper Icon (SVG)
     <svg
       width={24}
       height={24}
