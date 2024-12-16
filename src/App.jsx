@@ -4,8 +4,6 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Home from "./Site-Components/Home";
 
-// Create Context
-export const InputContext = createContext();
 
 function App() {
   return (

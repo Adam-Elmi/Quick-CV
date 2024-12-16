@@ -1,5 +1,4 @@
-import { useContext, useState } from "react";
-import { InputContext } from "../../App";
+import { useState } from "react";
 
 export default function BasicTemplate() {
   // Contact values
