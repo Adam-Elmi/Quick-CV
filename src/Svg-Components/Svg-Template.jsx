@@ -9,7 +9,7 @@ export default function SvgTemplate() {
       viewBox="0 0 24 24"
     >
       <path
-        stroke="#00ff80"
+        stroke="#0f0"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={1.5}

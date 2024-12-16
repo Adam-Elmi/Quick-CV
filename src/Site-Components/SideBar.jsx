@@ -33,7 +33,7 @@ const stopEvent = (e) => {
           {sections.map((section, id) => (
             <Link key={id} to={section.path}>
               <li className="font-semibold flex gap-4 items-center p-4 border-b hover:text-indigo-600">
-                <span className={`${section.icon}`}></span>
+                {section.icon}
                 {section.section_name}
               </li>
             </Link>

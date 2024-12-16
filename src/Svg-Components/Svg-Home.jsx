@@ -2,11 +2,15 @@ export default function SvgHome() {
   return (
     // Home Icon (SVG)
     <svg
+      className="hover:fill-indigo-600 hover:stroke-indigo-600"
+      width={24}
+      height={24}
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
     >
       <path
+        className="fill-current stroke-current"
         fill="#000"
         stroke="#000"
         strokeLinecap="round"

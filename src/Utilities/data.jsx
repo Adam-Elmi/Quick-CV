@@ -8,9 +8,12 @@ import SvgTmeplate from "../Svg-Components/Svg-Template";
 import SvgEdit from "../Svg-Components/Svg-Edit";
 import SvgDownload from "../Svg-Components/Svg-Download";
 import SvgHome from "../Svg-Components/Svg-Home";
-import SvgTemplate from "../Svg-Components/Svg-Template";
 import SvgTeam from "../Svg-Components/Svg-Team";
 import SvgAbout from "../Svg-Components/Svg-About";
+import SvgEnvelope from "../Svg-Components/Svg-Envelope";
+import SvgFile from "../Svg-Components/Svg-File";
+import SvgOpen from "../Svg-Components/Svg-Open";
+import SvgTerminal from "../Svg-Components/Svg-Terminal";
 
 // Used in Header and Sidebar components
 const sections = [
@@ -22,11 +25,16 @@ const sections = [
   {
     section_name: "Templates",
     path: "/templates",
-    icon: <SvgTemplate/>,
+    icon: <SvgFile/>,
   },
   {
-    section_name: "Contribution",
-    path: "/contribution",
+    section_name: "CLI",
+    path: "/cli",
+    icon: <SvgTerminal/>,
+  },
+  {
+    section_name: "Contributors",
+    path: "/contributors",
     icon: <SvgTeam/>,
   },
   {
@@ -37,7 +45,7 @@ const sections = [
   {
     section_name: "Contact",
     path: "/contact",
-    icon: "fa-solid fa-envelope",
+    icon: <SvgEnvelope/>,
   },
 ];
 
@@ -47,6 +55,11 @@ const features = [
     icon: <SvgAd />,
     feature: "Ad-Free",
     description: "No advertisements to distract you.",
+  },
+  {
+    icon: <SvgFree />,
+    feature: "No Payment",
+    description: "Completely free to use.",
   },
   {
     icon: <SvgKey />,
@@ -59,12 +72,7 @@ const features = [
     description: "No interruptions or unnecessary prompts.",
   },
   {
-    icon: <SvgFree />,
-    feature: "No Payment",
-    description: "Completely free to use.",
-  },
-  {
-    icon: <SvgFork />,
+    icon: <SvgOpen />,
     feature: "Open Source",
     description: "Free to view, use, and contribute to the code.",
   },
