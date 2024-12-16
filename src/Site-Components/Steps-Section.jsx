@@ -1,5 +1,5 @@
 import { steps } from "../Utilities/data";
-import teamImage from "/src/assets/images/team-5439.png"
+import teamImage from "/src/assets/images/team-5439.png";
 
 export default function StepsSection() {
   return (

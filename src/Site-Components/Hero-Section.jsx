@@ -62,7 +62,7 @@ function LowerSection() {
           {features.map((feature, id) => (
             <div
               key={id}
-              className="w-[300px] min-h-[120px] max-w-full p-2 shadow-lg bg-white rounded-lg flex flex-col border-2"
+              className="w-[300px] min-h-[120px] max-w-full p-2 shadow-lg bg-white rounded-lg flex flex-col border-2 mx-3"
             >
               <div className="flex gap-2 border-b p-2 mb-2">
                 <span>{feature.icon}</span>
