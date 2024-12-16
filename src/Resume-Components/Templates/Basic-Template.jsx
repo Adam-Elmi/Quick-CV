@@ -38,6 +38,34 @@ export default function BasicTemplate() {
           skill8: "",
         };
   });
+  // Education values
+  const [educationValue, setEducationValue] = useState(() => {
+    const storedData = JSON.parse(sessionStorage.getItem("education"));
+    return storedData
+      ? storedData
+      : [
+          {
+            school1: "",
+            start1: "",
+            end1: "",
+          },
+          {
+            school2: "",
+            start2: "",
+            end2: "",
+          },
+          {
+            school3: "",
+            start3: "",
+            end3: "",
+          },
+          {
+            school4: "",
+            start4: "",
+            end4: "",
+          },
+        ];
+  });
   return (
     <>
       {/* CV */}
