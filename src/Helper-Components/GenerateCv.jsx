@@ -246,7 +246,7 @@ export default function GenerateCV() {
         <div className="bg-white shadow-lg mx-2 rounded-lg w-full max-w-md relative p-1 flex items-center justify-center">
           <div className="bg-white rounded-lg w-full max-w-md pb-3 relative border-2">
             <div className="text-center mb-4 flex items-center gap-4 border-b-2 py-3 px-2">
-              <i className="fas fa-exclamation-circle text-indigo-500 text-[1.2rem]"></i>
+              <span className="fas fa-exclamation-circle text-indigo-500 text-[1.2rem]"></span>
               <h2 className="text-[1.2rem] font-semibold text-gray-800 font-mono">
                 Please Fill All Inputs
               </h2>
