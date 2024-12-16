@@ -66,6 +66,32 @@ export default function BasicTemplate() {
           },
         ];
   });
+  // Work experience values
+  const [workValue, setWorkValue] = useState(() => {
+    const storedData = JSON.parse(sessionStorage.getItem("work-experience"));
+    return storedData
+      ? storedData
+      : [
+          {
+            job1: "",
+            role1: "",
+            start1: "",
+            end1: "",
+          },
+          {
+            job2: "",
+            role2: "",
+            start2: "",
+            end2: "",
+          },
+          {
+            job3: "",
+            role3: "",
+            start3: "",
+            end3: "",
+          },
+        ];
+  });
   return (
     <>
       {/* CV */}
