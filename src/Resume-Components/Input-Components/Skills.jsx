@@ -62,7 +62,6 @@ export default function Skills() {
   };
 
   useEffect(() => {
-    setSkillValue(inputValue);
   }, [inputValue]);
 
   return (
