@@ -3,7 +3,7 @@ import { sections } from "../Utilities/data";
 import SvgClose from "../Svg-Components/Svg-Close";
 
 export default function SideBar({isVisible, handleVisibility}) {
-    
+  // To prevent the child element to have the same event action of the parent
   const stopEvent = (e) => {
     e.stopPropagation();
   };
