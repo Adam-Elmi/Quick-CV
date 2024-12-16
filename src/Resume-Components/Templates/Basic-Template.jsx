@@ -22,6 +22,22 @@ export default function BasicTemplate() {
       ? storedData
       : "";
   });
+  // Skills values
+  const [skillValue, setSkillValue] = useState(() => {
+    const storedData = JSON.parse(sessionStorage.getItem("skills"));
+    return storedData
+      ? storedData
+      : {
+          skill1: "",
+          skill2: "",
+          skill3: "",
+          skill4: "",
+          skill5: "",
+          skill6: "",
+          skill7: "",
+          skill8: "",
+        };
+  });
   return (
     <>
       {/* CV */}
