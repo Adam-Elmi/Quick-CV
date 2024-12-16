@@ -3,13 +3,13 @@ import { sections } from "../Utilities/data";
 import SvgClose from "../Svg-Components/Svg-Close";
 
 export default function SideBar({isVisible, handleVisibility}) {
-  // To prevent the child element to have the same event action of the parent[Container Element] -> Event(Onclick)
-  const stopEvent = (e) => {
+// Prevent child element from inheriting parent's onclick event (Line 14)
+const stopEvent = (e) => {
     e.stopPropagation();
   };
 
   return (
-    // Container - Background Element - [rgba(0.3,0.3,0.3,0.3)]
+    // Container - Element with background color rgba(0.3, 0.3, 0.3, 0.3) (semi-transparent)
     <div
       onClick={handleVisibility}
       className={`w-full h-screen transition-all duration-300 ease-in-out fixed top-0 left-0 bg-[rgba(0.3,0.3,0.3,0.3)] ${
