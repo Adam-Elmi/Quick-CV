@@ -28,6 +28,7 @@ function StepsComponent() {
                 <h2 className="text-[1.2rem] font-bold">{value.toDo}</h2>
                 <p className="text-slate-400">{value.description}</p>
             </div>
+            {/* Icon property stores Svg element - Utilities -> data.jsx  */}
             {value.icon}
         </div>
       ))}
