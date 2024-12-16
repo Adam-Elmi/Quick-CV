@@ -1,8 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { InputContext } from "../../App";
+import { useState, useEffect } from "react";
 
 export default function Certifications() {
-  const { setCertificateValue } = useContext(InputContext);
   const certificate = [
     { id: "certificate1" },
     { id: "certificate2" },
@@ -26,9 +24,6 @@ export default function Certifications() {
 
   useEffect(() => {
     sessionStorage.setItem("certificate", JSON.stringify(inputValue));
-    setTimeout(() => {
-      setCertificateValue(inputValue);
-    })
   }, [inputValue])
 
   return (

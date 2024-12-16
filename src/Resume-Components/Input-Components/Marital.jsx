@@ -1,9 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { InputContext } from "../../App";
+import { useState, useEffect} from "react";
 
 export default function Marital() {
-  const { setMaritalValue } = useContext(InputContext);
-
   const [selectValue, setSelectValue] = useState(() => {
     const saveData = sessionStorage.getItem("marital");
     return saveData 
@@ -18,7 +15,6 @@ export default function Marital() {
 
   useEffect(() => {
     sessionStorage.setItem("marital", selectValue);
-    setMaritalValue(selectValue);
   }, [selectValue]);
 
   return (

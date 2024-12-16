@@ -1,8 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { InputContext } from "../../App";
+import { useState, useEffect } from "react";
 
 export default function Objective() {
-  const { setObjectiveValue } = useContext(InputContext);
 
   const [inputValue, setInputValue] = useState(() => {
     const storedData = sessionStorage.getItem("objective");
@@ -17,7 +15,6 @@ export default function Objective() {
   
   useEffect(() => {
     sessionStorage.setItem("objective", inputValue);
-    setObjectiveValue(inputValue);
   }, [inputValue]);
     return (
       <>

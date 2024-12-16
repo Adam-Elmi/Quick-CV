@@ -1,9 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { InputContext } from "../../App";
+import { useState, useEffect } from "react";
 
 export default function Skills() {
-  const { setSkillValue } = useContext(InputContext);
-
   const skills = [
     { id: "skill-1", placeholder: "Write Skill 1" },
     { id: "skill-2", placeholder: "Write Skill 2" },

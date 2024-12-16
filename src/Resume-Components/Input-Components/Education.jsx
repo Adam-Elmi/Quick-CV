@@ -1,9 +1,6 @@
-import { useState, useEffect, useContext } from "react";
-import { InputContext } from "../../App";
+import { useState, useEffect } from "react";
 
 export default function Education() {
-  const { setEducationValue } = useContext(InputContext);
-
   const education = [
     { id: "school1", placeholder: "Enter your college or school 1" },
     { id: "school2", placeholder: "Enter your college or school 2" },
@@ -34,7 +31,6 @@ export default function Education() {
 
   useEffect(() => {
     sessionStorage.setItem("education", JSON.stringify(inputValue));
-    setEducationValue(inputValue);
   }, [inputValue]);
 
   return (
