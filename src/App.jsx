@@ -8,19 +8,6 @@ import Home from "./Site-Components/Home";
 export const InputContext = createContext();
 
 function App() {
-  
-  // Certification value
-  const [certificateValue, setCertificateValue] = useState(() => {
-    const storedData = JSON.parse(sessionStorage.getItem("certificate"));
-    return storedData
-      ? storedData
-      : {
-          certificate1: "",
-          certificate2: "",
-          certificate3: "",
-        };
-  });
-
   return (
     <InputContext.Provider
       value={{
