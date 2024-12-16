@@ -7,28 +7,32 @@ import SvgAll from "../Svg-Components/Svg-All";
 import SvgTmeplate from "../Svg-Components/Svg-Template";
 import SvgEdit from "../Svg-Components/Svg-Edit";
 import SvgDownload from "../Svg-Components/Svg-Download";
+import SvgHome from "../Svg-Components/Svg-Home";
+import SvgTemplate from "../Svg-Components/Svg-Template";
+import SvgTeam from "../Svg-Components/Svg-Team";
+import SvgAbout from "../Svg-Components/Svg-About";
 
 // Used in Header and Sidebar components
 const sections = [
   {
     section_name: "Home",
     path: "/",
-    icon: "fa-solid fa-house",
+    icon: <SvgHome/>,
   },
   {
     section_name: "Templates",
     path: "/templates",
-    icon: "fa-solid fa-file",
+    icon: <SvgTemplate/>,
   },
   {
     section_name: "Contribution",
     path: "/contribution",
-    icon: "fa-solid fa-code-fork",
+    icon: <SvgTeam/>,
   },
   {
     section_name: "About",
     path: "/about",
-    icon: "fa-solid fa-address-card",
+    icon: <SvgAbout/>,
   },
   {
     section_name: "Contact",

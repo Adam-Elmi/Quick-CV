@@ -1,4 +1,4 @@
-export default function SvgTmeplate() {
+export default function SvgTemplate() {
   return (
     // Template/Paper Icon (SVG)
     <svg
