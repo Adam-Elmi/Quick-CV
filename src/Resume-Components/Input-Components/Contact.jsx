@@ -1,7 +1,6 @@
 import { useEffect, useState} from "react";
 
 export default function Contact() {
-  
   const [inputValue, setInputValue] = useState(() => {
     const storedData = JSON.parse(sessionStorage.getItem("contact"));
     return storedData 
