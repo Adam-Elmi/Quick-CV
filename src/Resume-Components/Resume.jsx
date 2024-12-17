@@ -12,6 +12,7 @@ import GenerateCV from "../Helper-Components/GenerateCv";
 
 
 export default function Resume() {
+  // cv Preview
   const [isPreview, setIsPreview] = useState(false);
 
   useEffect(() => {
