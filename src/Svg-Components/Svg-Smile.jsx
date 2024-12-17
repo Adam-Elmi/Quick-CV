@@ -1,3 +1,4 @@
+// Used in Hero-Section
 export default function SvgSmile() {
   return (
     // Smile Icon (SVG)
