@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <>
-    {/* Sidebar Component */}
+    {/* Sidebar component */}
       <SideBar isVisible={isVisible} handleVisibility={handleVisibility}/>
       {/* Nav */}
       <nav

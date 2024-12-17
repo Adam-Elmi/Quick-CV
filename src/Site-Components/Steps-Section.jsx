@@ -15,7 +15,6 @@ export default function StepsSection() {
     </div>
   );
 }
-
 function StepsComponent() {
   return (
     // Side Section Container

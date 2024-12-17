@@ -74,3 +74,4 @@ function LowerSection() {
     </div>
   );
 }
+// Other component
