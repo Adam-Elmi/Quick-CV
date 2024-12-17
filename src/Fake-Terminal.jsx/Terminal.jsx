@@ -88,6 +88,10 @@ function TerminalInput() {
             if(typeof result === "string"){
               validText.innerHTML = result.replace(/\n/g, "<br>");;
               terminalBody.append(validText, absolutePath, input);
+            } 
+            else if(typeof result === "object") {
+              validText.innerHTML = JSON.stringify(result);
+              terminalBody.append(validText, absolutePath, input);
             }
             else {
               terminalBody.append(absolutePath, input);

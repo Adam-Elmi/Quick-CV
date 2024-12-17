@@ -21,6 +21,14 @@ const commands = [
       return "[Creator of Quick-CV]\n_____________________\nName: Adam Elmi Eid\nEmail: Adamcade123@gmail.com\nPhone: +252 63 4709061";
     },
   },
+  {
+    command: "skills",
+    description: "Clear all content of the terminal.",
+    action: () => {
+     const savedData = JSON.parse(sessionStorage.getItem("skills"));
+     return savedData ? savedData : {};
+    },
+  },
 ];
 
 export { commands };
