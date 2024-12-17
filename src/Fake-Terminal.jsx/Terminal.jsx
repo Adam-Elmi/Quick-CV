@@ -13,7 +13,7 @@ export default function Terminal() {
   );
 }
 
-function TerminalHeader() {
+function TerminalHead() {
   return (
     <div className="w-full bg-slate-50 p-2 min-h[30px] overflow-hidden flex justify-between items-center">
       <h1 className="font-mono mobile:text-[0.85rem] small-mobile:text-[0.7rem]">
