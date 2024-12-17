@@ -16,5 +16,3 @@ export default function SvgPlay() {
       />
     </svg>
   );
-}
-// Not Used
