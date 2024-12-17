@@ -28,8 +28,8 @@ const sections = [
     icon: <SvgFile/>,
   },
   {
-    section_name: "CLI",
-    path: "/cli",
+    section_name: "Terminal",
+    path: "/terminal",
     icon: <SvgTerminal/>,
   },
   {
