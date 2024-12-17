@@ -2,7 +2,6 @@ import SvgAd from "../Svg-Components/Svg-Ad";
 import SvgKey from "../Svg-Components/Svg-Key";
 import SvgWindows from "../Svg-Components/Svg-Windows";
 import SvgFree from "../Svg-Components/Svg-Free";
-import SvgFork from "../Svg-Components/Svg-Fork";
 import SvgAll from "../Svg-Components/Svg-All";
 import SvgTmeplate from "../Svg-Components/Svg-Template";
 import SvgEdit from "../Svg-Components/Svg-Edit";
