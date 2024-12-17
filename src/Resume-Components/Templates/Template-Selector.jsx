@@ -1,4 +1,4 @@
 
-export default function TemplateSelector() {
+export default function Template() {
     
 }
