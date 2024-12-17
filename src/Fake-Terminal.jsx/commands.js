@@ -3,7 +3,7 @@ const commands = [
     command: "help",
     description: "Displays a list of available commands. Shows list",
     action: () => {
-      return "Available commands\n------------------\n➔ help : displays a list of available commands.\n➔ clear: Clear all content of the terminal.\n------------------";
+      return "Available commands\n------------------\n➔ help : Displays a list of available commands.\n➔ clear: Clears all content of the terminal.\n------------------";
     },
   },
   {
@@ -14,12 +14,18 @@ const commands = [
     },
   },
   {
+    command: "Adam",
+    description: "Creator of Quick-CV.",
+    action: () => {
+      return "Hi, I am Adam Elmi, the creator of Quick-CV.\nYou can contact me on my email: Adamcade123@gmail.com"
+    },
+  },
+  {
     command: "show skills",
-    description: "Clear all content of the terminal.",
+    description: "Shows all skills.",
     action: () => {
       const storedData = JSON.parse(sessionStorage.getItem("skills"));
       try {
-        if (storedData) {
           let formattedData = "";
           for (const key in storedData) {
             if (storedData.hasOwnProperty(key)) {
@@ -28,20 +34,13 @@ const commands = [
               }<br>`;
             }
           }
-          return formattedData;
-        }
+          return storedData ? formattedData : "<span style='color:#f87171; font-family:monospace; font-size: 1rem;'>No data available!</span>";
       } catch (error) {
         return error;
       }
     },
   },
-  {
-    command: "skill1",
-    description: "Clear all content of the terminal.",
-    action: () => {
-      const storedData = JSON.parse(sessionStorage.setItem("skills"));
-    },
-  },
+  
 ];
 
 export { commands };
