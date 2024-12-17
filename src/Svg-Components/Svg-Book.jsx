@@ -22,5 +22,7 @@ export default function SvgBook() {
     </svg>
   );
 }
-// No Used
->>>>>>>>> Temporary merge branch 2
+<<<<<<< HEAD
+// Not Used
+=======
+>>>>>>> ae77383dbe90a6ef2b89f9fbf10f306807e580d9
