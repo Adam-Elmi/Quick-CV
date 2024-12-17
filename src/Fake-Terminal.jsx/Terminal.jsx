@@ -21,8 +21,8 @@ function TerminalHead() {
         C:Machine/SystemX/fake-cli.exe
       </h1>
       <div className="flex gap-2">
-        <SvgPlay />
         <SvgBook />
+        <SvgPlay />
       </div>
     </div>
   );
@@ -32,91 +32,89 @@ function TerminalBody() {
   return (
     <div
       id="terminal-body"
-      className="flex-1 bg-[#0d1e41] h-full min-h-[500px] text-white p-2 px-3"
+      className="flex-1 bg-[#0d1e41] h-full min-h-[500px] max-h-[700px] overflow-auto text-white p-2 px-3"
     >
       <TerminalInput />
     </div>
   );
 }
 
-function TerminalInput() {
+function TerminalInput() {  
   useEffect(() => {
-    const userInput = document.getElementById("user-input");
+    // Terminal Body
+    const terminalBody = document.getElementById("terminal-body");
 
-    userInput.focus();
-
-    const handleBlur = () => {
-      setTimeout(() => {
-        if (document.activeElement !== userInput) {
-          userInput.focus(); // Keep caret in input
-        }
-      }, 0);
-    };
-    userInput.addEventListener("blur", handleBlur);
-
-    return () => {
-      userInput.removeEventListener("blur", handleBlur);
-    };
-  }, []);
-
-  useEffect(() => {
-    const userInput = document.getElementById("user-input");
     const handleKey = (e) => {
+      // When "Enter Key is pressed"
       if (e.key === "Enter") {
+        // New User Input
         const input = document.createElement("input");
         input.id = "user-input";
         input.type = "text";
         input.className =
-          "font-mono block text-slate-400 mobile:text-[0.85rem] small-mobile:text-[0.55rem] border-none outline-none bg-transparent overflow-hidden flex-1";
+          "font-mono block text-slate-400 mobile:text-[0.85rem] small-mobile:text-[0.55rem] border-none outline-none bg-transparent overflow-hidden flex-1 w-full";
+
         // Valid Text
         const validText = document.createElement("pre");
-        validText.className = "text-green-400 leading-8 p-0 m-0";
+        validText.className = "text-green-400 leading-8 p-0 m-0 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
+
         // Invalid Text
         const invalidText = document.createElement("pre");
-        invalidText.className = "text-red-400 leading-6";
+        invalidText.className = "text-red-400 leading-6 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
         invalidText.textContent =
           "Command not found: The command you entered is invalid. Type 'help' for a list of valid options.";
+
         // Absolute Path (Fake)
         const absolutePath = document.createElement("p");
         absolutePath.className =
           "font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
         absolutePath.textContent = "C:\\Users\\You\\Quick-CV";
 
-        Object.values(commands).forEach((c) => {
-          if (c.command === userInput.value.trim()) {
-            validText.innerHTML = c.text.replace(/\n/g, "<br>");
-            terminalBody.append(validText, absolutePath, input);
-          } else {
-            terminalBody.append(invalidText, absolutePath, input);
-          }
-        });
-        console.log(userInput.value.trim());
-        
-        const allInputs = document.querySelectorAll("#user-input");
+        let isCommandFound = false;
 
-        try {
-          if (allInputs) {
-            allInputs.forEach((input) => {
-              input.disabled = true;
-              input.style.display = "none";
-            });
-            allInputs[allInputs.length - 1].disabled = false;
-            allInputs[allInputs.length - 1].style.display = "block";
+        for (let i = 0; i < commands.length; i++) {
+          if(e.target.value.trim() === "") {
+            return;
           }
-        } catch (error) {
-          console.error(`Something wrong was happend: ${error}`);
+          if (commands[i].command === e.target.value.trim()) {
+            let result;
+
+            if(commands[i].action.length >= 1) {
+              result = commands[i].action(e);
+            } else {
+              result = commands[i].action()
+            }
+            
+            if(typeof result === "string"){
+              validText.innerHTML = result.replace(/\n/g, "<br>");;
+              terminalBody.append(validText, absolutePath, input);
+            }
+            else {
+              terminalBody.append(absolutePath, input);
+            }
+            isCommandFound = true;
+            break;
+          }
+        };
+
+        if(!isCommandFound) {
+          terminalBody.append(invalidText, absolutePath, input);
         }
+
+        e.target.style.display = "none";
+        input.focus();
+        const handleBlur = (e) => {
+          setTimeout(() => {
+            e.target.focus();
+          }, 0);
+        };
+        input.addEventListener("blur", handleBlur);
       }
     };
 
-    const terminalBody = document.getElementById("terminal-body");
-    if (userInput) {
-      userInput.addEventListener("keydown", handleKey);
-    }
+    terminalBody.addEventListener("keydown", handleKey);
     return () => {
-      if (userInput) {
-        userInput.removeEventListener("keydown", handleKey);
-      }
+      terminalBody.removeEventListener("keydown", handleKey);
     };
   }, []);
 

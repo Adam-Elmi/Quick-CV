@@ -1,13 +1,26 @@
 const commands = [
-    {
-      command: "help",
-      description: "Displays a list of available commands. Shows list",
-      text: "Available commands\n------------------\n➔ help : displays a list of available commands.\n------------------",
-      action: null
-    }
-  ];
-  
+  {
+    command: "help",
+    description: "Displays a list of available commands. Shows list",
+    action: () => {
+        return "Available commands\n------------------\n➔ help : displays a list of available commands.\n➔ clear: Clear all content of the terminal.\n------------------";
+      },      
+  },
+  {
+    command: "clear",
+    description: "Clear all content of the terminal.",
+    action: (e) => {
+      e.target.parentElement.innerHTML = "";
+      return null;
+    },
+  },
+  {
+    command: "creator",
+    description: "Clear all content of the terminal.",
+    action: () => {
+      return "[Creator of Quick-CV]\n_____________________\nName: Adam Elmi Eid\nEmail: Adamcade123@gmail.com\nPhone: +252 63 4709061";
+    },
+  },
+];
 
-export {
-    commands
-}
+export { commands };
