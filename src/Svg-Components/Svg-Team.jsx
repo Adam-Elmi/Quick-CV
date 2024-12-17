@@ -1,4 +1,4 @@
-// Used in sidebar
+// Used in Sidebar
 export default function SvgTeam() {
   return (
     // Team Icon (SVG)
