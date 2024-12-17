@@ -73,9 +73,9 @@ function TerminalInput() {
         validText.className = "text-green-400 leading-8 p-0 m-0";
         // Invalid Text
         const invalidText = document.createElement("pre");
-        invalidText.className = "text-red-400 leading-8";
+        invalidText.className = "text-red-400 leading-6";
         invalidText.textContent =
-          "Invalid Command: The command you entered is not found.";
+          "Command not found: The command you entered is invalid. Type 'help' for a list of valid options.";
         // Absolute Path (Fake)
         const absolutePath = document.createElement("p");
         absolutePath.className =
