@@ -9,7 +9,7 @@ export default function Workflow({ children }) {
       setCurrentIndex(parseInt(storedIndex, 10));
     }
   }, []);
-  // ++
+
   function nextChild() {
     setCurrentIndex((prevIndex) => {
       const newIndex = Math.min(prevIndex + 1, children.length - 1);
@@ -17,7 +17,7 @@ export default function Workflow({ children }) {
       return newIndex;
     });
   }
-  // --
+
   function previousChild() {
     setCurrentIndex((prevIndex) => {
       const newIndex = Math.max(prevIndex - 1, 0);

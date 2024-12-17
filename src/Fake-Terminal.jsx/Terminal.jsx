@@ -6,8 +6,8 @@ export default function Terminal() {
   return (
     <div className="w-full h-full min-h-screen p-4 bg-slate-950 flex justify-center items-center">
       <div className="flex flex-col border-2 shadow-lg w-[900px]">
-        <CliHeader />
-        <CliBody />
+        <TerminalHead />
+        <TerminalBody />
       </div>
     </div>
   );
@@ -50,11 +50,8 @@ function CliInput() {
         }
       }, 0);
     };
-
-    // Add the blur event listener
     userInput.addEventListener("blur", handleBlur);
 
-    // Cleanup on unmount
     return () => {
       userInput.removeEventListener("blur", handleBlur);
     };
