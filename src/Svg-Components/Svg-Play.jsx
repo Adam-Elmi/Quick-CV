@@ -17,3 +17,7 @@ export default function SvgPlay() {
     </svg>
   );
 }
+<<<<<<< HEAD
+// Not Used
+=======
+>>>>>>> 89ba984 (Made Some Changes)
