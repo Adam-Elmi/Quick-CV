@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import SvgBook from "../Svg-Components/Svg-Book";
 import SvgPlay from "../Svg-Components/Svg-Play";
 
-export default function Cli() {
+export default function Terminal() {
   return (
     <div className="w-full h-full min-h-screen p-4 bg-slate-950 flex justify-center items-center">
       <div className="flex flex-col border-2 shadow-lg w-[900px]">
@@ -13,7 +13,7 @@ export default function Cli() {
   );
 }
 
-function CliHeader() {
+function TerminalHeader() {
   return (
     <div className="w-full bg-slate-50 p-2 min-h[30px] overflow-hidden flex justify-between items-center">
       <h1 className="font-mono mobile:text-[0.85rem] small-mobile:text-[0.7rem]">
@@ -27,7 +27,7 @@ function CliHeader() {
   );
 }
 
-function CliBody() {
+function TerminalBody() {
   return (
     <div className="flex-1 bg-[#0d1e41] h-full min-h-[500px] text-white p-2 px-3">
       <CliInput />
