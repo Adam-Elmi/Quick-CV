@@ -23,14 +23,23 @@ const commands = [
           let formattedData = "";
           for (const key in storedData) {
             if (storedData.hasOwnProperty(key)) {
-              formattedData += `<strong>${key}</strong>: ${
+              formattedData += `<strong style='font-family:monospace;'>${key}</strong>: ${
                 storedData[key] || "Not Available"
               }<br>`;
             }
           }
           return formattedData;
         }
-      } catch (error) {}
+      } catch (error) {
+        return error;
+      }
+    },
+  },
+  {
+    command: "skill1",
+    description: "Clear all content of the terminal.",
+    action: () => {
+      const storedData = JSON.parse(sessionStorage.setItem("skills"));
     },
   },
 ];
