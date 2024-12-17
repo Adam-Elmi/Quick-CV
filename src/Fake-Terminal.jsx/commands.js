@@ -8,6 +8,7 @@ const commands = [
   },
   {
     command: "clear",
+    description: "Clear all contents of the terminal.",
     action: (e) => {
       e.target.parentElement.innerHTML = "";
     },
