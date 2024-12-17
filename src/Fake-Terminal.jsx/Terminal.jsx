@@ -76,7 +76,7 @@ function TerminalInput() {
           if(e.target.value.trim() === "") {
             return;
           }
-          if (commands[i].command === e.target.value.trim()) {
+          if (commands[i].command.toLowerCase() === e.target.value.trim().toLowerCase()) {
             let result;
 
             if(commands[i].action.length >= 1) {
