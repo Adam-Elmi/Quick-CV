@@ -22,4 +22,3 @@ export default function SvgBook() {
     </svg>
   );
 }
-// No Used
