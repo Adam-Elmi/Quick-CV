@@ -78,14 +78,17 @@ function TerminalInput() {
   }
 
   function displayResult(index, event) {
-    let output;
-
-    if (commands[index].action.length === 1) {
-      output = commands[index].action(event);
-    } else {
-      output = commands[index].action();
+    if (
+      !commands ||
+      !commands[index] ||
+      typeof commands[index].action !== "function"
+    ) {
+      console.error("Invalid command or action");
+      return null;
     }
-    return output;
+
+    const action = commands[index].action;
+    return action.length === 1 ? action(event) : action();
   }
 
   function handleDataType(valid, terminal, path, userInput, output) {
@@ -141,7 +144,7 @@ function TerminalInput() {
             commands[i].command.forEach((c) => {
               if (c.toLowerCase() === e.target.value.trim()) {
                 console.log(c);
-                
+
                 let result = displayResult(i, e);
                 handleDataType(
                   validText,
