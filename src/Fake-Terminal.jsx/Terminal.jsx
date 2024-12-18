@@ -45,7 +45,7 @@ function TerminalInput() {
 
   const handleKey = (e) => {
     if(e.key === "Enter") {
-     
+     console.log(e.key, "is pressed!");
     }
   }
   return (
