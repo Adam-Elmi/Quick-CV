@@ -53,7 +53,9 @@ function TerminalInput() {
       <p className="font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]">
         C:\Users\You\Quick-CV
       </p>
-      {JSON.stringify(input)}
+      {input.map((cmd, id) => (
+        <pre key={id}>{JSON.stringify(cmd)}</pre>
+      ))}
       <input
       onKeyDown={handleKey}
         id="user-input"
