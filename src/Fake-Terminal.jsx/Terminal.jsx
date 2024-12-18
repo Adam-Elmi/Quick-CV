@@ -40,7 +40,7 @@ function TerminalBody() {
 }
 
 function TerminalInput() {
-  
+  const
   return (
     <div className="flex flex-col gap-1">
       <p className="font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]">
