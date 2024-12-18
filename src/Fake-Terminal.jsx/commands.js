@@ -7,21 +7,21 @@ const commands = [
     },
   },
   {
-    command: ["clear", 'cls'],
+    command: ["clear", "cls"],
     description: "Clear all contents of the terminal.",
     action: (e) => {
       const parent = e.target.parentElement;
-     if(parent) {
-      parent.innerHTML = "";
-     }
-     return null;
+      if (parent) {
+        parent.innerHTML = "";
+      }
+      return null;
     },
   },
   {
     command: "Adam",
     description: "Creator of Quick-CV.",
     action: () => {
-      return "Hi, I am Adam Elmi, the creator of Quick-CV.\nYou can contact me on my email: Adamcade123@gmail.com"
+      return "Hi, I am Adam Elmi, the creator of Quick-CV.\nYou can contact me on my email: Adamcade123@gmail.com";
     },
   },
   {
@@ -30,28 +30,29 @@ const commands = [
     action: () => {
       const storedData = JSON.parse(sessionStorage.getItem("skills"));
       try {
-          let formattedData = "";
-          for (const key in storedData) {
-            if (storedData.hasOwnProperty(key)) {
-              formattedData += `<strong style='font-family:monospace;'>${key}</strong>: ${
-                storedData[key] || "Not Available"
-              }<br>`;
-            }
+        let formattedData = "";
+        for (const key in storedData) {
+          if (storedData.hasOwnProperty(key)) {
+            formattedData += `<strong style='font-family:monospace;'>${key}</strong>: ${
+              storedData[key] || "Not Available"
+            }<br>`;
           }
-          return storedData ? formattedData : "<span style='color:#f87171; font-family:monospace; font-size: 1rem;'>No data available!</span>";
+        }
+        return storedData
+          ? formattedData
+          : "<span style='color:#f87171; font-family:monospace; font-size: 1rem;'>No data available!</span>";
       } catch (error) {
         return error;
       }
     },
   },
   {
-    command: 'n',
+    command: "n",
     description: "Takes you to root path.",
     action: () => {
-      return "hello"
-    }
-  }
-  
+      return "hello";
+    },
+  },
 ];
 
 export { commands };
