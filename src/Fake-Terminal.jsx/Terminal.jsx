@@ -41,11 +41,11 @@ function TerminalBody() {
 
 function TerminalInput() {
   const [output, setOutput] = useState("");
-  const [input, setInput] = useState("");
-  
+  const [input, setInput] = useState([]);
+
   const handleKey = (e) => {
     if(e.key === "Enter") {
-      console.log(e.key, " is pressed.");
+      setInput(prev => [...prev, {[e.key]: "enter"}]);
     }
   }
   return (
@@ -53,6 +53,7 @@ function TerminalInput() {
       <p className="font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]">
         C:\Users\You\Quick-CV
       </p>
+      {JSON.stringify(input)}
       <input
       onKeyDown={handleKey}
         id="user-input"
