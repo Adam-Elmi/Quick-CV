@@ -41,20 +41,36 @@ function TerminalBody() {
 
 function TerminalInput() {
   const [output, setOutput] = useState("");
-  const [input, setInput] = useState([]);
+  const [input, setInput] = useState("");
 
   const handleKey = (e) => {
-    if(e.key === "Enter") {
-     console.log(e.key, "is pressed!");
+    if (e.key === "Enter") {
+      handleCommand();
     }
-  }
+  };
+
+  const handleCommand = () => {
+    return commands.forEach((cmd) => {
+      if (Array.isArray(cmd.command)) {
+        cmd.command.forEach((c) => {
+          if (c.toLowerCase() === input.toLowerCase()) {
+            console.log(c);
+          } else {
+            console.log("Not found!");
+            
+          }
+        });
+      }
+    });
+  };
   return (
     <div className="flex flex-col gap-1">
       <p className="font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]">
         C:\Users\You\Quick-CV
       </p>
       <input
-      onKeyDown={handleKey}
+        onChange={(e) => setInput(e.target.value)}
+        onKeyDown={handleKey}
         id="user-input"
         type="text"
         className="font-mono text-slate-400 mobile:text-[0.85rem] small-mobile:text-[0.55rem] border-none outline-none bg-transparent overflow-hidden flex-1"
