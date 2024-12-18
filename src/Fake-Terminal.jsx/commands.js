@@ -14,6 +14,7 @@ const commands = [
      if(parent) {
       parent.innerHTML = "";
      }
+     return null;
     },
   },
   {
