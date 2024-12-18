@@ -93,7 +93,7 @@ function TerminalInput() {
       valid.innerHTML = output.replace(/\n/g, "<br>");
       terminal.append(valid, path, userInput);
     } else {
-      if (typeof output === "object") {
+      if (output instanceof Object) {
         valid.innerHTML = JSON.stringify(output);
         terminal.append(valid, path, userInput);
       } else {
@@ -139,14 +139,18 @@ function TerminalInput() {
             break;
           } else if (Array.isArray(commands[i].command)) {
             commands[i].command.forEach((c) => {
-              let result = displayResult(i, e);
-              handleDataType(
-                validText,
-                terminalBody,
-                absolutePath,
-                input,
-                result
-              );
+              if (c.toLowerCase() === e.target.value.trim()) {
+                console.log(c);
+                
+                let result = displayResult(i, e);
+                handleDataType(
+                  validText,
+                  terminalBody,
+                  absolutePath,
+                  input,
+                  result
+                );
+              }
             });
             isCommandFound = true;
           }
