@@ -39,7 +39,69 @@ function TerminalBody() {
   );
 }
 
-function TerminalInput() {  
+function TerminalInput() {
+  function createInput() {
+    // New User Input
+    const input = document.createElement("input");
+    input.id = "user-input";
+    input.type = "text";
+    input.className =
+      "font-mono block text-slate-400 mobile:text-[0.85rem] small-mobile:text-[0.55rem] border-none outline-none bg-transparent overflow-hidden flex-1 w-full";
+    return input;
+  }
+
+  function createValidText() {
+    // Valid Text
+    const validText = document.createElement("pre");
+    validText.className =
+      "text-green-400 leading-8 p-0 m-0 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
+    return validText;
+  }
+
+  function createInvalidText() {
+    // Invalid Text
+    const invalidText = document.createElement("pre");
+    invalidText.className =
+      "text-red-400 leading-6 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
+    invalidText.textContent =
+      "Command not found: The command you entered is invalid. Type 'help' for a list of valid options.";
+    return invalidText;
+  }
+
+  function createAbsolutePath() {
+    // Absolute Path (Fake)
+    const absolutePath = document.createElement("p");
+    absolutePath.className =
+      "font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
+    absolutePath.textContent = "C:\\Users\\You\\Quick-CV";
+    return absolutePath;
+  }
+
+  function displayResult(index, event) {
+    let output;
+
+    if (commands[index].action.length === 1) {
+      output = commands[index].action(event);
+    } else {
+      output = commands[index].action();
+    }
+    return output;
+  }
+
+  function handleDataType(valid, terminal, path, userInput, output) {
+    if (typeof output === "string") {
+      valid.innerHTML = output.replace(/\n/g, "<br>");
+      terminal.append(valid, path, userInput);
+    } else {
+      if (typeof output === "object") {
+        valid.innerHTML = JSON.stringify(output);
+        terminal.append(valid, path, userInput);
+      } else {
+        terminal.append(path, userInput);
+      }
+    }
+  }
+
   useEffect(() => {
     // Terminal Body
     const terminalBody = document.getElementById("terminal-body");
@@ -47,64 +109,50 @@ function TerminalInput() {
     const handleKey = (e) => {
       // When "Enter Key is pressed"
       if (e.key === "Enter") {
-        // New User Input
-        const input = document.createElement("input");
-        input.id = "user-input";
-        input.type = "text";
-        input.className =
-          "font-mono block text-slate-400 mobile:text-[0.85rem] small-mobile:text-[0.55rem] border-none outline-none bg-transparent overflow-hidden flex-1 w-full";
-
-        // Valid Text
-        const validText = document.createElement("pre");
-        validText.className = "text-green-400 leading-8 p-0 m-0 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
-
-        // Invalid Text
-        const invalidText = document.createElement("pre");
-        invalidText.className = "text-red-400 leading-6 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
-        invalidText.textContent =
-          "Command not found: The command you entered is invalid. Type 'help' for a list of valid options.";
-
-        // Absolute Path (Fake)
-        const absolutePath = document.createElement("p");
-        absolutePath.className =
-          "font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]";
-        absolutePath.textContent = "C:\\Users\\You\\Quick-CV";
+        const input = createInput();
+        const validText = createValidText();
+        const invalidText = createInvalidText();
+        const absolutePath = createAbsolutePath();
 
         let isCommandFound = false;
 
         for (let i = 0; i < commands.length; i++) {
-          if(e.target.value.trim() === "") {
+          if (e.target.value.trim() === "") {
             return;
           }
-          if (commands[i].command.toLowerCase() === e.target.value.trim().toLowerCase()) {
-            let result;
+          if (
+            typeof commands[i].command === "string" &&
+            commands[i].command.toLowerCase() ===
+              e.target.value.trim().toLowerCase()
+          ) {
+            let result = displayResult(i, e);
 
-            if(commands[i].action.length >= 1) {
-              result = commands[i].action(e);
-            } else {
-              result = commands[i].action()
-            }
-            
-            if(typeof result === "string"){
-              validText.innerHTML = result.replace(/\n/g, "<br>");;
-              terminalBody.append(validText, absolutePath, input);
-            } 
-            else {
-              if(typeof result === "object") {
-                validText.innerHTML = JSON.stringify(result);
-                terminalBody.append(validText, absolutePath, input);
-              }
-              else {
-                terminalBody.append(absolutePath, input);
+            handleDataType(
+              validText,
+              terminalBody,
+              absolutePath,
+              input,
+              result
+            );
 
-              }
-            }
             isCommandFound = true;
             break;
+          } else if (Array.isArray(commands[i].command)) {
+            commands[i].command.forEach((c) => {
+              let result = displayResult(i, e);
+              handleDataType(
+                validText,
+                terminalBody,
+                absolutePath,
+                input,
+                result
+              );
+            });
+            isCommandFound = true;
           }
-        };
+        }
 
-        if(!isCommandFound) {
+        if (!isCommandFound) {
           terminalBody.append(invalidText, absolutePath, input);
         }
 

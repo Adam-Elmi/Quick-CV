@@ -7,10 +7,13 @@ const commands = [
     },
   },
   {
-    command: "clear",
+    command: ["clear", 'cls'],
     description: "Clear all contents of the terminal.",
     action: (e) => {
-      e.target.parentElement.innerHTML = "";
+      const parent = e.target.parentElement;
+     if(parent) {
+      parent.innerHTML = "";
+     }
     },
   },
   {
@@ -40,6 +43,13 @@ const commands = [
       }
     },
   },
+  {
+    command: 'n',
+    description: "Takes you to root path.",
+    action: () => {
+      return "hello"
+    }
+  }
   
 ];
 
