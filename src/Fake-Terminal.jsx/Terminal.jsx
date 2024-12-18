@@ -93,17 +93,16 @@ function TerminalInput() {
 
   function handleDataType(valid, terminal, path, userInput, output) {
     if (typeof output === "string") {
-      valid.innerHTML = output.replace(/\n/g, "<br>");
-      terminal.append(valid, path, userInput);
+        valid.innerHTML = output.replace(/\n/g, "<br>");
+    } else if (output && typeof output === "object") {
+        valid.innerHTML = JSON.stringify(output, null, 2).replace(/\n/g, "<br>");
     } else {
-      if (output instanceof Object) {
-        valid.innerHTML = JSON.stringify(output);
-        terminal.append(valid, path, userInput);
-      } else {
-        terminal.append(path, userInput);
-      }
+        valid.innerHTML = ""; // Clear valid text if no valid output
     }
-  }
+
+    terminal.append(valid, path, userInput);
+}
+
 
   useEffect(() => {
     // Terminal Body
