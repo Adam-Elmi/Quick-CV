@@ -42,6 +42,7 @@ function TerminalBody() {
 function TerminalInput() {
   const [output, setOutput] = useState("");
   const [input, setInput] = useState("");
+  
   const handleKey = (e) => {
     if(e.key === "Enter") {
       console.log(e.key, " is pressed.");
