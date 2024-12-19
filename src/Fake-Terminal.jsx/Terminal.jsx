@@ -39,39 +39,70 @@ function TerminalBody() {
   );
 }
 
+
+
 function TerminalInput() {
   const [output, setOutput] = useState([]);
   const [input, setInput] = useState("");
 
+  
   const handleKey = (e) => {
     if (e.key === "Enter") {
       if (input.trim() === "") return;
-      handleCommand();
+      handleCommand(input.trim());
       setInput("");
     }
   };
+  
+  function extractNumber(str) {
+    const match = str.match(/\d+/);
+    return match ? parseInt(match[0], 10) : null;
+  }
 
-  const handleCommand = () => {
-    for (const commandObj of commands) {
-      if (commandObj.command.includes(input)) {
-        if (["clear", "cls"].includes(input.trim())) {
-          setOutput([]);
-          return;
-        }
+  const handleCommand = (command) => {
+    if (["clear", "cls"].includes(command.toLowerCase())) {
+      setOutput([]);
+      return;
+    }
+
+    if (command.startsWith("skill")) {
+      const skillValue = command.replace(/skill\d+\s*=\s*/, "").trim();
+      const savedData = sessionStorage.getItem("skills");
+      const skills = savedData ? JSON.parse(savedData) : {};
+      const findKey = input.slice(0, input.indexOf("=")).trim();
+      const extract = extractNumber(findKey);
+  
+      if (extract && extract <= 8) {
+        skills[`skill${extract}`] = skillValue;
+        sessionStorage.setItem("skills", JSON.stringify(skills));
+  
         setOutput((prev) => [
           ...prev,
-          {
-            text: commandObj.action(),
-            path: "C:\\Users\\You\\Quick-CV",
-          },
+          { text: `Skill updated: skill${extract} = ${skillValue}`, path: "C:\\Users\\You\\Quick-CV" },
+        ]);
+      } else {
+        setOutput((prev) => [
+          ...prev,
+          { text: "Error: Only skill1 to skill8 are allowed.", path: "C:\\Users\\You\\Quick-CV" },
+        ]);
+      }
+      return;
+    }
+
+    for (const commandObj of commands) {
+      if (commandObj.command.includes(command.toLowerCase())) {
+        setOutput((prev) => [
+          ...prev,
+          { text: commandObj.action(), path: "C:\\Users\\You\\Quick-CV" },
         ]);
         return;
       }
     }
+
     setOutput((prev) => [
       ...prev,
       {
-        text:`'${input}' is not recognized as internal command.`,
+        text: `Error: '${command}' is not recognized as an internal command. Type 'help' to view available commands.`,
         path: "C:\\Users\\You\\Quick-CV",
       },
     ]);
@@ -81,33 +112,23 @@ function TerminalInput() {
     const terminalBody = document.getElementById("terminal-body");
     const userInput = document.getElementById("user-input");
 
-    if (userInput) {
-      userInput.focus();
-    }
+    if (userInput) userInput.focus();
 
     const handleFocus = () => {
-      if (userInput) {
-        userInput.focus();
-      }
+      if (userInput) userInput.focus();
     };
 
-    if (terminalBody) {
-      terminalBody.addEventListener("click", handleFocus);
-    }
+    if (terminalBody) terminalBody.addEventListener("click", handleFocus);
+
     return () => {
-      if (terminalBody) {
-        terminalBody.removeEventListener("click", handleFocus);
-      }
+      if (terminalBody) terminalBody.removeEventListener("click", handleFocus);
     };
   }, []);
 
   useEffect(() => {
     const terminalBody = document.getElementById("terminal-body");
-    if (terminalBody) {
-      terminalBody.scrollTop = terminalBody.scrollHeight;
-    }
-  }, [output]); // Whenever output changes, scroll to the bottom
-  
+    if (terminalBody) terminalBody.scrollTop = terminalBody.scrollHeight;
+  }, [output]);
 
   return (
     <div className="flex flex-col gap-1">
@@ -116,7 +137,7 @@ function TerminalInput() {
           <p className="font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]">
             {line.path}
           </p>
-          <pre className={`${line.text.includes("not recognized") ? "text-red-400" : "text-green-400"}`}>
+          <pre className={`${line.text.includes("Error") ? "text-red-400" : "text-green-400"}`}>
             {line.text}
           </pre>
         </div>

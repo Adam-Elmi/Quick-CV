@@ -29,8 +29,8 @@ const commands = [
         let formattedData = "";
         for (const key in storedData) {
           if (storedData.hasOwnProperty(key)) {
-            formattedData += `${key}: ${
-              storedData[key] || "Not Available"
+            formattedData += `\n${key}: ${
+              storedData[key] || "Not Available\n"
             }`;
           }
         }
@@ -46,7 +46,7 @@ const commands = [
     command: toLowerCase(["n"]),
     description: "Takes you to root path.",
     action: () => {
-      return "hello";
+      return "Hello";
     },
   },
 ];
