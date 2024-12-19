@@ -11,5 +11,3 @@ createRoot(document.getElementById("root")).render(
     </BrowserRouter>
   </StrictMode>
 );
-
-//# sourceMappingURL=react.js.map
