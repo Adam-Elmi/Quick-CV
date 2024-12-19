@@ -1,6 +1,6 @@
 const commands = [
   {
-    command: "help",
+    command: ["help"],
     description: "Displays a list of available commands. Shows list",
     action: () => {
       return "Available commands\n------------------\n➔ help : Displays a list of available commands.\n➔ clear: Clears all content of the terminal.\n------------------";
@@ -18,14 +18,14 @@ const commands = [
     },
   },
   {
-    command: "Adam",
+    command: ["Adam"],
     description: "Creator of Quick-CV.",
     action: () => {
       return "Hi, I am Adam Elmi, the creator of Quick-CV.\nYou can contact me on my email: Adamcade123@gmail.com";
     },
   },
   {
-    command: "show skills",
+    command: ["show skills"],
     description: "Shows all skills.",
     action: () => {
       const storedData = JSON.parse(sessionStorage.getItem("skills"));
@@ -47,7 +47,7 @@ const commands = [
     },
   },
   {
-    command: "n",
+    command: ["n"],
     description: "Takes you to root path.",
     action: () => {
       return "hello";

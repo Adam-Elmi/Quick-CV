@@ -57,7 +57,6 @@ function TerminalInput() {
             console.log(c);
           } else {
             console.log("Not found!");
-            
           }
         });
       }
