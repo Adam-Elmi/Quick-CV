@@ -39,13 +39,10 @@ function TerminalBody() {
   );
 }
 
-
-
 function TerminalInput() {
   const [output, setOutput] = useState([]);
   const [input, setInput] = useState("");
 
-  
   const handleKey = (e) => {
     if (e.key === "Enter") {
       if (input.trim() === "") return;
@@ -53,7 +50,7 @@ function TerminalInput() {
       setInput("");
     }
   };
-  
+
   function extractNumber(str) {
     const match = str.match(/\d+/);
     return match ? parseInt(match[0], 10) : null;
@@ -71,22 +68,46 @@ function TerminalInput() {
       const skills = savedData ? JSON.parse(savedData) : {};
       const findKey = input.slice(0, input.indexOf("=")).trim();
       const extract = extractNumber(findKey);
-  
+
       if (extract && extract <= 8) {
         skills[`skill${extract}`] = skillValue;
         sessionStorage.setItem("skills", JSON.stringify(skills));
-  
+
         setOutput((prev) => [
           ...prev,
-          { text: `Skill updated: skill${extract} = ${skillValue}`, path: "C:\\Users\\You\\Quick-CV" },
+          {
+            text: `Skill updated: skill${extract} = ${skillValue}`,
+            path: "C:\\Users\\You\\Quick-CV",
+          },
         ]);
       } else {
         setOutput((prev) => [
           ...prev,
-          { text: "Error: Only skill1 to skill8 are allowed.", path: "C:\\Users\\You\\Quick-CV" },
+          {
+            text: "Error: Only skill1 to skill8 are allowed.",
+            path: "C:\\Users\\You\\Quick-CV",
+          },
         ]);
       }
       return;
+    }
+    const validCommands = [
+      "fullname",
+      "phone_number",
+      "email",
+      "city",
+      "country",
+    ];
+
+    if (validCommands.some((cmd) => command.startsWith(cmd))) {
+      const [key, value] = command.split("=").map((str) => str.trim());
+
+      if (validCommands.includes(key)) {
+        if(value) {
+          console.log(`${key} = ${value}`);
+        }
+        return;
+      }
     }
 
     for (const commandObj of commands) {
@@ -137,7 +158,11 @@ function TerminalInput() {
           <p className="font-mono text-yellow-500 mobile:text-[0.85rem] small-mobile:text-[0.55rem]">
             {line.path}
           </p>
-          <pre className={`${line.text.includes("Error") ? "text-red-400" : "text-green-400"}`}>
+          <pre
+            className={`${
+              line.text.includes("Error") ? "text-red-400" : "text-green-400"
+            }`}
+          >
             {line.text}
           </pre>
         </div>

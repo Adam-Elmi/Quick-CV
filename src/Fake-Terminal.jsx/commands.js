@@ -56,5 +56,4 @@ function toLowerCase(arr) {
   return arr.map(value => value.toLowerCase());
 }
 
-
 export { commands };
