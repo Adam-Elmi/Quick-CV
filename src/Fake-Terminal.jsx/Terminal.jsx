@@ -91,24 +91,6 @@ function TerminalInput() {
       }
       return;
     }
-    const validCommands = [
-      "fullname",
-      "phone_number",
-      "email",
-      "city",
-      "country",
-    ];
-
-    if (validCommands.some((cmd) => command.startsWith(cmd))) {
-      const [key, value] = command.split("=").map((str) => str.trim());
-
-      if (validCommands.includes(key)) {
-        if(value) {
-          console.log(`${key} = ${value}`);
-        }
-        return;
-      }
-    }
 
     for (const commandObj of commands) {
       if (commandObj.command.includes(command.toLowerCase())) {
