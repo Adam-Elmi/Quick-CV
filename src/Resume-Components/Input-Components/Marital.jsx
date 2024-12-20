@@ -1,11 +1,11 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 
 export default function Marital() {
   const [selectValue, setSelectValue] = useState(() => {
     const saveData = sessionStorage.getItem("marital");
-    return saveData 
-    ? saveData
-    : ""
+    return saveData
+      ? saveData
+      : ""
   }
   );
 
@@ -35,8 +35,8 @@ export default function Marital() {
           </label>
           <div className="relative">
             <select
-            onChange={handleSelection}
-            value={selectValue}
+              onChange={handleSelection}
+              value={selectValue}
               id="marital-status"
               name="marital-status"
               className="block appearance-none w-full bg-white border border-gray-300 text-indigo-500 py-2 px-3 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
