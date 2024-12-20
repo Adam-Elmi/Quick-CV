@@ -15,3 +15,4 @@ export default function SvgDownload() {
     </svg>
   );
 }
+// Used in Steps-Section and Generate components
