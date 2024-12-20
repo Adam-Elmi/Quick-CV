@@ -18,27 +18,27 @@ const sections = [
   {
     section_name: "Home",
     path: "/",
-    icon: <SvgHome/>,
+    icon: <SvgHome />,
   },
   {
     section_name: "Templates",
     path: "/templates",
-    icon: <SvgFile/>,
+    icon: <SvgFile />,
   },
   {
     section_name: "Contributors",
     path: "/contributors",
-    icon: <SvgTeam/>,
+    icon: <SvgTeam />,
   },
   {
     section_name: "About",
     path: "/about",
-    icon: <SvgAbout/>,
+    icon: <SvgAbout />,
   },
   {
     section_name: "Contact",
     path: "/contact",
-    icon: <SvgEnvelope/>,
+    icon: <SvgEnvelope />,
   },
 ];
 
@@ -78,23 +78,23 @@ const features = [
 
 // Used in Steps-Section Component
 const steps = [
-  { 
-    step: "1ST Step", 
-    toDo: "Choose a Template", 
+  {
+    step: "1ST Step",
+    toDo: "Choose a Template",
     description: "Go to the templates and choose one for your CV.",
-    icon: <SvgTmeplate/>,
+    icon: <SvgTmeplate />,
   },
-  { 
-    step: "2ND Step", 
-    toDo: "Fill Inputs", 
+  {
+    step: "2ND Step",
+    toDo: "Fill Inputs",
     description: "Enter your details in the input boxes.",
-    icon: <SvgEdit/>,
+    icon: <SvgEdit />,
   },
-  { 
-    step: "3RD Step", 
-    toDo: "Download CV", 
+  {
+    step: "3RD Step",
+    toDo: "Download CV",
     description: `Click 'Download' to get your CV.`,
-    icon: <SvgDownload/>,
+    icon: <SvgDownload />,
   },
 ];
 
