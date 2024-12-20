@@ -13,3 +13,4 @@ export default function SvgSmile() {
     </svg>
   );
 }
+// Used in Hero-Section component
