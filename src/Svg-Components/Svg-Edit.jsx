@@ -17,3 +17,4 @@ export default function SvgEdit() {
     </svg>
   );
 }
+// Used in Steps-Section component
