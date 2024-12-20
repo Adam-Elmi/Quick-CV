@@ -15,12 +15,12 @@ export default function GenerateCV() {
     return savedData
       ? savedData
       : {
-          fullname: "",
-          phone_number: "",
-          email: "",
-          country: "",
-          city: "",
-        };
+        fullname: "",
+        phone_number: "",
+        email: "",
+        country: "",
+        city: "",
+      };
   });
 
   const [checkObjective, setCheckObjective] = useState(() => {
@@ -33,15 +33,15 @@ export default function GenerateCV() {
     return savedData
       ? savedData
       : {
-          skill1: "",
-          skill2: "",
-          skill3: "",
-          skill4: "",
-          skill5: "",
-          skill6: "",
-          skill7: "",
-          skill8: "",
-        };
+        skill1: "",
+        skill2: "",
+        skill3: "",
+        skill4: "",
+        skill5: "",
+        skill6: "",
+        skill7: "",
+        skill8: "",
+      };
   });
 
   const [checkEducation, setCheckEducation] = useState(() => {
@@ -49,11 +49,11 @@ export default function GenerateCV() {
     return savedData
       ? savedData
       : [
-          { school1: "", start1: "", end1: "" },
-          { school2: "", start2: "", end2: "" },
-          { school3: "", start3: "", end3: "" },
-          { school4: "", start4: "", end4: "" },
-        ];
+        { school1: "", start1: "", end1: "" },
+        { school2: "", start2: "", end2: "" },
+        { school3: "", start3: "", end3: "" },
+        { school4: "", start4: "", end4: "" },
+      ];
   });
 
   const [checkWork, setCheckWork] = useState(() => {
@@ -61,25 +61,25 @@ export default function GenerateCV() {
     return savedData
       ? savedData
       : [
-          {
-            job1: "",
-            role1: "",
-            start1: "",
-            end1: "",
-          },
-          {
-            job2: "",
-            role2: "",
-            start2: "",
-            end2: "",
-          },
-          {
-            job3: "",
-            role3: "",
-            start3: "",
-            end3: "",
-          },
-        ];
+        {
+          job1: "",
+          role1: "",
+          start1: "",
+          end1: "",
+        },
+        {
+          job2: "",
+          role2: "",
+          start2: "",
+          end2: "",
+        },
+        {
+          job3: "",
+          role3: "",
+          start3: "",
+          end3: "",
+        },
+      ];
   });
 
   const [checkMarital, setCheckMarital] = useState(() => {
@@ -92,10 +92,10 @@ export default function GenerateCV() {
     return savedData
       ? savedData
       : {
-          certificate1: "",
-          certificate2: "",
-          certificate3: "",
-        };
+        certificate1: "",
+        certificate2: "",
+        certificate3: "",
+      };
   });
 
   const checkValues = {
@@ -238,9 +238,8 @@ export default function GenerateCV() {
         </button>
       </div>
       <div
-        className={`fixed ${
-          isVisible ? "flex" : "hidden"
-        } bottom-0 inset-0 items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
+        className={`fixed ${isVisible ? "flex" : "hidden"
+          } bottom-0 inset-0 items-center justify-center bg-gray-800 bg-opacity-50 z-50`}
       >
         <div className="bg-white shadow-lg mx-2 rounded-lg w-full max-w-md relative p-1 flex items-center justify-center">
           <div className="bg-white rounded-lg w-full max-w-md pb-3 relative border-2">
@@ -266,24 +265,23 @@ export default function GenerateCV() {
               <div className="w-full max-h-[380px] overflow-y-scroll">
                 {emptyField
                   ? emptyField.map((field, id) => (
-                      <div
-                        key={id}
-                        className="w-full flex items-center gap-2 my-2 border-[1.5px] hover:border-indigo-500 p-2 rounded-lg"
-                      >
-                        <SvgArrow />
-                        <div className="w-full flex items-center gap-2">
-                          <p
-                            id={field}
-                            className="empty-sections font-semibold text-indigo-600 text-[0.9rem] hover:text-green-600 cursor-pointer"
-                          >{`${
-                            field[0].toUpperCase() + field.slice(1)
+                    <div
+                      key={id}
+                      className="w-full flex items-center gap-2 my-2 border-[1.5px] hover:border-indigo-500 p-2 rounded-lg"
+                    >
+                      <SvgArrow />
+                      <div className="w-full flex items-center gap-2">
+                        <p
+                          id={field}
+                          className="empty-sections font-semibold text-indigo-600 text-[0.9rem] hover:text-green-600 cursor-pointer"
+                        >{`${field[0].toUpperCase() + field.slice(1)
                           } Section`}</p>
-                          <span className="text-[0.7rem] text-slate-500 font-mono">
-                            - Fill this section.
-                          </span>
-                        </div>
+                        <span className="text-[0.7rem] text-slate-500 font-mono">
+                          - Fill this section.
+                        </span>
                       </div>
-                    ))
+                    </div>
+                  ))
                   : ""}
               </div>
             </div>
