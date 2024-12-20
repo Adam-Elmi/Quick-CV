@@ -24,3 +24,4 @@ export default function SvgFree() {
     </svg>
   );
 }
+// Used in Hero-Section component
