@@ -13,11 +13,11 @@ export default function Education() {
     return savedData
       ? JSON.parse(savedData)
       : [
-          { school1: "", start1: "", end1: "" },
-          { school2: "", start2: "", end2: "" },
-          { school3: "", start3: "", end3: "" },
-          { school4: "", start4: "", end4: "" },
-        ];
+        { school1: "", start1: "", end1: "" },
+        { school2: "", start2: "", end2: "" },
+        { school3: "", start3: "", end3: "" },
+        { school4: "", start4: "", end4: "" },
+      ];
   });
 
   const handleEducation = (e, id) => {
