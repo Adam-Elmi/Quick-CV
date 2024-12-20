@@ -26,3 +26,4 @@ export default function SvgAll() {
     </svg>
   );
 }
+// Used in Hero-Section
