@@ -26,3 +26,4 @@ export default function SvgOpen() {
     </svg>
   );
 }
+// Used in Hero-section component
