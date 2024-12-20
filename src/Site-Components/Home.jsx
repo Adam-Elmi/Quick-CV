@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <HeroSection/>
-      <StepsSection/>
+      <HeroSection />
+      <StepsSection />
     </>
   );
 }
