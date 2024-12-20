@@ -12,7 +12,6 @@ import SvgAbout from "../Svg-Components/Svg-About";
 import SvgEnvelope from "../Svg-Components/Svg-Envelope";
 import SvgFile from "../Svg-Components/Svg-File";
 import SvgOpen from "../Svg-Components/Svg-Open";
-import SvgTerminal from "../Svg-Components/Svg-Terminal";
 
 // Used in Header and Sidebar components
 const sections = [
@@ -25,11 +24,6 @@ const sections = [
     section_name: "Templates",
     path: "/templates",
     icon: <SvgFile/>,
-  },
-  {
-    section_name: "Terminal",
-    path: "/terminal",
-    icon: <SvgTerminal/>,
   },
   {
     section_name: "Contributors",
