@@ -4,7 +4,6 @@ import SvgCv from "../Svg-Components/Svg-Cv";
 import SvgWarn from "../Svg-Components/Svg-Warn";
 import SvgArrow from "../Svg-Components/Svg-Arrow";
 
-
 export default function GenerateCV() {
   const navigate = useNavigate();
   function getSaveData(name) {
@@ -189,7 +188,7 @@ export default function GenerateCV() {
   ];
   const refreshPage = () => {
     navigate(0); // Refreshes the current route
-};
+  };
   useEffect(() => {
     const emptySections = document.querySelectorAll(".empty-sections");
 
@@ -228,7 +227,7 @@ export default function GenerateCV() {
     <>
       <div className="flex flex-col p-2 gap-5 justify-center items-center m-2">
         <div className="flex flex-col gap-4 justify-center items-center w-full">
-          <SvgCv/>
+          <SvgCv />
           <p className="text-[1.2rem]">Create generate your cv</p>
         </div>
         <button
@@ -259,7 +258,7 @@ export default function GenerateCV() {
             </div>
             <div className="w-full p-2">
               <div className="flex items-center justify-center gap-2">
-                <SvgWarn/>
+                <SvgWarn />
                 <h2 className="font-semibold text-slate-700">
                   Inputs that have not been filled
                 </h2>
@@ -271,7 +270,7 @@ export default function GenerateCV() {
                         key={id}
                         className="w-full flex items-center gap-2 my-2 border-[1.5px] hover:border-indigo-500 p-2 rounded-lg"
                       >
-                        <SvgArrow/>
+                        <SvgArrow />
                         <div className="w-full flex items-center gap-2">
                           <p
                             id={field}
