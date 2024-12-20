@@ -8,10 +8,10 @@ export default function Work() {
     return savedData
       ? JSON.parse(savedData)
       : [
-        { job1: "", role1: "", start1: "", end1: "" },
-        { job2: "", role2: "", start2: "", end2: "" },
-        { job3: "", role3: "", start3: "", end3: "" },
-      ];
+          { job1: "", role1: "", start1: "", end1: "" },
+          { job2: "", role2: "", start2: "", end2: "" },
+          { job3: "", role3: "", start3: "", end3: "" },
+        ];
   });
 
   const handleWork = (e, index) => {
