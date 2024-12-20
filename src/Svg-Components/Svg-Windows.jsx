@@ -13,3 +13,4 @@ export default function SvgWindows() {
     </svg>
   );
 }
+// Used in Hero-Section component
