@@ -18,3 +18,4 @@ export default function SvgMenu() {
     </svg>
   );
 }
+// Used in Sidebar component
