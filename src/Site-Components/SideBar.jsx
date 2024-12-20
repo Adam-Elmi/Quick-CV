@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { sections } from "../Utilities/data";
 import SvgClose from "../Svg-Components/Svg-Close";
 
-export default function SideBar({isVisible, handleVisibility}) {
-// Prevent child element from inheriting parent's onclick event (Line 14)
-const stopEvent = (e) => {
+export default function SideBar({ isVisible, handleVisibility }) {
+  // Prevent child element from inheriting parent's onclick event (Line 14)
+  const stopEvent = (e) => {
     e.stopPropagation();
   };
 
@@ -27,7 +27,7 @@ const stopEvent = (e) => {
               onClick={handleVisibility}
               className="font-mono font-semibold text-red-500"
             >
-             <SvgClose/>
+              <SvgClose />
             </button>
           </div>
           {sections.map((section, id) => (
@@ -42,4 +42,4 @@ const stopEvent = (e) => {
       </div>
     </div>
   );
-};
+}
