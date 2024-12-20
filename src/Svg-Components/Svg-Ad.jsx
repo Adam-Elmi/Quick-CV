@@ -16,3 +16,4 @@ export default function SvgAd() {
     </svg>
   );
 }
+// Used in Hero-Section
