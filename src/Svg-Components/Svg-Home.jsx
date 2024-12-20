@@ -21,3 +21,4 @@ export default function SvgHome() {
     </svg>
   );
 }
+// Used in Sidebar component
