@@ -1,27 +1,27 @@
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 export default function Contact() {
   const [inputValue, setInputValue] = useState(() => {
     const storedData = JSON.parse(sessionStorage.getItem("contact"));
-    return storedData 
-    ? storedData
-    : {
-      fullname: "",
-      phone_number: "",
-      email: "",
-      country: "",
-      city: "",
-    }
+    return storedData
+      ? storedData
+      : {
+        fullname: "",
+        phone_number: "",
+        email: "",
+        country: "",
+        city: "",
+      }
   });
 
   const handleInputValue = (e) => {
-    setInputValue(prev => ({...prev, [e.target.id]: e.target.value}));
+    setInputValue(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   useEffect(() => {
     sessionStorage.setItem("contact", JSON.stringify(inputValue));
   }, [inputValue]);
-  
+
   return (
     <>
       <h1 className="mt-5 mb-2 font-bold text-[2rem] w-full text-center">
@@ -72,8 +72,8 @@ export default function Contact() {
   );
 }
 
-const InputField = ({ id, label, iconClass, type = "text", value, onChange}) => (
-    <div className="flex flex-col gap-2 w-full max-w-[400px]">
+const InputField = ({ id, label, iconClass, type = "text", value, onChange }) => (
+  <div className="flex flex-col gap-2 w-full max-w-[400px]">
     <label
       htmlFor={id}
       className="font-bold text-slate-500 flex items-center gap-2"
