@@ -24,12 +24,12 @@ export default function Workflow({ children }) {
       sessionStorage.setItem("current", newIndex);
       return newIndex;
     });
-  };
+  }
 
   function moveToClickedBtn(e) {
     setCurrentIndex(parseInt(e.target.textContent, 10) - 1);
-    sessionStorage.setItem("current", (parseInt(e.target.textContent, 10) - 1));
-  };
+    sessionStorage.setItem("current", parseInt(e.target.textContent, 10) - 1);
+  }
 
   return (
     <div className="w-full">
