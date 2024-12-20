@@ -24,15 +24,15 @@ export default function BasicTemplate() {
     return storedData
       ? storedData
       : {
-          skill1: "",
-          skill2: "",
-          skill3: "",
-          skill4: "",
-          skill5: "",
-          skill6: "",
-          skill7: "",
-          skill8: "",
-        };
+        skill1: "",
+        skill2: "",
+        skill3: "",
+        skill4: "",
+        skill5: "",
+        skill6: "",
+        skill7: "",
+        skill8: "",
+      };
   });
   // Education values
   const [educationValue, setEducationValue] = useState(() => {
@@ -40,27 +40,27 @@ export default function BasicTemplate() {
     return storedData
       ? storedData
       : [
-          {
-            school1: "",
-            start1: "",
-            end1: "",
-          },
-          {
-            school2: "",
-            start2: "",
-            end2: "",
-          },
-          {
-            school3: "",
-            start3: "",
-            end3: "",
-          },
-          {
-            school4: "",
-            start4: "",
-            end4: "",
-          },
-        ];
+        {
+          school1: "",
+          start1: "",
+          end1: "",
+        },
+        {
+          school2: "",
+          start2: "",
+          end2: "",
+        },
+        {
+          school3: "",
+          start3: "",
+          end3: "",
+        },
+        {
+          school4: "",
+          start4: "",
+          end4: "",
+        },
+      ];
   });
   // Work experience values
   const [workValue, setWorkValue] = useState(() => {
@@ -68,25 +68,25 @@ export default function BasicTemplate() {
     return storedData
       ? storedData
       : [
-          {
-            job1: "",
-            role1: "",
-            start1: "",
-            end1: "",
-          },
-          {
-            job2: "",
-            role2: "",
-            start2: "",
-            end2: "",
-          },
-          {
-            job3: "",
-            role3: "",
-            start3: "",
-            end3: "",
-          },
-        ];
+        {
+          job1: "",
+          role1: "",
+          start1: "",
+          end1: "",
+        },
+        {
+          job2: "",
+          role2: "",
+          start2: "",
+          end2: "",
+        },
+        {
+          job3: "",
+          role3: "",
+          start3: "",
+          end3: "",
+        },
+      ];
   });
   // Marital value
   const [maritalValue, setMaritalValue] = useState(() => {
@@ -99,10 +99,10 @@ export default function BasicTemplate() {
     return storedData
       ? storedData
       : {
-          certificate1: "",
-          certificate2: "",
-          certificate3: "",
-        };
+        certificate1: "",
+        certificate2: "",
+        certificate3: "",
+      };
   });
   return (
     <>
@@ -149,9 +149,8 @@ export default function BasicTemplate() {
                 Address:{" "}
               </span>
               <span className="text-white text-[0.8rem]">
-                {`${contactValue?.city?.trim() || "Please enter your city"}, ${
-                  contactValue?.country?.trim() || " and country "
-                }`}
+                {`${contactValue?.city?.trim() || "Please enter your city"}, ${contactValue?.country?.trim() || " and country "
+                  }`}
               </span>
             </div>
           </div>
@@ -205,17 +204,15 @@ export default function BasicTemplate() {
               <li className="font-bold text-[0.8rem] text-slate-700 list-disc">
                 {educationValue[0]?.school1?.trim() || "Enter your college 1"}
               </li>
-              <span className="text-[0.8rem]">{`(${
-                educationValue[0]?.start1?.trim() || "Start year"
-              } - ${educationValue[0]?.end1?.trim() || "End year"})`}</span>
+              <span className="text-[0.8rem]">{`(${educationValue[0]?.start1?.trim() || "Start year"
+                } - ${educationValue[0]?.end1?.trim() || "End year"})`}</span>
             </ul>
             <ul className="flex-1">
               <li className="font-bold text-[0.8rem] text-slate-700 list-disc">
                 {educationValue[1]?.school2?.trim() || "Enter your college 2"}
               </li>
-              <span className="text-[0.8rem]">{`(${
-                educationValue[1]?.start2?.trim() || "Start year"
-              } - ${educationValue[1]?.end2?.trim() || "End year"})`}</span>
+              <span className="text-[0.8rem]">{`(${educationValue[1]?.start2?.trim() || "Start year"
+                } - ${educationValue[1]?.end2?.trim() || "End year"})`}</span>
             </ul>
           </div>
           <div className="flex justify-center items-center my-2">
