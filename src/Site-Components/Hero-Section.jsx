@@ -17,7 +17,7 @@ function UpperSection() {
     <div className="svg-bg min-h-[200px] border-b flex gap-3 flex-col items-center justify-center bg-[#112]">
       <h1 className="paul text-[3rem] text-white">Quick Cv</h1>
       <p className="text-white text-center leading-8 text-[1rem] mobile:text-[0.85rem] px-2">
-      A free, open-source tool to create a professional CV quickly. No ads, no sign-ups—just add your details and go!
+        A free, open-source tool to create a professional CV quickly. No ads, no sign-ups—just add your details and go!
       </p>
       <div className="flex justify-center items-center gap-2 flex-wrap py-2 px-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-full mb-4 text-center  mobile:text-[0.85rem] small-mobile:text-[0.6rem]">
         <SvgSmile />
