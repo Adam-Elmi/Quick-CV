@@ -10,7 +10,6 @@ import BasicTemplate from "./Templates/Basic-Template";
 import Workflow from "../Helper-Components/Workflow";
 import GenerateCV from "../Helper-Components/GenerateCv";
 
-
 export default function Resume() {
   // cv Preview
   const [isPreview, setIsPreview] = useState(false);
