@@ -57,11 +57,10 @@ export default function Workflow({ children }) {
           <button
             onClick={moveToClickedBtn}
             key={index}
-            className={`w-[20px] h-[20px] rounded-full ${
-              currentIndex === index
+            className={`w-[20px] h-[20px] rounded-full ${currentIndex === index
                 ? "text-white bg-blue-500"
                 : "text-blue-500 bg-white"
-            } border-[1.5px] border-blue-500 text-center flex justify-center items-center`}
+              } border-[1.5px] border-blue-500 text-center flex justify-center items-center`}
           >
             {index + 1}
           </button>
