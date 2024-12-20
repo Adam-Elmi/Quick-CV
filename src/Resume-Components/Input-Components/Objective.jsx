@@ -11,8 +11,10 @@ export default function Objective() {
   };
 
   useEffect(() => {
-    // Trim the value and replace newlines with empty strings before saving to sessionStorage
-    sessionStorage.setItem("objective", inputValue.trim().replace(/\s*\n/g, ""));
+    sessionStorage.setItem(
+      "objective",
+      inputValue.trim().replace(/\s*\n/g, "")
+    );
   }, [inputValue]);
 
   return (
@@ -34,23 +36,32 @@ export default function Objective() {
                 className="block appearance-none w-full bg-white border border-gray-300 py-3 px-4 pr-8 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-indigo-500"
               >
                 <option value="I am looking for an opportunity where I can utilize my skills while continuing to grow in my career.">
-                  I am looking for an opportunity where I can utilize my skills while continuing to grow in my career.
+                  I am looking for an opportunity where I can utilize my skills
+                  while continuing to grow in my career.
                 </option>
                 <option value="Seeking a challenging position that allows me to contribute to team success.">
-                  Seeking a challenging position that allows me to contribute to team success.
+                  Seeking a challenging position that allows me to contribute to
+                  team success.
                 </option>
                 <option value="Aiming for a role where I can develop professionally and enhance my skill set.">
-                  Aiming for a role where I can develop professionally and enhance my skill set.
+                  Aiming for a role where I can develop professionally and
+                  enhance my skill set.
                 </option>
                 <option value="Looking for a position that values growth, learning, and contribution to impactful projects.">
-                  Looking for a position that values growth, learning, and contribution to impactful projects.
+                  Looking for a position that values growth, learning, and
+                  contribution to impactful projects.
                 </option>
                 <option value="Interested in a career where innovation and teamwork drive progress.">
-                  Interested in a career where innovation and teamwork drive progress.
+                  Interested in a career where innovation and teamwork drive
+                  progress.
                 </option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                <svg
+                  className="fill-current h-4 w-4"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                >
                   <path d="M5.5 7l4 4 4-4h-8z" />
                 </svg>
               </div>
@@ -59,9 +70,14 @@ export default function Objective() {
               <h2 className="font-bold text-slate-500 mt-4">
                 or write your goal in below input
               </h2>
-              <label htmlFor="goal" className="font-bold text-slate-500 flex items-center gap-2 mt-3">
+              <label
+                htmlFor="goal"
+                className="font-bold text-slate-500 flex items-center gap-2 mt-3"
+              >
                 <span className="fa-solid fa-bullseye"></span>
-                <span>Enter your objective(<span>Goal</span>)</span>
+                <span>
+                  Enter your objective(<span>Goal</span>)
+                </span>
               </label>
               <textarea
                 required
