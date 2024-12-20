@@ -28,15 +28,15 @@ export default function Skills() {
     return savedData
       ? JSON.parse(savedData)
       : {
-          skill1: "",
-          skill2: "",
-          skill3: "",
-          skill4: "",
-          skill5: "",
-          skill6: "",
-          skill7: "",
-          skill8: "",
-        };
+        skill1: "",
+        skill2: "",
+        skill3: "",
+        skill4: "",
+        skill5: "",
+        skill6: "",
+        skill7: "",
+        skill8: "",
+      };
   });
 
   useEffect(() => {
