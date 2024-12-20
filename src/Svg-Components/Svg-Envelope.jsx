@@ -15,3 +15,4 @@ export default function SvgEnvelope() {
     </svg>
   );
 }
+// Used in Sidebar component
