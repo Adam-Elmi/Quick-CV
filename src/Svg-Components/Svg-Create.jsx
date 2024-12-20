@@ -17,3 +17,4 @@ export default function SvgCreate() {
     </svg>
   );
 };
+// Used in Hero-Section
