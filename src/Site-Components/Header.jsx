@@ -37,7 +37,6 @@ export default function Header() {
   );
 }
 
-
 function SectionComponent() {
   return (
     // Renders site sections
@@ -50,5 +49,5 @@ function SectionComponent() {
         </Link>
       ))}
     </ul>
-  )
+  );
 }
