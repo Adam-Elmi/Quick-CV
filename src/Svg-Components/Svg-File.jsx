@@ -18,3 +18,4 @@ export default function SvgFile() {
     </svg>
   );
 }
+// Used in Sidebar component
