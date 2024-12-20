@@ -13,3 +13,4 @@ export default function SvgKey() {
     </svg>
   );
 }
+// Used in Hero-Section componet
