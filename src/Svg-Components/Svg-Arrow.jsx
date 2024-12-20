@@ -33,3 +33,4 @@ export default function SvgArrow() {
     </svg>
   );
 }
+// Used in Generate component
