@@ -15,3 +15,4 @@ export default function SvgAbout() {
     </svg>
   );
 }
+// Used in Header and Sidebar component
