@@ -9,17 +9,17 @@ export default function Certifications() {
 
   const [inputValue, setInputValue] = useState(() => {
     const savedData = sessionStorage.getItem("certificate");
-    return savedData 
-    ? JSON.parse(savedData)
-    : {
-      certificate1: "",
-      certificate2: "",
-      certificate3: "",
-    }
+    return savedData
+      ? JSON.parse(savedData)
+      : {
+        certificate1: "",
+        certificate2: "",
+        certificate3: "",
+      }
   });
 
   const handleCertificate = (e) => {
-    setInputValue(prev => ({...prev, [e.target.id] : e.target.value }));
+    setInputValue(prev => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
   useEffect(() => {
