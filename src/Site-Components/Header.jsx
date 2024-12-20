@@ -15,8 +15,8 @@ export default function Header() {
 
   return (
     <>
-    {/* Sidebar Component */}
-      <SideBar isVisible={isVisible} handleVisibility={handleVisibility}/>
+      {/* Sidebar Component */}
+      <SideBar isVisible={isVisible} handleVisibility={handleVisibility} />
       {/* Nav */}
       <nav
         className={`w-full flex gap-4 justify-between items-center min-h-[60px] px-4 border-b-2 shadow-sm`}
@@ -26,11 +26,11 @@ export default function Header() {
           {/* Menu button */}
           <button onClick={handleVisibility} className="cursor-pointer">
             {/* Menu icon (SVG) */}
-            <SvgMenu/>
+            <SvgMenu />
           </button>
         </div>
         {/* Site sections (e.g., Home, About, etc.) */}
-        <SectionComponent/>
+        <SectionComponent />
         <h1 className="paul text-[1.5rem]">Quick CV</h1>
       </nav>
     </>
@@ -40,15 +40,15 @@ export default function Header() {
 
 function SectionComponent() {
   return (
-     // Renders site sections
+    // Renders site sections
     <ul className="flex gap-8 font-mono max-md:hidden">
-          {sections.map((section, id) => (
-            <Link key={id} to={section.path}>
-              <li className="font-semibold  hover:text-indigo-600">
-                {section.section_name}
-              </li>
-            </Link>
-          ))}
-        </ul>
+      {sections.map((section, id) => (
+        <Link key={id} to={section.path}>
+          <li className="font-semibold  hover:text-indigo-600">
+            {section.section_name}
+          </li>
+        </Link>
+      ))}
+    </ul>
   )
 }
