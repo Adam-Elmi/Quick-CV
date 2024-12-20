@@ -18,3 +18,4 @@ export default function SvgTemplate() {
     </svg>
   );
 }
+// Used in Steps-Section component
