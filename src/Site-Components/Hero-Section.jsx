@@ -1,6 +1,5 @@
 import { features } from "../Utilities/data";
-import SvgCreate from "../Svg-Components/Svg-Create";
-import SvgSmile from "../Svg-Components/Svg-Smile";
+import { SvgCreate, SvgSmile } from "../Svg-Components/Svg";
 
 export default function HeroSection() {
   return (
