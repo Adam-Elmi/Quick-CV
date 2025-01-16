@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SvgCv from "../Svg-Components/Svg-Cv";
-import SvgWarn from "../Svg-Components/Svg-Warn";
-import SvgArrow from "../Svg-Components/Svg-Arrow";
+import { SvgCv, SvgWarn, SvgArrow } from "../Svg-Components/Svg";
 
 export default function GenerateCV() {
   const navigate = useNavigate();
