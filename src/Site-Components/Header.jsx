@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { sections } from "../Utilities/data";
 import SideBar from "./SideBar";
-import SvgMenu from "../Svg-Components/Svg-Menu";
+import { SvgMenu } from "../Svg-Components/Svg";
 
 export default function Header() {
   // State management for Sidebar component
