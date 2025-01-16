@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { sections } from "../Utilities/data";
-import SvgClose from "../Svg-Components/Svg-Close";
+import { SvgClose } from "../Svg-Components/Svg";
 
 export default function SideBar({ isVisible, handleVisibility }) {
   // Prevent child element from inheriting parent's onclick event (Line 14)
