@@ -1,17 +1,19 @@
-import SvgAd from "../Svg-Components/Svg-Ad";
-import SvgKey from "../Svg-Components/Svg-Key";
-import SvgWindows from "../Svg-Components/Svg-Windows";
-import SvgFree from "../Svg-Components/Svg-Free";
-import SvgAll from "../Svg-Components/Svg-All";
-import SvgTmeplate from "../Svg-Components/Svg-Template";
-import SvgEdit from "../Svg-Components/Svg-Edit";
-import SvgDownload from "../Svg-Components/Svg-Download";
-import SvgHome from "../Svg-Components/Svg-Home";
-import SvgTeam from "../Svg-Components/Svg-Team";
-import SvgAbout from "../Svg-Components/Svg-About";
-import SvgEnvelope from "../Svg-Components/Svg-Envelope";
-import SvgFile from "../Svg-Components/Svg-File";
-import SvgOpen from "../Svg-Components/Svg-Open";
+import {
+  SvgAd,
+  SvgKey,
+  SvgWindows,
+  SvgFree,
+  SvgAll,
+  SvgTemplate,
+  SvgEdit,
+  SvgDownload,
+  SvgHome,
+  SvgTeam,
+  SvgAbout,
+  SvgEnvelope,
+  SvgFile,
+  SvgOpen,
+} from "../Svg-Components/Svg";
 
 // Used in Header and Sidebar components
 const sections = [
@@ -82,7 +84,7 @@ const steps = [
     step: "1ST Step",
     toDo: "Choose a Template",
     description: "Go to the templates and choose one for your CV.",
-    icon: <SvgTmeplate />,
+    icon: <SvgTemplate />,
   },
   {
     step: "2ND Step",
