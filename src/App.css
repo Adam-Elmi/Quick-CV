@@ -6,9 +6,9 @@
 }
 body {
   width: 100%;
+  min-height: 100vh;
   position: relative;
 }
-
 .activeBtn {
   color: white;
   background-color: #1e293b;
