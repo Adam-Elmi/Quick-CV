@@ -65,7 +65,7 @@ function LowerSection() {
               <span>{feature.icon}</span>
               <p>{feature.feature}</p>
             </div>
-            <div className="w-full flex-1">
+            <div className="w-full flex-1 flex items-center">
               <p className="px-2">{feature.description}</p>
             </div>
           </div>
