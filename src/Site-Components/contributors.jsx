@@ -58,7 +58,7 @@ export default function Contributors() {
                         <a key={index} href={contributor.github} target="_blank" rel="noopener noreferrer" className="w-full max-w-xs m-4 p-6 bg-white rounded-lg shadow-lg text-center transform transition duration-500 hover:scale-105 hover:shadow-2xl hover:text-indigo-500 border-2 border-violet-100">
                             <img src={contributor.image} alt={contributor.name} className="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-blue-500 transition duration-500 hover:border-indigo-400" />
                             <h3 className="text-2xl font-semibold text-gray-800 transition duration-500 hover:text-blue-500">{contributor.name}</h3>
-                            <a href={contributor.commitsUrl} target="_blank" rel="noopener noreferrer" className="text-gray-600 transition duration-500 hover:text-blue-500">{contributor.contributions} contributions</a>
+                            <span className="text-gray-600 transition duration-500 hover:text-blue-500">{contributor.contributions} contributions</span>
                             <div className="mt-4">
                                 <i className="fab fa-github text-2xl"></i>
                             </div>
