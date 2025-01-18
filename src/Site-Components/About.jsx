@@ -3,7 +3,7 @@ import { aboutQuickCv } from "../Utilities/data";
 export default function About() {
   const repo = (
     <a className="text-indigo-500" href="https://github.com/Adam-Elmi/Quick-Cv">
-      GitHub repository.
+      GitHub repository
     </a>
   );
   return (
