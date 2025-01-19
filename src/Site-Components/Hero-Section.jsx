@@ -1,11 +1,13 @@
 import { features } from "../Utilities/data";
 import { SvgCreate, SvgSmile } from "../Svg-Components/Svg";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   return (
     <>
       <UpperSection />
-      <MiddleSection />
+      <MiddleSection navigate={navigate} />
       <LowerSection />
     </>
   );
@@ -27,18 +29,18 @@ function UpperSection() {
   );
 }
 
-function MiddleSection() {
+function MiddleSection({ navigate }) {
   return (
     <div className="svg-bg-2 w-full min-h-[300px] flex flex-col gap-6 pt-5">
       <h1 className="text-[2.5rem] text-center w-full font-bold my-4 bg-gradient-to-r from-purple-500 via-blue-500 to-green-500 bg-clip-text text-transparent text-shadow">
         Create your CV quickly and easily!
       </h1>
       <div className="flex gap-4 w-full justify-center items-center flex-wrap">
-        <button className="font-mono font-semibold py-3 px-4 rounded-full bg-slate-900 text-white flex gap-2 border-2 hover:bg-slate-700 transition-bg transition-[2s]">
+        <button onClick={() => navigate("/create-cv")} className="font-mono font-semibold py-3 px-4 rounded-full bg-slate-900 text-white flex gap-2 border-2 hover:bg-slate-700 transition-bg transition-[2s]">
           <SvgCreate />
           Create Your CV
         </button>
-        <button className="font-mono font-semibold py-3 px-6 rounded-full border-2 border-indigo-600 bg-white hover:bg-gradient-to-r from-indigo-500 to-blue-600 hover:border-[#eee] hover:text-white">
+        <button onClick={() => navigate("/templates")} className="font-mono font-semibold py-3 px-6 rounded-full border-2 border-indigo-600 bg-white hover:bg-gradient-to-r from-indigo-500 to-blue-600 hover:border-[#eee] hover:text-white">
           View available Cv templates
         </button>
       </div>
