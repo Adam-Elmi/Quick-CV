@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import Contact from "./Input-Components/Contact";
-import Objective from "./Input-Components/Objective";
-import Skills from "./Input-Components/Skills";
-import Education from "./Input-Components/Education";
-import Work from "./Input-Components/Work";
-import Marital from "./Input-Components/Marital";
-import Certifications from "./Input-Components/Certifications";
-import BasicTemplate from "./Templates/Basic-Template";
 import Workflow from "../Helper-Components/Workflow";
 import GenerateCV from "../Helper-Components/GenerateCv";
+import { CoreTemplate } from "./Core-Template";
 
 export default function Resume() {
+  
   // cv Preview
   const [isPreview, setIsPreview] = useState(false);
 
@@ -63,21 +57,20 @@ export default function Resume() {
         </button>
       </div>
       {isPreview ? (
-        <BasicTemplate />
+        <CoreTemplate />
       ) : (
         <>
           {/* Input Form */}
           <div className="max-w-[600px] w-full flex flex-col justify-center items-center gap-5 shadow-md px-2 mt-5 py-5 border-2 border-blue-500 rounded-md">
             <Workflow
               children={[
-                <Contact key="contact" />,
-                <Objective key="objective" />,
-                <Skills key="skills" />,
-                <Education key="education" />,
-                <Work key="work" />,
-                <Marital key="marital" />,
-                <Certifications key="certifications" />,
-                <GenerateCV key="generateCV" />,
+                "Personal Information",
+                "Education",
+                "Experience",
+                "Skills",
+                "Projects",
+                "Languages",
+                "Hobbies",
               ]}
             />
           </div>
