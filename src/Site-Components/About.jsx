@@ -13,15 +13,22 @@ export default function About() {
           About <span className="paul text-indigo-500">Quick-CV</span>
         </h1>
         <p className="text-center text-slate-500 text-lg leading-9 mt-5 p-2 mx-2 bg-white border shadow-md w-fit rounded-md">
-          <span className="fa-solid fa-cubes text-indigo-500 mr-2"></span>This is a project that I created to help people create their CVs
-          easily. The project is open-source and you can contribute to it by
-          visiting the {repo}.
+          <span className="fa-solid fa-cubes text-indigo-500 mr-2"></span>
+          This is a project that I created to help people create their CVs easily.
+          The project is open-source and you can contribute to it by visiting
+          the {repo}.
         </p>
         {/* About Quick-Cv: Long Description */}
         {aboutQuickCv.map((part, id) => (
-          <div key={id} className="border mx-5 bg-white shadow-md rounded-md my-3 w-[900px] max-w-full">
-            <div className="border-b border-slate-200 h-[35px] p-2">
-              <span className="p-2 text-blue-500 font-[500]">{part.title}</span>
+          <div
+            key={id}
+            className="border mx-5 bg-white shadow-md rounded-md my-3 w-[900px] max-w-full"
+          >
+            <div className="border-b border-slate-200 h-[35px] p-2 flex items-center">
+              <span className={`p-2 font-[500] ${part.title === 'Intro' ? 'text-blue-500' : part.title === 'Problems' ? 'text-red-500' : part.title === 'Solution' ? 'text-green-500' : 'text-purple-500'}`}>
+                <i className={`fa-solid ${part.icon} mr-2`}></i>
+                {part.title}
+              </span>
             </div>
             <div>
               <p className="p-4 leading-8 text-slate-500 text-lg">
