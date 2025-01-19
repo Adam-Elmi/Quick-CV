@@ -1,0 +1,20 @@
+/* Base styles */
+.template-container {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  /* Template-specific overrides */
+  .test-template {
+    background-color: #f0f0f0;
+  }
+  
+  .test-template .field-name {
+    font-size: 20px;
+    color: blue;
+  }
+  
+  .test-template .field-email {
+    font-weight: bold;
+  }
+  

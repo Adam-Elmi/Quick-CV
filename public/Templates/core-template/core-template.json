@@ -1,0 +1,40 @@
+{
+    "fields": {
+        "Personal Information": {
+            "name": "",
+            "email": "",
+            "phone": "",
+            "city": "",
+            "countary": ""
+        },
+        "Objective": {
+            "objective": ""
+        },
+        "Education": {
+            "degree": "",
+            "major": "",
+            "university": "",
+            "graduation": ""
+        },
+        "Experience": {
+            "jobTitle": "",
+            "company": "",
+            "startDate": "",
+            "endDate": "",
+            "description": ""
+        },
+        "Skills": {
+            "skill": ""
+        },
+        "Projects": {
+            "project": "",
+            "description": ""
+        },
+        "Languages": {
+            "language": ""
+        },
+        "Certifications": {
+            "certification": ""
+        }
+    }
+}
