@@ -29,7 +29,7 @@ const sections = [
   },
   {
     section_name: "Create cv",
-    path: "/cv",
+    path: "/create-cv",
     icon: <SvgFile />,
   },
   {
@@ -125,6 +125,7 @@ const aboutQuickCvIntro = {
   text: `
 Hi, my name is Adam Elmi, and I created Quick-CV. I made this tool because I was tired of the problems with other CV-making websites. Sometimes I needed to update an old CV or make a new one quickly, but the existing tools made it way harder than it needed to be.
 `,
+  icon: "fa-solid fa-user",
 };
 
 const aboutQuickCvProblems = {
@@ -132,6 +133,7 @@ const aboutQuickCvProblems = {
   text: `
 A lot of CV websites have annoying features. They have too many pop-ups and ask tons of questions. Some force you to sign up for an account, which I don't like. Others let you create a CV but then make you pay before you can download it. Worst of all, many of these websites aren't flexible. If you want to go back and change something, it's really hard, and you often have to redo everything. 
 `,
+  icon: "fa-solid fa-bug",
 };
 
 const aboutQuickCvSolution = {
@@ -139,6 +141,7 @@ const aboutQuickCvSolution = {
   text: `
 These things waste so much time. I realized most of these tools don't really help. I wanted something simple, fast, and easy to use—a tool where I could start from any section, edit quickly, and not deal with all the annoying stuff. That's why I created Quick-CV.
 `,
+  icon: "fa-solid fa-lightbulb",
 };
 
 const aboutQuickCvConclusion = {
@@ -147,6 +150,7 @@ const aboutQuickCvConclusion = {
 It wasn't easy. There were times when I thought about giving up. But now, I've done it, and Quick-CV is here. It's flexible, simple, and saves you time. Thank you in advance to anyone who contributes to this project in the future.
 Thank you to everyone who helped create Quick-CV. I hope it makes CV creation stress-free.
 `,
+  icon: "fa-solid fa-check",
 };
 
 const aboutQuickCv = [
