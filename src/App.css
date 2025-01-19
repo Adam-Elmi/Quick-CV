@@ -107,3 +107,7 @@ pre {
   max-width: 100%;
   overflow: auto;
 }
+.template-container {
+  padding: 15px;
+  border: 2px dashed greenyellow;
+}
