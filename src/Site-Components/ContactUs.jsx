@@ -15,9 +15,9 @@ export default function ContactUs() {
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-gray-100 p-2">
-      <div className="flex flex-col justify-center md:flex-row w-full ">
+      <div className="flex flex-col justify-center items-center md:flex-row w-full ">
         {/* Left Purpose Section */}
-          <Purpose setSelectedPurpose={setSelectedPurpose} />
+        {/* <ReportIssue/> */}
         {/* Right Form Section */}
         <div className="md:w-1/2 p-4">
           <form
@@ -45,6 +45,7 @@ export default function ContactUs() {
               <LastName />
               <Email />
               <PhoneNumber />
+              <Purpose setSelectedPurpose={setSelectedPurpose} />
               {selectedPurpose && (
                 <PurposeField selectedPurpose={selectedPurpose} />
               )}
@@ -91,7 +92,7 @@ function Purpose({ setSelectedPurpose }) {
   ];
 
   return (
-    <div className="md:w-1/2 p-4 bg-white rounded-lg shadow-md">
+    <div className="p-4 bg-white rounded-lg shadow-md w-full">
       <div className="mb-5 flex flex-col">
         <label className="text-slate-500 font-semibold text-lg">
           Choose the reason of your message{" "}
@@ -285,6 +286,33 @@ function Message() {
           spellCheck="false"
           required={true}
         ></textarea>
+      </div>
+    </div>
+  );
+}
+
+function ReportIssue() {
+  return (
+    <div className="border p-4 bg-white rounded-lg shadow-md w-fit h-fit">
+      <div className="mb-5 flex flex-col">
+        <label className="text-slate-500 font-semibold text-lg">
+          Release Issue to Repo
+          <br />
+          <span className="text-sm text-slate-400">
+            Report an issue directly to our GitHub repository.
+          </span>
+        </label>
+      </div>
+      <div className="flex flex-col gap-3 mb-5">
+        <a
+          href="https://github.com/Adam-Elmi/Quick-CV/issues/new"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cursor-pointer px-4 py-2 rounded-md border border-slate-300 transition-colors duration-300 ease-in-out flex items-center gap-2 bg-blue-100 text-blue-600 hover:bg-blue-200"
+        >
+          <i className="fa-brands fa-github"></i>
+          Report Issue
+        </a>
       </div>
     </div>
   );
