@@ -2,7 +2,7 @@ import { aboutQuickCv } from "../Utilities/data";
 
 export default function About() {
   const repo = (
-    <a className="text-indigo-500" href="https://github.com/Adam-Elmi/Quick-Cv">
+    <a className="text-indigo-500 hover:border-b hover:border-indigo-300" href="https://github.com/Adam-Elmi/Quick-Cv">
       GitHub repository
     </a>
   );
@@ -22,7 +22,7 @@ export default function About() {
         {aboutQuickCv.map((part, id) => (
           <div
             key={id}
-            className="border mx-5 bg-white shadow-md rounded-md my-3 w-[900px] max-w-full"
+            className="border mx-5 bg-white shadow-md rounded-md my-3 w-[1100px] max-w-full"
           >
             <div className="border-b border-slate-200 h-[35px] p-2 flex items-center">
               <span className={`p-2 font-[500] ${part.title === 'Intro' ? 'text-blue-500' : part.title === 'Problems' ? 'text-red-500' : part.title === 'Solution' ? 'text-green-500' : 'text-purple-500'}`}>
