@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
 import Workflow from "../Helper-Components/Workflow";
 import GenerateCV from "../Helper-Components/GenerateCv";
-import { CoreTemplate } from "./Core-Template";
+import Template from "./Template";
 
 export default function Resume() {
-  
 
   return (
     <div className=" w-full flex flex-col justify-center items-center p-5">
@@ -26,7 +24,7 @@ export default function Resume() {
               ]}
             />
           </div>
-          <CoreTemplate />
+          <Template />
         </div>
     </div>
   );
