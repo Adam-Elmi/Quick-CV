@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { platforms } from "../Utilities/data";
 import ContactModal from "../Helper-Components/ContactModal";
+import naruto_togather from "../../src/assets/media/naruto_togather.jpg";
 
 export default function ContactUs() {
   const [selectedPurpose, setSelectedPurpose] = useState("");
@@ -14,8 +15,16 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gray-100 p-2">
-      <div className="flex flex-col justify-center items-center md:flex-row w-full ">
+    <div
+      style={{
+        backgroundImage: `url(${naruto_togather})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+      }}
+      className="min-h-screen flex justify-center items-center bg-gray-100 p-2 relative"
+    >
+      <div className="absolute inset-0 bg-black opacity-80 w-full h-full"></div>
+      <div className="flex flex-col justify-center items-center md:flex-row w-full relative z-10">
         {/* Left Purpose Section */}
         {/* <ReportIssue/> */}
         {/* Right Form Section */}
@@ -92,7 +101,7 @@ function Purpose({ setSelectedPurpose }) {
   ];
 
   return (
-    <div className="p-4 bg-white rounded-lg shadow-md w-full">
+    <div className="p-4 bg-white rounded-lg border-2 border-slate-200 w-full">
       <div className="mb-5 flex flex-col">
         <label className="text-slate-500 font-semibold text-lg">
           Choose the reason of your message{" "}
