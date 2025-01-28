@@ -1,0 +1,71 @@
+{
+    "templateId": "core-template",
+    "description": "Basic template.",
+    "author": "Adam Elmi",
+    "version": "1.0.0",
+    "config": {
+      "hiddenSections": ["summary", "languages"],
+      "editableSections": ["experience", "projects"],
+      "defaultValues": {
+        "summary": "Enter your professional summary here.",
+        "skills": ["JavaScript", "Go", "Lua"]
+      },
+      "requiredFields": {
+        "experience": ["role", "company", "duration"],
+        "education": ["degree", "institution"]
+      },
+      "fieldFormats": {
+        "email": "email",
+        "phone": "phone"
+      },
+      "hideEmptySections": true,
+      "maxFields": {
+        "experience": 5,
+        "skills": 10
+      }
+    },
+    "styleUrl": "/public/templates/core-template/style.css",
+    "sections": [
+      {
+        "id": "header",
+        "title": "Header",
+        "fields": ["name", "title", "email", "phone", "website"]
+      },
+      {
+        "id": "summary",
+        "title": "Summary",
+        "type": "textarea",
+        "placeholder": "Write a brief summary about yourself."
+      },
+      {
+        "id": "experience",
+        "title": "Work Experience",
+        "repeat": 3,
+        "fields": ["role", "company", "duration", "description"]
+      },
+      {
+        "id": "education",
+        "title": "Education",
+        "repeat": 2,
+        "fields": ["degree", "institution", "year", "details"]
+      },
+      {
+        "id": "skills",
+        "title": "Skills",
+        "repeat": 5,
+        "fields": ["skill"]
+      },
+      {
+        "id": "languages",
+        "title": "Languages",
+        "repeat": 3,
+        "fields": ["language", "proficiency"]
+      },
+      {
+        "id": "projects",
+        "title": "Projects",
+        "repeat": 4,
+        "fields": ["title", "description", "link"]
+      }
+    ]
+  }  
