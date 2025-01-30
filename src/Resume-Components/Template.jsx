@@ -21,7 +21,7 @@ export default function Template() {
       }
     } catch (error) {
       console.error("Error parsing JSON from localStorage:", error);
-      localStorage.removeItem("currentPaths"); // Remove corrupt data
+      localStorage.removeItem("currentPaths");
     }
   }
   );
@@ -46,7 +46,7 @@ export default function Template() {
     const selected = templates.find((t) => t.template_name === e.target.value);
     if (selected) {
       setCurrentTemplate(selected.jsonPath);
-      document.getElementById("template-styles").href = selected.cssPath; // ✅ Update the existing <link> tag
+      document.getElementById("template-styles").href = selected.cssPath;
     }
   }
   useEffect(() => {
@@ -78,7 +78,7 @@ export default function Template() {
       }
     } catch (error) {
       console.error("Error parsing JSON from localStorage:", error);
-      localStorage.removeItem("currentPaths"); // Remove corrupt data
+      localStorage.removeItem("currentPaths");
     }
   }, []);
 
