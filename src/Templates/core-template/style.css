@@ -1,0 +1,157 @@
+/* Core Template Styles */
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  section {
+    margin-bottom: 20px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  /* Header */
+  #header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  #header .name {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  #header .title {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  #header .contact {
+    font-size: 0.9rem;
+    margin-top: 10px;
+  }
+  /* Summary */
+  #summary {
+    padding: 15px;
+    background-color: #cfd;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  #summary textarea {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Work Experience */
+  #experience {
+    padding: 15px;
+  }
+  
+  #experience .entry {
+    margin-bottom: 15px;
+  }
+  
+  #experience .role {
+    font-weight: bold;
+  }
+  
+  #experience .company {
+    color: #555;
+  }
+  
+  #experience .duration {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  /* Education */
+  #education {
+    padding: 15px;
+  }
+  
+  #education .entry {
+    margin-bottom: 15px;
+  }
+  
+  #education .degree {
+    font-weight: bold;
+  }
+  
+  #education .institution {
+    color: #555;
+  }
+  
+  /* Skills */
+  #skills {
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  #skills .skill {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  /* Languages */
+  #languages {
+    padding: 15px;
+  }
+  
+  #languages .entry {
+    margin-bottom: 10px;
+  }
+  
+  #languages .language {
+    font-weight: bold;
+  }
+  
+  #languages .proficiency {
+    color: #555;
+  }
+  
+  /* Projects */
+  #projects {
+    padding: 15px;
+  }
+  
+  #projects .entry {
+    margin-bottom: 15px;
+  }
+  
+  #projects .title {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  #projects .description {
+    font-size: 0.9rem;
+    color: #555;
+  }
+  
+  #projects .link {
+    color: #007BFF;
+    text-decoration: none;
+  }
+  
+  #projects .link:hover {
+    text-decoration: underline;
+  }
+  
+  
