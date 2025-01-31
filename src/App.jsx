@@ -1,4 +1,4 @@
-import Resume from "./Resume-Components/Resume";
+import CV from "./Cv-Components/CV";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./Site-Components/Layout";
@@ -16,7 +16,7 @@ function App() {
         <Route path="/contributors" element={<Contributors />} />
         <Route path="/templates" element={<TempSection />} />
       </Route>
-      <Route path="/create-cv" element={<Resume />} />
+      <Route path="/create-cv" element={<CV />} />
     </Routes>
   );
 }
