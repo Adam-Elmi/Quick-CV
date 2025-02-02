@@ -311,9 +311,8 @@ export default function Template() {
       console.error(error.message);
     }
   }, [memberOne, memberTwo, memberThree]);
-  console.log("Render-One: ", renderGroupOne);
   return (
-    <div className="flex-1 border-2 border-red-500 p-2">
+    <div className="flex-1 min-h-screen bg-slate-200 border-2 p-2 transform scale-[.7]">
       <div className="relative inline-block w-full">
         <select
           onChange={(e) => changeValue(e)}
