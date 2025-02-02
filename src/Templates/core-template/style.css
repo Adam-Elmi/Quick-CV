@@ -15,6 +15,9 @@ body {
   .hidden {
     display: none;
   }
+  #name {
+    color: green;
+  }
   
   /* Header */
   #header {
