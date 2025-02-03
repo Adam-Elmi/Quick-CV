@@ -14,9 +14,8 @@ import GroupThree from "../Groups/Group-3";
 /* Template import section */
 /* Please ensure to add any new template imports here */
 /* Good luck by your friend, Adam Elmi */
-import coreTemp from "../Templates/core-template/core-template.json"
+import coreTemp from "../Templates/core-template/core-template.json";
 import creativeTemp from "../Templates/creative-template/creative.json";
-
 export default function Template() {
   const [renderGroupOne, setRenderGroupOne] = useState(null);
   const [renderGroupTwo, setRenderGroupTwo] = useState(null);
@@ -43,8 +42,7 @@ export default function Template() {
       console.error("Error parsing JSON from localStorage:", error);
       localStorage.removeItem("currentPaths");
     }
-  }
-  );
+  });
 
   useEffect(() => {
     setTemplates([
@@ -147,14 +145,14 @@ export default function Template() {
                 if (prop.id === "contact") {
                   setSections((prev) => ({
                     ...prev,
-                    contact: <Contact contact={prop} />,
+                    contact: <Contact contact={prop} defaultValue={defaultValues.contact}/>,
                   }));
                 }
                 // Summary Property
                 if (prop.id === "summary") {
                   setSections((prev) => ({
                     ...prev,
-                    summary: <Summary summary={prop} />,
+                    summary: <Summary summary={prop} defaultValue={defaultValues.summary} />,
                   }));
                 }
                 // Experience property
@@ -303,17 +301,17 @@ export default function Template() {
   useEffect(() => {
     try {
       if (GroupOne && GroupTwo && GroupThree) {
-        setRenderGroupOne(() => <GroupOne members={memberOne} />);
-        setRenderGroupTwo(() => <GroupTwo members={memberTwo} />);
-        setRenderGroupThree(() => <GroupThree members={memberThree} />);
+        setRenderGroupOne(<GroupOne members={memberOne} />);
+        setRenderGroupTwo(<GroupTwo members={memberTwo} />);
+        setRenderGroupThree(<GroupThree members={memberThree} />);
       }
     } catch (error) {
       console.error(error.message);
     }
   }, [memberOne, memberTwo, memberThree]);
   return (
-    <div className="flex-1 min-h-screen bg-slate-200 border-2 p-2 transform scale-[.7]">
-      <div className="relative inline-block w-full">
+    <div className="flex-1 bg-black">
+       <div className="relative inline-block w-full">
         <select
           onChange={(e) => changeValue(e)}
           name="template-selection"
@@ -336,13 +334,17 @@ export default function Template() {
           <i className="fas fa-chevron-down"></i>
         </div>
       </div>
-      <div className="w-full flex-1 min-h-screen bg-white">
-      <div id="group-container">
-          {renderGroupOne}
-          {renderGroupTwo}
-          {renderGroupThree}
+      <div className="flex-1 min-h-screen bg-white border-2 p-2 transform w-[794px] h-[1123px]">
+        <div className="w-full flex-1">
+          <div id="group-container">
+            {renderGroupOne}
+            <div id="group-wrapper">
+              {renderGroupTwo}
+              {renderGroupThree}
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
     </div>
   );
 }
