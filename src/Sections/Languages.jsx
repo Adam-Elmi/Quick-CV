@@ -12,9 +12,9 @@ export default function Languages({ languages, defaultValue }) {
         {values && Array.isArray(values)
           ? values.map((language, i) => (
               <div key={i}>
-                <div id={"language-" + (i + 1) + "wrapper"}>
-                  <p id={"language-" + (i + 1)}>{language}</p>
-                </div>
+                <ul id={"language-" + (i + 1) + "wrapper"}>
+                  <li id={"language-" + (i + 1)}>{language}</li>
+                </ul>
               </div>
             ))
           : ""}
