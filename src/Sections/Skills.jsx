@@ -14,9 +14,9 @@ export default function Skills({ skills, defaultValue }) {
         {values && Array.isArray(values)
           ? values.map((skill, i) => (
               <div key={i}>
-                <div id={"skill-" + (i + 1) + "wrapper"}>
-                  <p id={"skill-" + (i + 1)}>{skill}</p>
-                </div>
+                <ul id={"skill-" + (i + 1) + "wrapper"}>
+                  <li className="all-skills" id={"skill-" + (i + 1)}>{skill}</li>
+                </ul>
               </div>
             ))
           : ""}
