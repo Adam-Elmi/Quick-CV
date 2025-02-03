@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-export default function Projects({projects, defaultValue}) {
-    const [values, setValues] = useState(defaultValue);
+export default function Projects({ projects, defaultValue }) {
+  const [values, setValues] = useState(defaultValue);
   useEffect(() => {
     setValues(defaultValue);
   }, [defaultValue]);
@@ -22,7 +22,9 @@ export default function Projects({projects, defaultValue}) {
                   <p id={"project-description-" + (i + 1)}>{v.description}</p>
                 </div>
                 <div id={"project-link-" + (i + 1) + "wrapper"}>
-                  <a href={v.link} id={"project-link-" + (i + 1)}>{v.link}</a>
+                  <a href={`${v.link}`} id={"project-link-" + (i + 1)}>
+                    {v.link}
+                  </a>
                 </div>
               </div>
             ))
