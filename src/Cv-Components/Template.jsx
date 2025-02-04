@@ -334,7 +334,7 @@ export default function Template() {
           <i className="fas fa-chevron-down"></i>
         </div>
       </div>
-      <div className="flex-1 min-h-screen bg-white border-2 p-2 transform w-[794px] h-[1123px]">
+      <div className="flex-1 min-h-screen bg-white border-2 p-2 transform scale-50 w-[794px] h-[1123px]">
         <div className="w-full flex-1">
           <div id="group-container">
             {renderGroupOne}
