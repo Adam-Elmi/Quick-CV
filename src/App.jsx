@@ -6,6 +6,7 @@ import About from "./Site-Components/About";
 import ContactUs from "./Site-Components/ContactUs";
 import Contributors from "./Site-Components/contributors";
 import TempSection from "./Site-Components/Temp-Section";
+import Markdown from "./Markdown";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/templates" element={<TempSection />} />
       </Route>
       <Route path="/create-cv" element={<CV />} />
+      <Route path="/mark" element={<Markdown />} />
     </Routes>
   );
 }
