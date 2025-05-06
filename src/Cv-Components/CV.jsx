@@ -19,9 +19,9 @@ export default function CV() {
           <span className="fa-solid fa-download"></span>
         </button>
       </div>
-      <div className="w-full flex">
+      <div className="w-full flex max-lg:flex-col">
         {/* Input Form */}
-        <div className="flex-1 min-h-screen flex gap-5 shadow-md">
+        <div className="flex-1 flex gap-5 shadow-md">
           <Workflow
             children={[
               "Personal Information",
