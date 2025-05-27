@@ -3,9 +3,9 @@ export default function Footer() {
   return (
     // Footer Container
     <footer className="flex gap-2 flex-col bg-[#1a1a1a] w-full mt-auto">
-      <div className="flex gap-5 justify-between items-center w-full p-4 tablet:flex-col">
+      <div className="flex gap-5 justify-between items-center w-full p-4 max-[768px]:flex-col">
       {/* Left Section */}
-        <div className="flex flex-col justify-center items-center gap-5 w-[150px] tablet:w-full">
+        <div className="flex flex-col justify-center items-center gap-5 w-[150px] max-[768px]:w-full">
           <p className="paul text-[2rem] text-white">Quick Cv</p>
           <div className="flex justify-center gap-2">
             {platforms.map((platform, id) => (
@@ -37,22 +37,18 @@ export default function Footer() {
               path: "/about",
             },
             {
-              section_name: "Contact",
-              path: "/contact",
-            },
-            {
               section_name: "License",
               path: "https://github.com/Adam-Elmi/Quick-CV/blob/master/LICENSE",
             },
           ].map((section, id) => (
-            <a key={id} className="text-white leading-8 font-mono" href={section.path}>
+            <a key={id} className="text-white leading-8 mono" href={section.path}>
               {section.section_name}
             </a>
           ))}
         </div>
       </div>
       <div className="border-t border-gray-600 mt-5 pt-4 mx-16">
-        <p className="text-center text-slate-400 text-[0.8rem] font-[500] h-10 font-mono">
+        <p className="text-center text-slate-400 text-[0.8rem] font-[500] h-10 mono">
           &copy; {new Date().getFullYear()} Quick Cv. All rights reserved.
         </p>
       </div>
