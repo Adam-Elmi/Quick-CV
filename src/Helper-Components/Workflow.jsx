@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
-export default function Workflow({ children }) {
+export default function Workflow({ sections }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ export default function Workflow({ children }) {
 
   function nextChild() {
     setCurrentIndex((prevIndex) => {
-      const newIndex = Math.min(prevIndex + 1, children.length - 1);
+      const newIndex = Math.min(prevIndex + 1, sections.length - 1);
       sessionStorage.setItem("current", newIndex);
       return newIndex;
     });
@@ -43,7 +44,7 @@ export default function Workflow({ children }) {
           <span className="fa-solid fa-arrow-left"></span>
         </button>
         <button
-          disabled={currentIndex >= children.length - 1}
+          disabled={currentIndex >= sections.length - 1}
           onClick={nextChild}
           className="bg-blue-500 text-white py-2 px-4 rounded-md cursor-pointer"
         >
@@ -53,7 +54,7 @@ export default function Workflow({ children }) {
 
       {/* Flow State */}
       <div className="flex gap-5 justify-center items-center w-full flex-wrap mb-3">
-        {children.map((_, index) => (
+        {sections && sections.map((_, index) => (
           <button
             onClick={moveToClickedBtn}
             key={index}
@@ -68,7 +69,7 @@ export default function Workflow({ children }) {
       </div>
 
       {/* Render the current child */}
-      {children[currentIndex]}
+      {sections[currentIndex]}
 
       {/* Previous and Next */}
       <div className="flex justify-between p-4 mb-3">
@@ -87,4 +88,9 @@ export default function Workflow({ children }) {
       </div>
     </div>
   );
+}
+
+
+Workflow.propTypes = {
+  sections: PropTypes.array
 }
