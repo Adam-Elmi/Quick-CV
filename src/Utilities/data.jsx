@@ -10,7 +10,6 @@ import {
   SvgHome,
   SvgTeam,
   SvgAbout,
-  SvgEnvelope,
   SvgFile,
   SvgOpen,
 } from "../Svg-Components/Svg";
