@@ -1,47 +1,23 @@
-import {
-  PDFViewer,
-  Page,
-  Text,
-  View,
-  Document,
-  StyleSheet,
-} from "@react-pdf/renderer";
+import { Document, Page } from '@react-pdf/renderer';
+import HTML from 'react-pdf-html';
+const color = "red";
+const htmlContent = `
+  <h1 style="color: ${color}; border: 2px dotted red">Adam Elmi</h1>
+  <p>Self-taught developer from Somaliland</p>
+  <ul>
+    <li>SomCheat</li>
+    <li>SomBot</li>
+    <li>SomGlossary</li>
+  </ul>
+`;
 
-// Create styles
-const styles = StyleSheet.create({
-  page: {
-    // flexDirection: "row",
-    backgroundColor: "#fff",
-  },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1,
-    backgroundColor: "red"
-  },
-  text: {
-    color: "red",
-  },
-  viewer: {
-    width: "100%",
-    height: "100vh",
-  },
-});
 
 const MyDocument = () => (
-  <PDFViewer style={styles.viewer}>
-    <Document>
-      <Page width={100} size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <Text style={styles.text}>Template 101</Text>
-        </View>
-        <View style={styles.section}>
-          <Text id="text">Adam</Text>
-          <Text>Elmi</Text>
-        </View>
-      </Page>
-    </Document>
-  </PDFViewer>
+  <Document>
+    <Page size="A4">
+      <HTML>{htmlContent}</HTML>
+    </Page>
+  </Document>
 );
 
 export default MyDocument;
