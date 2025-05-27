@@ -1,5 +1,5 @@
 import Workflow from "../Helper-Components/Workflow";
-import GenerateCV from "../Helper-Components/GenerateCv";
+// import GenerateCV from "../Helper-Components/GenerateCv";
 import Template from "./Template";
 
 export default function CV() {
@@ -23,7 +23,7 @@ export default function CV() {
         {/* Input Form */}
         <div className="flex-1 flex gap-5 shadow-md">
           <Workflow
-            children={[
+            sections={[
               "Personal Information",
               "Education",
               "Experience",
