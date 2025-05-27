@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { sections } from "../Utilities/data";
 import { SvgClose } from "../Svg-Components/Svg";
@@ -17,21 +18,21 @@ export default function SideBar({ isVisible, handleVisibility }) {
     >
       <div
         onClick={stopEvent}
-        className={`bg-[#ffffff] w-[250px] border-r absolute top-0 left-0 z-[990] h-screen`}
+        className={`bg-[#ffffff] w-[250px] border-r border-slate-200 absolute top-0 left-0 z-[990] h-screen`}
       >
-        <ul className="flex font-mono flex-col p-2">
-          <div className="flex justify-between items-center border-b p-2">
-            <h1 className="font-bold text-blue-600 text-[1.2rem]">Menu</h1>
+        <ul className="flex mono flex-col p-2">
+          <div className="flex justify-between items-center border-b border-slate-200 p-2">
+            <h1 className="bold text-blue-600 text-[1.2rem]">Menu</h1>
             <button
               onClick={handleVisibility}
-              className="font-mono font-semibold text-red-500"
+              className="bold cursor-pointer text-red-500"
             >
               <SvgClose />
             </button>
           </div>
           {sections.map((section, id) => (
             <Link key={id} to={section.path}>
-              <li className="font-semibold flex gap-4 items-center p-4 border-b hover:text-indigo-600">
+              <li className="bold flex gap-4 items-center p-4 border-b border-slate-100 hover:text-indigo-600">
                 {section.icon}
                 {section.section_name}
               </li>
@@ -41,4 +42,10 @@ export default function SideBar({ isVisible, handleVisibility }) {
       </div>
     </div>
   );
+}
+
+SideBar.propTypes = {
+  isVisible: PropTypes.bool,
+  handleVisibility: PropTypes.func
+  
 }
