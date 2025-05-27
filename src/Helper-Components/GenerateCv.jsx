@@ -8,7 +8,7 @@ export default function GenerateCV() {
     return JSON.parse(sessionStorage.getItem(name));
   }
 
-  const [checkContact, setCheckContact] = useState(() => {
+  const [checkContact] = useState(() => {
     const savedData = getSaveData("contact");
     return savedData
       ? savedData
@@ -21,12 +21,12 @@ export default function GenerateCV() {
       };
   });
 
-  const [checkObjective, setCheckObjective] = useState(() => {
+  const [checkObjective] = useState(() => {
     const savedData = sessionStorage.getItem("objective");
     return savedData ? savedData : "";
   });
 
-  const [checkSkill, setCheckSkill] = useState(() => {
+  const [checkSkill] = useState(() => {
     const savedData = getSaveData("skills");
     return savedData
       ? savedData
@@ -42,7 +42,7 @@ export default function GenerateCV() {
       };
   });
 
-  const [checkEducation, setCheckEducation] = useState(() => {
+  const [checkEducation] = useState(() => {
     const savedData = getSaveData("education");
     return savedData
       ? savedData
@@ -54,7 +54,7 @@ export default function GenerateCV() {
       ];
   });
 
-  const [checkWork, setCheckWork] = useState(() => {
+  const [checkWork] = useState(() => {
     const savedData = getSaveData("work-experience");
     return savedData
       ? savedData
@@ -80,12 +80,12 @@ export default function GenerateCV() {
       ];
   });
 
-  const [checkMarital, setCheckMarital] = useState(() => {
+  const [checkMarital] = useState(() => {
     const savedData = sessionStorage.getItem("marital");
     return savedData ? savedData : "";
   });
 
-  const [checkCertificate, setCheckCertificate] = useState(() => {
+  const [checkCertificate] = useState(() => {
     const savedData = getSaveData("certificate");
     return savedData
       ? savedData
