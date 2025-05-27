@@ -19,7 +19,7 @@ export default function Header() {
       <SideBar isVisible={isVisible} handleVisibility={handleVisibility} />
       {/* Nav */}
       <nav
-        className={`w-full flex gap-4 justify-between items-center min-h-[60px] px-4 border-b-2 shadow-sm`}
+        className={`w-full flex gap-4 justify-between items-center min-h-[60px] px-4 border-b-2 border-slate-200 shadow-sm`}
       >
         {/* Menu container */}
         <div>
@@ -40,10 +40,10 @@ export default function Header() {
 function SectionComponent() {
   return (
     // Renders site sections
-    <ul className="flex gap-8 font-mono max-md:hidden">
+    <ul className="flex gap-8  max-md:hidden">
       {sections.map((section, id) => (
         <Link key={id} to={section.path}>
-          <li className="font-semibold  hover:text-indigo-600">
+          <li className="bold font-bold  hover:text-indigo-600">
             {section.section_name}
           </li>
         </Link>
