@@ -1,16 +1,16 @@
-import { Document, Page } from '@react-pdf/renderer';
-import HTML from 'react-pdf-html';
+import { Document, Page } from "@react-pdf/renderer";
+import HTML from "react-pdf-html";
 const color = "red";
 const htmlContent = `
   <h1 style="color: ${color}; border: 2px dotted red">Adam Elmi</h1>
   <p>Self-taught developer from Somaliland</p>
+  <img style="width: 500px" src="src/assets/media/naruto_togather.jpg"/>
   <ul>
-    <li>SomCheat</li>
+    <li style="color: green;">SomCheat</li>
     <li>SomBot</li>
     <li>SomGlossary</li>
   </ul>
 `;
-
 
 const MyDocument = () => (
   <Document>
