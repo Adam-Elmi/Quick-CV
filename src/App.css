@@ -61,9 +61,9 @@ body {
 @font-face {
     font-family: "paul";
     src:
-        url("/src/assets//fonts/Paul_Jackson_personal\ use.ttf")
+        url("/src/assets//fonts/Paul_Jackson_personal.ttf")
             format("truetype"),
-        url("/src/assets/fonts/Paul_Jackson_personal\ use.ttf")
+        url("/src/assets/fonts/Paul_Jackson_personal.ttf")
             format("opentype");
     font-weight: normal;
     font-style: normal;
