@@ -1,5 +1,5 @@
 import { aboutQuickCv } from "../Utilities/data";
-import imageSrc from "src/assets/media/naruto_togather.jpg"
+import imageSrc from "../assets/media/naruto_togather.jpg"
 
 export default function About() {
   const repo = (
@@ -9,7 +9,7 @@ export default function About() {
   );
   return (
     <div className="min-h-screen bg-gray-100">
-      <img src={ imageSrc} />
+      <img src={imageSrc} />
       <div className="w-full flex justify-center items-center flex-col gap-5 px-2">
         <h1 className="text-4xl text-center mt-10">
           About <span className="paul text-indigo-500">Quick-CV</span>
