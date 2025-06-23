@@ -22,16 +22,16 @@ export default function Header() {
         className={`w-full flex gap-4 justify-between items-center min-h-[60px] px-4 border-b-2 border-slate-200 shadow-sm`}
       >
         {/* Menu container */}
-        <div>
+        <div className="hidden max-md:block">
           {/* Menu button */}
           <button onClick={handleVisibility} className="cursor-pointer">
             {/* Menu icon (SVG) */}
             <SvgMenu />
           </button>
         </div>
+        <h1 className="paul text-[1.5rem]">Quick CV</h1>
         {/* Site sections (e.g., Home, About, etc.) */}
         <SectionComponent />
-        <h1 className="paul text-[1.5rem]">Quick CV</h1>
       </nav>
     </>
   );
@@ -40,7 +40,7 @@ export default function Header() {
 function SectionComponent() {
   return (
     // Renders site sections
-    <ul className="flex gap-8  max-md:hidden">
+    <ul className="flex gap-8  max-md:hidden flex-1 justify-center items-center">
       {sections.map((section, id) => (
         <Link key={id} to={section.path}>
           <li className="bold font-bold  hover:text-indigo-600">
