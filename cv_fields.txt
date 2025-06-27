@@ -1,0 +1,43 @@
+1. Profile Summary:
+	- Photo
+	- First name
+	- Last name
+	- Title
+	- Email address
+	- Phone Number
+	- Website
+	- Linkedin
+	- Country
+	- City
+	
+2. Education:
+	- Subject 
+	- Collage or School
+	- City
+	- Start Date
+	- End Date
+
+3. Experiences:
+	- Company Name
+	- Position
+	- City
+	- Start Date
+	- End Date
+	- Description
+
+4. Skills:
+	- Skill name
+
+5. Languages:
+	- Language name
+
+6. Certifications:
+	- Certificate name
+	- Giver - Optional
+	- Date - Optional
+
+EXTRA Fields:
+1. Awards:
+	- Name of the award
+	- Giver
+	- Date
