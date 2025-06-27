@@ -1,16 +1,11 @@
-import { PDFViewer } from "@react-pdf/renderer";
-import MyDocument from "./React-pdf";
+import Preview from "../Helper-Components/Preview";
+import basic_cv from "../Templates/basic-cv/basic_cv";
+import { useShared } from "../Shared/SharedContext";
 export default function Template() {
+  const { inputValue } = useShared();
   return (
     <>
-      {/* <PDFDownloadLink document={<MyDocument />} fileName="document.pdf">
-        {({ loading }) =>
-          loading ? "Loading document..." : <button>Download</button>
-        }
-      </PDFDownloadLink> */}
-      <PDFViewer width="100%" height="600">
-        <MyDocument />
-      </PDFViewer>
+      <Preview content={basic_cv(inputValue || "Adam Elmi")}/>
     </>
   );
 }
