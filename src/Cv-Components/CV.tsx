@@ -13,7 +13,7 @@ export default function CV() {
   return (
     <div className=" w-full flex flex-col justify-center items-center">
       <div className="w-full min-h-[70px] bg-slate-900 flex justify-between items-center px-2">
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-1">
           <a href="/">
             <button
               title="Home"
