@@ -51,14 +51,6 @@ body {
 }
 
 @font-face {
-    font-family: "american";
-    src:
-        url("/src/assets//fonts/Cubano.ttf") format("truetype"),
-        url("/src/assets/fonts/Cubano.ttf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
     font-family: "paul";
     src:
         url("/src/assets/fonts/Paul_Jackson_personal_use.ttf") format("truetype"),
@@ -66,25 +58,9 @@ body {
     font-weight: normal;
     font-style: normal;
 }
-@font-face {
-    font-family: "sawer";
-    src:
-        url("/src/assets//fonts/Sawer.otf") format("truetype"),
-        url("/src/assets/fonts/Sawer.otf") format("opentype");
-    font-weight: normal;
-    font-style: normal;
-}
-
-.cubano {
-    font-family: "cubano", sans-serif;
-}
 
 .paul {
     font-family: "paul", sans-serif;
-}
-
-.sawer {
-    font-family: "sawer", sans-serif;
 }
 
 .svg-bg {
