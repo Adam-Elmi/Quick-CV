@@ -1,7 +1,6 @@
-import PropTypes from "prop-types";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-export default function Workflow({ sections }) {
+export default function Workflow({ sections }: { sections: React.ReactNode[]}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -12,24 +11,24 @@ export default function Workflow({ sections }) {
   }, []);
 
   function nextChild() {
-    setCurrentIndex((prevIndex) => {
-      const newIndex = Math.min(prevIndex + 1, sections.length - 1);
-      sessionStorage.setItem("current", newIndex);
+    setCurrentIndex((prevIndex: number) => {
+      const newIndex: number = Math.min(prevIndex + 1, sections.length - 1);
+      sessionStorage.setItem("current", newIndex.toString());
       return newIndex;
     });
   }
 
   function previousChild() {
     setCurrentIndex((prevIndex) => {
-      const newIndex = Math.max(prevIndex - 1, 0);
-      sessionStorage.setItem("current", newIndex);
+      const newIndex: number = Math.max(prevIndex - 1, 0);
+      sessionStorage.setItem("current", newIndex.toString());
       return newIndex;
     });
   }
 
-  function moveToClickedBtn(e) {
-    setCurrentIndex(parseInt(e.target.textContent, 10) - 1);
-    sessionStorage.setItem("current", parseInt(e.target.textContent, 10) - 1);
+  function moveToClickedBtn(e: React.MouseEvent) {
+    setCurrentIndex(parseInt((e.target as HTMLElement).textContent, 10) - 1);
+    sessionStorage.setItem("current", (parseInt((e.target as HTMLElement).textContent, 10) - 1).toString());
   }
 
   return (
@@ -88,9 +87,4 @@ export default function Workflow({ sections }) {
       </div>
     </div>
   );
-}
-
-
-Workflow.propTypes = {
-  sections: PropTypes.array
 }
