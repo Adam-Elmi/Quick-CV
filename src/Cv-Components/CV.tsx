@@ -4,12 +4,9 @@ import Workflow from "../Helper-Components/Workflow";
 import Template from "./Template";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import MyDocument from "./React-pdf";
-import { useShared } from "../Shared/SharedContext";
 import { SvgHome, SvgTemplate } from "../Svg-Components/Svg";
 
 export default function CV() {
-  // @ts-ignore
-  const { inputValue }  = useShared();
   return (
     <div className=" w-full flex flex-col justify-center items-center">
       <div className="w-full min-h-[70px] bg-slate-900 flex justify-between items-center px-2">
@@ -35,7 +32,7 @@ export default function CV() {
             </button>
           </a>
         </div>
-        <PDFDownloadLink document={<MyDocument inputValue={inputValue}/>} fileName="document.pdf">
+        <PDFDownloadLink document={<MyDocument inputValue={"Elmi"}/>} fileName="document.pdf">
           {({ loading }) =>
             loading ? (
               "Loading document..."
@@ -54,12 +51,24 @@ export default function CV() {
           <Workflow
             sections={[
               <Profile key={"Profile"} />,
-              "Education",
-              "Experience",
-              "Skills",
-              "Projects",
-              "Languages",
-              "Hobbies",
+              (function Education() {
+                return "Education"
+              })(),
+              (function Experience() {
+                return "Experience";
+              })(),
+              (function Skills() {
+                return "Skills";
+              })(),
+              (function Projects() {
+                return "Projects";
+              })(),
+              (function Languages() {
+                return "Languages";
+              })(),
+              (function Hobbies() {
+                return "Hobbies";
+              })(),
             ]}
           />
         </div>
