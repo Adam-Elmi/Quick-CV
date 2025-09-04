@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { useEffect } from "react";
 import { useRef } from "react";
 
-export default function Preview({ content }) {
+export default function Preview({ content }: {content: string}) {
   const contentRef = useRef(null);
   useEffect(() => {
     if (contentRef.current) {
-      contentRef.current.innerHTML = content;
+      (contentRef.current as HTMLElement).innerHTML = content;
     }
   }, [content]);
   return (
