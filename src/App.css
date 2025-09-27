@@ -97,3 +97,9 @@ pre {
     padding: 15px;
     border: 2px dashed greenyellow;
 }
+
+@media screen and (max-width: 1351px) {
+    #input-field {
+        width: 100%;
+    }
+}
