@@ -94,7 +94,7 @@ type InputFieldType = {
 }
 function InputField({ label, type, is_required, placeholder, icon }: InputFieldType) {
   return (
-    <div className="flex flex-col gap-1">
+    <div id="input-field" className="flex flex-col gap-1">
       <label className="text-slate-500 bold flex items-center gap-2">
         <span className={icon + " text-sm text-gray-300"}></span>
         {label}
