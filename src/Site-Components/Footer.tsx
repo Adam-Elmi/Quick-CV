@@ -33,10 +33,6 @@ export default function Footer() {
               path: "/templates",
             },
             {
-              section_name: "Contributors",
-              path: "/contributors",
-            },
-            {
               section_name: "About",
               path: "/about",
             },
