@@ -3,7 +3,7 @@ import Workflow from "../Helper-Components/Workflow";
 // import GenerateCV from "../Helper-Components/GenerateCv";
 import Template from "./Template";
 import { PDFDownloadLink } from "@react-pdf/renderer";
-import MyDocument from "./React-pdf";
+import MyDocument from "./MyDocument";
 import { SvgHome, SvgTemplate } from "../Svg-Components/Svg";
 
 export default function CV() {
@@ -32,13 +32,13 @@ export default function CV() {
             </button>
           </a>
         </div>
-        <PDFDownloadLink document={<MyDocument inputValue={"Elmi"}/>} fileName="document.pdf">
+        <PDFDownloadLink document={<MyDocument />} fileName="document.pdf">
           {({ loading }) =>
             loading ? (
               "Loading document..."
             ) : (
               <button className="text-white cursor-pointer bg-indigo-600 flex gap-2 justify-center items-center border-2 border-slate-700 p-2 rounded-md">
-                <span className="font-[500]">Download</span>
+                <span className="font-medium">Download</span>
                 <span className="fa-solid fa-download"></span>
               </button>
             )
