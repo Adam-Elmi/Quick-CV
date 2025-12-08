@@ -671,3 +671,171 @@ export function SvgCreate2(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+/*
+---------------
+  Font color Icon
+---------------
+*/
+export function SvgFontColor(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      {...props}
+      viewBox="0 0 24 24"
+    >
+      <g fill="currentColor">
+        <path d="M20 18.066C20 19.686 18.657 21 17 21s-3-1.314-3-2.934S17 12 17 12s3 4.446 3 6.066"></path>
+        <path
+          fillRule="evenodd"
+          d="m10.482 7.525l-1.36 3.457h2.719zm3.75 4.07l-2.717-6.909c-.37-.94-1.697-.94-2.066 0l-2.686 6.831a1 1 0 0 0-.08.202L5.4 14.982h-.418a1 1 0 1 0 0 2h2.75a1 1 0 1 0 0-2h-.183l.787-2h4.292l.367.935a1 1 0 1 0 1.861-.732l-.608-1.548z"
+          clipRule="evenodd"
+        ></path>
+      </g>
+    </svg>
+  );
+}
+/*
+---------------
+  Font Icon
+---------------
+*/
+export function SvgFont(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={16}
+      height={16}
+      {...props}
+      viewBox="0 0 48 48"
+    >
+      <path
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={4}
+        d="M8 10.933V6h32v4.933M24 6v36m-8 0h16"
+      ></path>
+    </svg>
+  );
+}
+/*
+---------------
+  Font Size Icon
+---------------
+*/
+export function SvgFontSize(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={18}
+      height={18}
+      {...props}
+      viewBox="0 0 15 15"
+    >
+      <path
+        fill="currentColor"
+        d="M2.5 2.1a.4.4 0 0 1 .283.117l2 2l.05.064a.4.4 0 0 1-.05.503a.4.4 0 0 1-.503.05l-.063-.05L2.9 3.467v8.067l1.317-1.317a.4.4 0 0 1 .566.566l-2 2a.4.4 0 0 1-.566 0l-2-2l-.051-.063a.4.4 0 0 1 .554-.554l.063.051l1.316 1.316V3.467L.783 4.784a.401.401 0 0 1-.566-.567l2-2l.061-.05A.4.4 0 0 1 2.5 2.1m5.47 9.64a.501.501 0 0 1-.94-.34zm2.53-8.99a.5.5 0 0 1 .47.33l3 8.32a.5.5 0 0 1-.94.34l-.983-2.724H8.953l-.982 2.724l-.471-.17l-.47-.17l3-8.32l.031-.07a.5.5 0 0 1 .439-.26M9.259 8.166h2.482L10.5 4.725z"
+      ></path>
+    </svg>
+  );
+}
+/*
+---------------
+  Font Style Icon
+---------------
+*/
+export function SvgFontSyle(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      {...props}
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill="currentColor"
+        d="M5 2a.5.5 0 0 1 .471.332l1.862 5.214l-.782.782L6.076 7H3.924L2.97 9.668a.5.5 0 0 1-.942-.336l2.5-7A.5.5 0 0 1 5 2m.72 4L5 3.987L4.281 6zm7.72-.438a1.914 1.914 0 0 0-2.708 0l-4.657 4.657a2.5 2.5 0 0 0-.684 1.277l-.381 1.906a.5.5 0 0 0 .588.589l1.906-.382a2.5 2.5 0 0 0 1.278-.683l4.657-4.657a1.915 1.915 0 0 0 0-2.707m-2.001.707a.914.914 0 1 1 1.293 1.293L8.075 12.22a1.5 1.5 0 0 1-.767.41l-1.17.234l.234-1.17a1.5 1.5 0 0 1 .41-.767z"
+      ></path>
+    </svg>
+  );
+}
+/*
+---------------
+  Down Arrow Icon
+---------------
+*/
+export function SvgDownArrow(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      {...props}
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        fillRule="evenodd"
+        d="m6 7l6 6l6-6l2 2l-8 8l-8-8z"
+      ></path>
+    </svg>
+  );
+}
+/*
+---------------
+  Select Point Icon
+---------------
+*/
+export function SvgSelectPoint(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      {...props}
+      viewBox="0 0 24 24"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={1.5}
+      >
+        <path fill="currentColor" d="M12 13a1 1 0 1 0 0-2a1 1 0 0 0 0 2"></path>
+        <path d="M21 7.353v9.294a.6.6 0 0 1-.309.525l-8.4 4.666a.6.6 0 0 1-.582 0l-8.4-4.666A.6.6 0 0 1 3 16.647V7.353a.6.6 0 0 1 .309-.524l8.4-4.667a.6.6 0 0 1 .582 0l8.4 4.667a.6.6 0 0 1 .309.524"></path>
+      </g>
+    </svg>
+  );
+}
+/*
+---------------
+  Form Input Icon
+---------------
+*/
+export function SvgFormInput(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      {...props}
+      viewBox="0 0 24 24"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+      >
+        <rect width={20} height={12} x={2} y={6} rx={2}></rect>
+        <path d="M12 12h.01M17 12h.01M7 12h.01"></path>
+      </g>
+    </svg>
+  );
+}
