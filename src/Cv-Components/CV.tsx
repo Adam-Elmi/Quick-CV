@@ -1,6 +1,5 @@
 import Profile from "../Form-Components/Profile";
 import Workflow from "../Helper-Components/Workflow";
-// import GenerateCV from "../Helper-Components/GenerateCv";
 import Template from "./Template";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import MyDocument from "./MyDocument";
