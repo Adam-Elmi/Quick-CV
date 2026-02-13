@@ -472,11 +472,16 @@ export function SvgTemplate(props: React.SVGProps<SVGSVGElement>) {
       height={24}
       {...props}
       viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
     >
-      <g fill="none" stroke="currentColor" strokeWidth={1.5}>
-        <path d="M21 2H3v20h18z"></path>
-        <path d="M16.655 14.157a1.655 1.655 0 1 1 0 3.31a1.655 1.655 0 0 1 0-3.31ZM3 19.944l5.383-4.256L17.343 22M12.269 5h-6.27M18 8.344H6m15 3.219H3"></path>
-      </g>
+      <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth={1.5} />
+      <path d="M7 8h10" strokeWidth={1.5} strokeLinecap="round" />
+      <path d="M7 11h10" strokeWidth={1.5} strokeLinecap="round" />
+      <rect x="7" y="14" width="5" height="4" rx="0.5" strokeWidth={1.5} />
+      <circle cx="9.5" cy="16" r="0.5" fill="currentColor" />
+      <path d="M14 15h3" strokeWidth={1.5} strokeLinecap="round" />
+      <path d="M14 17h3" strokeWidth={1.5} strokeLinecap="round" />
     </svg>
   );
 }
