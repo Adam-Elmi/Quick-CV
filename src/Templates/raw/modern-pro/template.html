@@ -1,0 +1,64 @@
+<div class="pro-container">
+    <!-- Left Sidebar -->
+    <div class="sidebar">
+        <div class="profile-section">
+            <div class="initials-circle">
+                %initials%
+            </div>
+        </div>
+
+        <div class="sidebar-title">Contact</div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <span class="contact-label">E:</span> %profile.email%
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">P:</span> %profile.phone%
+            </div>
+            <div class="contact-item">
+                <span class="contact-label">L:</span> %profile.city%, %profile.country%
+            </div>
+        </div>
+
+        <div class="sidebar-title">Skills</div>
+        <!-- Injected List -->
+        %SKILLS_LIST%
+
+        <div class="sidebar-title">Languages</div>
+        <!-- Injected List -->
+        %LANGUAGES_LIST%
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header-name">%profile.firstName% %profile.lastName%</div>
+        <div class="header-title">%profile.title%</div>
+
+        <div class="section">
+            <div class="section-head">
+                <div class="section-icon">Exp</div>
+                <div class="section-title">Experience</div>
+            </div>
+            <!-- Injected List -->
+            %EXPERIENCE_LIST%
+        </div>
+
+        <div class="section">
+            <div class="section-head">
+                <div class="section-icon">Edu</div>
+                <div class="section-title">Education</div>
+            </div>
+            <!-- Injected List -->
+            %EDUCATION_LIST%
+        </div>
+
+         <div class="section">
+            <div class="section-head">
+                 <div class="section-icon">Prj</div>
+                <div class="section-title">Projects</div>
+            </div>
+             <!-- Injected List -->
+            %PROJECTS_LIST%
+        </div>
+    </div>
+</div>
