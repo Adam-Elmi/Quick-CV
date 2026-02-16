@@ -18,12 +18,12 @@ const sections = [
   {
     section_name: "Home",
     path: "/",
-    icon: <SvgHome width={28} height={28}/>,
+    icon: <SvgHome width={28} height={28} />,
   },
   {
     section_name: "Templates",
     path: "/templates",
-    icon: <SvgTemplate width={22} height={22}/>,
+    icon: <SvgTemplate width={22} height={22} />,
   },
   {
     section_name: "Create cv",
@@ -110,33 +110,26 @@ const platforms = [
 
 const aboutQuickCvIntro = {
   title: "Intro",
-  text: `
-Hi, I’m Adam Elmi, the creator of Quick-CV. I built this tool because most CV websites felt too slow or complicated. I just wanted a fast, easy way to create a CV.
-`,
+  text: "Quick-CV was born from a simple need: a faster, no-hassle way to build a professional CV. No complexity, just speed.",
   icon: "fa-solid fa-user",
 };
 
 const aboutQuickCvProblems = {
-  title: "Problems",
-  text: `
-Many CV websites are hard to use. They have too many pop-ups, make you sign up, or ask for money to download. If you want to change something, you often have to start all over again.`,
+  title: "The Problem",
+  text: "Most CV builders are filled with ads, forced sign-ups, and hidden paywalls that block your downloads.",
   icon: "fa-solid fa-circle-exclamation",
 };
 
 const aboutQuickCvSolution = {
-  title: "Solution",
-  text: `
-These things take too much time. Most CV tools don’t really help. I wanted something simple and quick—where I can start anywhere, change things fast, and not deal with all the problems. That’s why I made Quick-CV.`,
+  title: "The Solution",
+  text: "A clean, open-source tool where you can start anywhere, edit instantly, and download for free.",
   icon: "fa-solid fa-lightbulb",
 };
 
 const aboutQuickCvConclusion = {
-  title: "Conclusion",
-  text: `
-Thank you in advance to anyone who contributes to this project in the future.
-I hope it makes CV creation stress-free.
-`,
-  icon: "fa-solid fa-check",
+  title: "Goal",
+  text: "Making professional CV creation stress-free for everyone. Open for contributions and feedback.",
+  icon: "fa-solid fa-bullseye",
 };
 
 const aboutQuickCv = [
