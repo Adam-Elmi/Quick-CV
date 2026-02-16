@@ -104,7 +104,7 @@ export default function CustomPDFPreview({ url }: CustomPDFPreviewProps) {
                 <Document
                     file={url}
                     onLoadSuccess={onDocumentLoadSuccess}
-                    className="flex flex-col items-center shadow-xl transition-transform duration-200 origin-top"
+                    className="flex flex-col items-center transition-transform duration-200 origin-top"
                     loading={
                         <div className="flex flex-col items-center justify-center pt-10 animate-pulse space-y-8 w-full max-w-[595px] aspect-[1/1.41] bg-white rounded shadow-sm mx-auto p-8 opacity-50">
                             {}
