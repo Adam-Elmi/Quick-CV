@@ -11,26 +11,15 @@ export default function SideBar({
   isVisible: boolean;
   handleVisibility: () => void;
 }) {
-  /*
-  ----
-  Prevent child element from inheriting parent's onclick event
-  ----
-  */
   const stopEvent = (e: React.SyntheticEvent) => {
     e.stopPropagation();
   };
 
   return (
-    /*
-    -------
-      Container - Element with background color rgba(0.3, 0.3, 0.3, 0.3) (semi-transparent)
-    ------
-    */
     <div
       onClick={handleVisibility}
-      className={`w-full h-screen transition-all duration-300 ease-in-out z-[999] fixed top-0 left-0 bg-[rgba(0.3,0.3,0.3,0.3)] ${
-        isVisible ? "block opacity-100 visible" : "opacity-0 invisible"
-      }`}
+      className={`w-full h-screen transition-all duration-300 ease-in-out z-[999] fixed top-0 left-0 bg-[rgba(0.3,0.3,0.3,0.3)] ${isVisible ? "block opacity-100 visible" : "opacity-0 invisible"
+        }`}
     >
       <div
         onClick={stopEvent}
