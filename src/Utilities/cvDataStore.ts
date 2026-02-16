@@ -1,86 +1,82 @@
 import { useState, useEffect } from 'react';
-export interface StyledValue {
-    value: string;
-    style?: {
-        fontFamily?: string;
-        fontSize?: string;
-        color?: string;
-    };
-}
+export type CVValue = string;
+
 export interface CVData {
     profile: {
-        firstName: StyledValue;
-        lastName: StyledValue;
-        title: StyledValue;
-        email: StyledValue;
-        phone: StyledValue;
-        country: StyledValue;
-        city: StyledValue;
-        links: { id: string; value: StyledValue }[];
+        firstName: CVValue;
+        lastName: CVValue;
+        title: CVValue;
+        email: CVValue;
+        phone: CVValue;
+        country: CVValue;
+        city: CVValue;
+        links: { id: string; value: CVValue }[];
     };
     education: {
         id: string;
-        school: StyledValue;
-        degree: StyledValue;
-        city: StyledValue;
-        startDate: StyledValue;
-        endDate: StyledValue;
-        description: StyledValue;
+        school: CVValue;
+        degree: CVValue;
+        city: CVValue;
+        startDate: CVValue;
+        endDate: CVValue;
+        description: CVValue;
     }[];
     experience: {
         id: string;
-        position: StyledValue;
-        company: StyledValue;
-        city: StyledValue;
-        startDate: StyledValue;
-        endDate: StyledValue;
-        responsibilities: StyledValue;
+        position: CVValue;
+        company: CVValue;
+        city: CVValue;
+        startDate: CVValue;
+        endDate: CVValue;
+        responsibilities: CVValue;
     }[];
     skills: {
         id: string;
-        name: StyledValue;
+        name: CVValue;
     }[];
     projects: {
         id: string;
-        name: StyledValue;
-        techStack: StyledValue;
-        link: StyledValue;
-        description: StyledValue;
+        name: CVValue;
+        techStack: CVValue;
+        link: CVValue;
+        description: CVValue;
     }[];
     languages: {
         id: string;
-        language: StyledValue;
-        proficiency: StyledValue;
+        language: CVValue;
+        proficiency: CVValue;
     }[];
     awards: {
         id: string;
-        name: StyledValue;
-        organization: StyledValue;
-        date: StyledValue;
-        description: StyledValue;
+        name: CVValue;
+        organization: CVValue;
+        date: CVValue;
+        description: CVValue;
     }[];
     settings: {
         [key: string]: boolean;
     };
     selectedTemplate: string;
 }
-const getVal = (key: string): StyledValue => {
+
+const getVal = (key: string): CVValue => {
     try {
         const item = localStorage.getItem(key);
-        if (!item) return { value: "" };
-        const parsed = JSON.parse(item);
-        const validFonts = ["Helvetica", "Times-Roman", "Courier", "Roboto"];
-        const font = validFonts.includes(parsed.font) ? parsed.font : "Helvetica";
-        return {
-            value: parsed.value || "",
-            style: {
-                fontFamily: font, 
-                fontSize: parsed.size ? `${parsed.size}px` : "12px", 
-                color: parsed.color || "#000000"
+        if (!item) return "";
+
+        // Try to parse in case it's the old {value, font, size, color} format
+        try {
+            const parsed = JSON.parse(item);
+            if (parsed && typeof parsed === 'object' && 'value' in parsed) {
+                return parsed.value || "";
             }
-        };
+            return String(parsed);
+        } catch (e) {
+            // Not JSON, just return raw string
+            return item;
+        }
     } catch (e) {
-        return { value: "" };
+        return "";
     }
 };
 const getIds = (baseKey: string): string[] => {
@@ -187,53 +183,53 @@ export const dispatchCVDataChange = () => {
 };
 export const populateSampleData = () => {
     const sampleProfile = {
-        "First-Name": JSON.stringify({ value: "Adam", font: "Courier", size: "32", color: "#2563eb" }),
-        "Last-Name": JSON.stringify({ value: "Elmi", font: "Courier", size: "32", color: "#1e293b" }),
-        "Title": JSON.stringify({ value: "Senior Full Stack Engineeer", font: "Helvetica", size: "16", color: "#64748b" }),
-        "Email": JSON.stringify({ value: "adam.elmi@example.com", font: "Helvetica", size: "12" }),
-        "Phone-Number": JSON.stringify({ value: "+1 234 567 890", font: "Helvetica", size: "12" }),
-        "City": JSON.stringify({ value: "San Francisco", font: "Helvetica", size: "12" }),
-        "Country": JSON.stringify({ value: "USA", font: "Helvetica", size: "12" }),
+        "First-Name": "Adam",
+        "Last-Name": "Elmi",
+        "Title": "Senior Full Stack Engineeer",
+        "Email": "adam.elmi@example.com",
+        "Phone-Number": "+1 234 567 890",
+        "City": "San Francisco",
+        "Country": "USA",
     };
     const linkId = "link_" + Date.now();
     localStorage.setItem("Profile_Link_IDs", JSON.stringify([linkId]));
-    localStorage.setItem(linkId, JSON.stringify({ value: "github.com/adam-elmi", font: "Helvetica", size: "12" }));
+    localStorage.setItem(linkId, "github.com/adam-elmi");
     Object.entries(sampleProfile).forEach(([key, val]) => localStorage.setItem(key, val));
     const expId1 = "exp_" + Date.now();
     const expId2 = "exp_" + (Date.now() + 1);
     localStorage.setItem("Experience_IDs", JSON.stringify([expId1, expId2]));
-    localStorage.setItem(`${expId1}_Position`, JSON.stringify({ value: "Senior Developer", font: "Helvetica", size: "14", color: "#0f172a" }));
-    localStorage.setItem(`${expId1}_Company`, JSON.stringify({ value: "Tech Corp", font: "Helvetica", size: "14" }));
-    localStorage.setItem(`${expId1}_StartDate`, JSON.stringify({ value: "2020", font: "Helvetica" }));
-    localStorage.setItem(`${expId1}_EndDate`, JSON.stringify({ value: "Present", font: "Helvetica" }));
-    localStorage.setItem(`${expId1}_Description`, JSON.stringify({ value: "Led a team of 5 developers to build a cloud-native application.", font: "Helvetica", size: "12" }));
-    localStorage.setItem(`${expId1}_Responsibilities`, JSON.stringify({ value: "• Architected microservices\n• Mentored junior devs\n• Reduced latency by 40%", font: "Helvetica", size: "12" }));
-    localStorage.setItem(`${expId2}_Position`, JSON.stringify({ value: "Web Developer", font: "Helvetica", size: "14", color: "#0f172a" }));
-    localStorage.setItem(`${expId2}_Company`, JSON.stringify({ value: "Web Solutions Inc", font: "Helvetica", size: "14" }));
-    localStorage.setItem(`${expId2}_StartDate`, JSON.stringify({ value: "2018", font: "Helvetica" }));
-    localStorage.setItem(`${expId2}_EndDate`, JSON.stringify({ value: "2020", font: "Helvetica" }));
-    localStorage.setItem(`${expId2}_Responsibilities`, JSON.stringify({ value: "• Developed responsive websites\n• Integrated payment gateways", font: "Helvetica", size: "12" }));
+    localStorage.setItem(`${expId1}_Position`, "Senior Developer");
+    localStorage.setItem(`${expId1}_Company`, "Tech Corp");
+    localStorage.setItem(`${expId1}_StartDate`, "2020");
+    localStorage.setItem(`${expId1}_EndDate`, "Present");
+    localStorage.setItem(`${expId1}_Description`, "Led a team of 5 developers to build a cloud-native application.");
+    localStorage.setItem(`${expId1}_Responsibilities`, "• Architected microservices\n• Mentored junior devs\n• Reduced latency by 40%");
+    localStorage.setItem(`${expId2}_Position`, "Web Developer");
+    localStorage.setItem(`${expId2}_Company`, "Web Solutions Inc");
+    localStorage.setItem(`${expId2}_StartDate`, "2018");
+    localStorage.setItem(`${expId2}_EndDate`, "2020");
+    localStorage.setItem(`${expId2}_Responsibilities`, "• Developed responsive websites\n• Integrated payment gateways");
     const eduId = "edu_" + Date.now();
     localStorage.setItem("Education_IDs", JSON.stringify([eduId]));
-    localStorage.setItem(`${eduId}_School`, JSON.stringify({ value: "University of Tech", font: "Helvetica", size: "14", color: "#0f172a" }));
-    localStorage.setItem(`${eduId}_Degree`, JSON.stringify({ value: "B.S. Computer Science", font: "Helvetica", size: "14" }));
-    localStorage.setItem(`${eduId}_StartDate`, JSON.stringify({ value: "2014", font: "Helvetica" }));
-    localStorage.setItem(`${eduId}_EndDate`, JSON.stringify({ value: "2018", font: "Helvetica" }));
+    localStorage.setItem(`${eduId}_School`, "University of Tech");
+    localStorage.setItem(`${eduId}_Degree`, "B.S. Computer Science");
+    localStorage.setItem(`${eduId}_StartDate`, "2014");
+    localStorage.setItem(`${eduId}_EndDate`, "2018");
     const skill1 = "skill_" + Date.now();
     const skill2 = "skill_" + (Date.now() + 1);
     localStorage.setItem("Skills_IDs", JSON.stringify([skill1, skill2]));
-    localStorage.setItem(`${skill1}_Skill`, JSON.stringify({ value: "React & TypeScript", font: "Helvetica", size: "12" }));
-    localStorage.setItem(`${skill2}_Skill`, JSON.stringify({ value: "Node.js & Python", font: "Helvetica", size: "12" }));
+    localStorage.setItem(`${skill1}_Skill`, "React & TypeScript");
+    localStorage.setItem(`${skill2}_Skill`, "Node.js & Python");
     const projId = "proj_" + Date.now();
     localStorage.setItem("Projects_IDs", JSON.stringify([projId]));
-    localStorage.setItem(`${projId}_ProjectName`, JSON.stringify({ value: "Quick CV", font: "Helvetica", size: "14", color: "#0f172a" }));
-    localStorage.setItem(`${projId}_TechStack`, JSON.stringify({ value: "React, PDF renderer", font: "Helvetica", size: "12" }));
-    localStorage.setItem(`${projId}_Description`, JSON.stringify({ value: "A real-time CV builder with PDF export.", font: "Helvetica", size: "12" }));
+    localStorage.setItem(`${projId}_ProjectName`, "Quick CV");
+    localStorage.setItem(`${projId}_TechStack`, "React, PDF renderer");
+    localStorage.setItem(`${projId}_Description`, "A real-time CV builder with PDF export.");
     const awardId = "award_" + Date.now();
     localStorage.setItem("Awards_IDs", JSON.stringify([awardId]));
-    localStorage.setItem(`${awardId}_AwardName`, JSON.stringify({ value: "Best Developer", font: "Helvetica", size: "12" }));
-    localStorage.setItem(`${awardId}_Organization`, JSON.stringify({ value: "Company", font: "Helvetica", size: "12" }));
-    localStorage.setItem(`${awardId}_Date`, JSON.stringify({ value: "2021", font: "Helvetica", size: "12" }));
+    localStorage.setItem(`${awardId}_AwardName`, "Best Developer");
+    localStorage.setItem(`${awardId}_Organization`, "Company");
+    localStorage.setItem(`${awardId}_Date`, "2021");
     dispatchCVDataChange();
 };
 export function useCVData() {
