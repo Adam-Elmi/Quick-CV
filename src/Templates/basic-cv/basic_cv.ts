@@ -1,18 +1,8 @@
-import { CVData, StyledValue } from "../../Utilities/cvDataStore";
-import imageSrc from "../../assets/media/naruto_togather.jpg";
+import { CVData } from "../../Utilities/cvDataStore";
+
 export default function basic_cv(data: CVData) {
-  const { profile, education, experience, skills, projects, languages, awards, settings } = data;
-  const renderStyled = (item: StyledValue) => {
-    if (!item || !item.value) return "";
-    let fontFamily = item.style?.fontFamily || 'inherit';
-    if (fontFamily === 'Monospace') fontFamily = 'Courier';
-    const styleString = item.style
-      ? `font-family: ${fontFamily}; font-size: ${item.style.fontSize || 'inherit'}; color: ${item.style.color || 'inherit'};`
-      : "";
-    return `<span style="${styleString}">${item.value}</span>`;
-  };
-  const fullName = `${renderStyled(profile.firstName)} ${renderStyled(profile.lastName)}`;
-  const title = renderStyled(profile.title);
+  const { education, experience, skills, projects, languages, awards, settings } = data;
+
   const renderSection = (title: string, content: string) => {
     if (!content) return "";
     return `
@@ -22,56 +12,84 @@ export default function basic_cv(data: CVData) {
       </div>
     `;
   };
+
   const eduHtml = education.map(edu => `
     <div style="margin-bottom: 10px;">
       <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 12px; color: #1e293b;">
-        <span>${renderStyled(edu.school)}</span>
-        <span>${renderStyled(edu.startDate)} - ${renderStyled(edu.endDate)}</span>
+        <span>${edu.school}</span>
+        <span>${edu.startDate} - ${edu.endDate}</span>
       </div>
-      <div style="font-size: 12px; font-style: italic; color: #475569;">${renderStyled(edu.degree)} ${edu.city.value ? `| ${renderStyled(edu.city)}` : ''}</div>
-      ${edu.description.value ? `<div style="font-size: 11px; margin-top: 2px;">${renderStyled(edu.description)}</div>` : ''}
+      <div style="font-size: 12px; font-style: italic; color: #475569;">${edu.degree} ${edu.city ? `| ${edu.city}` : ''}</div>
+      ${edu.description ? `<div style="font-size: 11px; margin-top: 2px;">${edu.description}</div>` : ''}
     </div>
   `).join('');
+
   const expHtml = experience.map(exp => `
     <div style="margin-bottom: 12px;">
       <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 12px; color: #1e293b;">
-        <span>${renderStyled(exp.position)}</span>
-        <span>${renderStyled(exp.startDate)} - ${renderStyled(exp.endDate)}</span>
+        <span>${exp.position}</span>
+        <span>${exp.startDate} - ${exp.endDate}</span>
       </div>
-      <div style="font-size: 12px; font-style: italic; color: #475569;">${renderStyled(exp.company)} ${exp.city.value ? `| ${renderStyled(exp.city)}` : ''}</div>
-      ${exp.responsibilities.value ? `<div style="font-size: 11px; margin-top: 4px; white-space: pre-wrap;">${renderStyled(exp.responsibilities)}</div>` : ''}
+      <div style="font-size: 12px; font-style: italic; color: #475569;">${exp.company} ${exp.city ? `| ${exp.city}` : ''}</div>
+      ${exp.responsibilities ? `<div style="font-size: 11px; margin-top: 4px; white-space: pre-wrap;">${exp.responsibilities}</div>` : ''}
     </div>
   `).join('');
+
   const skillsHtml = skills.length ? `
     <div style="font-size: 11px;">
       <span style="font-weight: bold; color: #1e293b;">Skills: </span>
-      ${skills.map(s => renderStyled(s.name)).filter(Boolean).join(', ')}
+      ${skills.map(s => s.name).filter(Boolean).join(', ')}
     </div>
   ` : '';
+
   const projHtml = projects.map(proj => `
     <div style="margin-bottom: 10px;">
       <div style="font-weight: bold; font-size: 12px; color: #1e293b;">
-        ${renderStyled(proj.name)}
-        ${proj.link.value ? `<a href="${proj.link.value}" style="font-weight: normal; color: #2563eb; text-decoration: none; font-size: 10px; margin-left: 5px;">[Link]</a>` : ''}
+        ${proj.name}
+        ${proj.link ? `<a href="${proj.link}" style="font-weight: normal; color: #2563eb; text-decoration: none; font-size: 10px; margin-left: 5px;">[Link]</a>` : ''}
       </div>
-      ${proj.techStack.value ? `<div style="font-size: 11px; color: #64748b; margin-bottom: 2px;"><em>Stack: ${renderStyled(proj.techStack)}</em></div>` : ''}
-      ${proj.description.value ? `<div style="font-size: 11px;">${renderStyled(proj.description)}</div>` : ''}
+      ${proj.techStack ? `<div style="font-size: 11px; color: #64748b; margin-bottom: 2px;"><em>Stack: ${proj.techStack}</em></div>` : ''}
+      ${proj.description ? `<div style="font-size: 11px;">${proj.description}</div>` : ''}
     </div>
   `).join('');
+
   const langHtml = languages.length ? `
    <div style="font-size: 11px;">
      <span style="font-weight: bold; color: #1e293b;">Languages: </span>
-     ${languages.map(l => `${renderStyled(l.language)} ${l.proficiency.value ? `(${renderStyled(l.proficiency)})` : ''}`).filter(n => n.trim().length > 0).join(', ')}
+     ${languages.map(l => `${l.language} ${l.proficiency ? `(${l.proficiency})` : ''}`).filter(n => n.trim().length > 0).join(', ')}
    </div>
  ` : '';
+
   const awardHtml = awards.map(aw => `
     <div style="margin-bottom: 8px; font-size: 11px;">
-      <span style="font-weight: bold; color: #1e293b;">${renderStyled(aw.name)}</span>
-      ${aw.organization.value ? `<span> | ${renderStyled(aw.organization)}</span>` : ''}
-      ${aw.date.value ? `<span style="color: #64748b;"> (${renderStyled(aw.date)})</span>` : ''}
-      ${aw.description.value ? `<div style="margin-top: 1px;">${renderStyled(aw.description)}</div>` : ''}
+      <span style="font-weight: bold; color: #1e293b;">${aw.name}</span>
+      ${aw.organization ? `<span> | ${aw.organization}</span>` : ''}
+      ${aw.date ? `<span style="color: #64748b;"> (${aw.date})</span>` : ''}
+      ${aw.description ? `<div style="margin-top: 1px;">${aw.description}</div>` : ''}
     </div>
    `).join('');
+
+  const getLinkIcon = (url: string) => {
+    const lowerUrl = url.toLowerCase();
+    if (lowerUrl.includes("github.com")) return '<i class="fa-brands fa-github"></i>';
+    if (lowerUrl.includes("linkedin.com")) return '<i class="fa-brands fa-linkedin"></i>';
+    if (lowerUrl.includes("twitter.com") || lowerUrl.includes("x.com")) return '<i class="fa-brands fa-twitter"></i>';
+    if (lowerUrl.includes("facebook.com")) return '<i class="fa-brands fa-facebook"></i>';
+    if (lowerUrl.includes("instagram.com")) return '<i class="fa-brands fa-instagram"></i>';
+    if (lowerUrl.includes("youtube.com")) return '<i class="fa-brands fa-youtube"></i>';
+    return '<i class="fa-solid fa-link"></i>';
+  };
+
+  const linksHtml = data.profile.links && data.profile.links.length > 0 ? `
+    <div style="font-size: 10px; margin-top: 8px; display: flex; gap: 12px; justify-content: center; color: #475569;">
+      ${data.profile.links.map(l => `
+        <span style="display: flex; items-center gap: 4px;">
+          ${getLinkIcon(l.value)} ${l.value.replace(/https?:\/\/(www\.)?/, '')}
+        </span>
+      `).join('')}
+    </div>
+  ` : '';
+
   return `
     <style>
       body { font-family: 'Helvetica', sans-serif; color: #333; line-height: 1.4; }
@@ -79,16 +97,12 @@ export default function basic_cv(data: CVData) {
     </style>
     <!-- Header -->
     <div style="text-align: center; margin-bottom: 20px; border-bottom: 2px solid #333; padding-bottom: 15px;">
-      <h1 style="font-size: 24px; font-weight: bold; text-transform: uppercase; margin: 0; color: #1e293b;">${fullName}</h1>
-      <div style="font-size: 14px; color: #64748b; margin-top: 5px; font-weight: 500;">${title}</div>
+      <h1 style="font-size: 24px; font-weight: bold; text-transform: uppercase; margin: 0; color: #1e293b;">{profile.firstName} {profile.lastName}</h1>
+      <div style="font-size: 14px; color: #64748b; margin-top: 5px; font-weight: 500;">{profile.title}</div>
       <div style="font-size: 11px; color: #475569; margin-top: 8px;">
-        ${[renderStyled(profile.email), renderStyled(profile.phone), renderStyled(profile.city), renderStyled(profile.country)].filter(Boolean).join(' | ')}
+        {profile.email} | {profile.phone} | {profile.city} | {profile.country}
       </div>
-       ${profile.links.length > 0 ? `
-        <div style="font-size: 11px; margin-top: 5px;">
-           ${profile.links.map(l => renderStyled(l.value)).join(' | ')}
-        </div>
-       ` : ''}
+      ${linksHtml}
     </div>
     <!-- Content -->
     ${(settings.experience && expHtml) ? renderSection("Experience", expHtml) : ''}
