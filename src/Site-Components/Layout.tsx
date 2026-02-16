@@ -3,6 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import HeroSection from "./Hero-Section";
 import StepsSection from "./Steps-Section";
+import ContributionSection from "./Contribution-Section";
 
 
 export default function Layout() {
@@ -13,6 +14,7 @@ export default function Layout() {
         <>
           <HeroSection />
           <StepsSection />
+          <ContributionSection />
         </>
       );
     } else {
