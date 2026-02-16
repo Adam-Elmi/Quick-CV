@@ -35,7 +35,7 @@ export default function CV() {
   ];
   return (
     <div className=" w-full flex flex-col justify-center items-center">
-      <div className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-3 flex justify-between items-center transition-all duration-300">
+      <div className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-slate-200 px-4 sm:px-6 py-3 flex justify-between items-center flex-wrap gap-3 transition-all duration-300">
         <div className="flex items-center gap-2">
           {}
           <button
