@@ -1,0 +1,10 @@
+# Profile
+[h1 = fontSize: 24, fontWeight: bold, textTransform: uppercase, margin: 0, color: "#1e293b"]
+  p{First-Name} p{Last-Name}
+[end]
+[div = fontSize: 14, color: "#64748b", marginTop: 5, fontWeight: 500]
+  p{Title}
+[end]
+[div = fontSize: 11, color: "#475569", marginTop: 8]
+  p{Email} | p{Phone} | p{City} | p{Country}
+[end]

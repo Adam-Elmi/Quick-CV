@@ -4,9 +4,11 @@ type InputFieldType = {
   label: string;
   type: string;
   placeholder: string;
-  icon: React.ReactNode;
+  icon: string;
   dataId: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => unknown
+  onChange?: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => unknown
   input_value?: string;
+  multiline?: boolean;
+  required?: boolean;
 }
 export default InputFieldType;

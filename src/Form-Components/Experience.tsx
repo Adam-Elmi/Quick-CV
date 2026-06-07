@@ -58,12 +58,13 @@ export default function Experience() {
                                 />
                                 {}
                                 <InputWrapper
-                                    dataId={`${id}_Description`}
+                                    dataId={`${id}_Responsibilities`}
                                     type="text"
                                     label="Responsibilities / Achievements"
                                     placeholder="Led a team of..."
                                     icon="fa-solid fa-list-ul"
                                     className="sm:col-span-2 sm:max-w-none"
+                                    multiline={true}
                                 />
                             </div>
                         )}

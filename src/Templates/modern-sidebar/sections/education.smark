@@ -1,0 +1,20 @@
+# Education
+[div]
+  [h2 = fontSize: 16, color: "#1e3a8a", borderBottom: "2px solid #1e3a8a", paddingBottom: 5, marginBottom: 15, fontWeight: bold]
+    EDUCATION
+  [end]
+  # Edu 1
+  [div = marginBottom: 10]
+    [div = fontWeight: bold, fontSize: 13]
+      [span]
+        p{edu-1-school}
+      [end]
+      [span = color: "#64748b"]
+        p{edu-1-start} - p{edu-1-end}
+      [end]
+    [end]
+    [div = fontSize: 12, color: "#475569"]
+      p{edu-1-degree}
+    [end]
+  [end]
+[end]

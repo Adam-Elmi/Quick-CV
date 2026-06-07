@@ -1,57 +1,62 @@
-import { useState, useEffect } from 'react';
-export type CVValue = string;
+import { useState, useEffect } from "react";
+
+export const CV_DATA_CHANGE_EVENT = 'cv-data-change';
+
+export const dispatchCVDataChange = () => {
+    window.dispatchEvent(new CustomEvent(CV_DATA_CHANGE_EVENT));
+};
+
+type CVValue = string;
 
 export interface CVData {
     profile: {
-        firstName: CVValue;
-        lastName: CVValue;
-        title: CVValue;
-        email: CVValue;
-        phone: CVValue;
-        country: CVValue;
-        city: CVValue;
-        links: { id: string; value: CVValue }[];
+        firstName: string;
+        lastName: string;
+        title: string;
+        email1: string;
+        email2: string;
+        phone1: string;
+        phone2: string;
+        country: string;
+        city: string;
+        street1: string;
+        street2: string;
+        links: { id: string; value: string }[];
+        picture: string;
+        sectionTitle: string;
     };
     education: {
-        id: string;
-        school: CVValue;
-        degree: CVValue;
-        city: CVValue;
-        startDate: CVValue;
-        endDate: CVValue;
-        description: CVValue;
+        school: string;
+        degree: string;
+        city: string;
+        startDate: string;
+        endDate: string;
+        description: string;
     }[];
     experience: {
-        id: string;
-        position: CVValue;
-        company: CVValue;
-        city: CVValue;
-        startDate: CVValue;
-        endDate: CVValue;
-        responsibilities: CVValue;
+        position: string;
+        company: string;
+        city: string;
+        startDate: string;
+        endDate: string;
+        responsibilities: string;
     }[];
-    skills: {
-        id: string;
-        name: CVValue;
-    }[];
+    skills: { name: string }[];
     projects: {
-        id: string;
-        name: CVValue;
-        techStack: CVValue;
-        link: CVValue;
-        description: CVValue;
+        name: string;
+        description: string;
+        link: string;
+        techStack: string;
     }[];
     languages: {
-        id: string;
-        language: CVValue;
-        proficiency: CVValue;
+        language: string;
+        proficiency: string;
     }[];
     awards: {
-        id: string;
-        name: CVValue;
-        organization: CVValue;
-        date: CVValue;
-        description: CVValue;
+        name: string;
+        organization: string;
+        date: string;
+        description: string;
     }[];
     settings: {
         [key: string]: boolean;
@@ -59,183 +64,154 @@ export interface CVData {
     selectedTemplate: string;
 }
 
+export interface TemplateConfig {
+    name: string;
+    description: string;
+    features: {
+        picture: boolean;
+        socialLinks: { max: number };
+        skills: { max: number };
+    };
+    requiredFields: string[];
+}
+
+// Memory cache to prevent expensive localStorage lookups on every keystroke
+let cachedData: CVData | null = null;
+
 const getVal = (key: string): CVValue => {
     try {
         const item = localStorage.getItem(key);
         if (!item) return "";
 
-        // Try to parse in case it's the old {value, font, size, color} format
+        if (item.startsWith('data:image') || item.length > 500) return item;
+
         try {
             const parsed = JSON.parse(item);
             if (parsed && typeof parsed === 'object' && 'value' in parsed) {
                 return parsed.value || "";
             }
             return String(parsed);
-        } catch (e) {
-            // Not JSON, just return raw string
+        } catch {
             return item;
         }
     } catch (e) {
         return "";
     }
 };
-const getIds = (baseKey: string): string[] => {
-    try {
-        const item = localStorage.getItem(`${baseKey}_IDs`);
-        if (!item) return [];
-        return JSON.parse(item);
-    } catch (e) {
-        return [];
-    }
-};
-const getSettings = (): { [key: string]: boolean } => {
-    try {
-        const item = localStorage.getItem("cv_settings");
-        if (!item) {
-            return {
-                experience: true,
-                education: true,
-                skills: true,
-                projects: true,
-                languages: true,
-                awards: true,
-            };
-        }
-        return JSON.parse(item);
-    } catch (e) {
-        return {};
-    }
-};
-export const updateCVSettings = (newSettings: { [key: string]: boolean }) => {
-    localStorage.setItem("cv_settings", JSON.stringify(newSettings));
-    dispatchCVDataChange();
-}
+
 export const getCVData = (): CVData => {
-    return {
+    const t1 = performance.now();
+    if (cachedData) return cachedData;
+
+    const profileLinksIds = JSON.parse(localStorage.getItem("Profile_Link_IDs") || "[]");
+    const skillsIds = JSON.parse(localStorage.getItem("Skills_IDs") || "[]");
+    const educationIds = JSON.parse(localStorage.getItem("Education_IDs") || "[]");
+    const experienceIds = JSON.parse(localStorage.getItem("Experience_IDs") || "[]");
+    const projectsIds = JSON.parse(localStorage.getItem("Projects_IDs") || "[]");
+    const languagesIds = JSON.parse(localStorage.getItem("Languages_IDs") || "[]");
+    const awardsIds = JSON.parse(localStorage.getItem("Awards_IDs") || "[]");
+
+    const data: CVData = {
         profile: {
             firstName: getVal("First-Name"),
             lastName: getVal("Last-Name"),
             title: getVal("Title"),
-            email: getVal("Email"),
-            phone: getVal("Phone-Number"),
+            email1: getVal("Email-1"),
+            email2: getVal("Email-2"),
+            phone1: getVal("Phone-1"),
+            phone2: getVal("Phone-2"),
             country: getVal("Country"),
             city: getVal("City"),
-            links: getIds("Profile_Link").map(id => ({
-                id,
-                value: getVal(id)
-            })),
+            street1: getVal("Street-1"),
+            street2: getVal("Street-2"),
+            sectionTitle: getVal("Section-Title-Profile"),
+            picture: getVal("Profile-Picture"),
+            links: profileLinksIds.map((id: string) => ({ id, value: getVal(id) })),
         },
-        education: getIds("Education").map(id => ({
-            id,
+        education: educationIds.map((id: string) => ({
             school: getVal(`${id}_School`),
             degree: getVal(`${id}_Degree`),
             city: getVal(`${id}_City`),
-            startDate: getVal(`${id}_StartDate`),
-            endDate: getVal(`${id}_EndDate`),
+            startDate: getVal(`${id}_Start-Date`),
+            endDate: getVal(`${id}_End-Date`),
             description: getVal(`${id}_Description`),
         })),
-        experience: getIds("Experience").map(id => ({
-            id,
+        experience: experienceIds.map((id: string) => ({
             position: getVal(`${id}_Position`),
             company: getVal(`${id}_Company`),
             city: getVal(`${id}_City`),
-            startDate: getVal(`${id}_StartDate`),
-            endDate: getVal(`${id}_EndDate`),
+            startDate: getVal(`${id}_Start-Date`),
+            endDate: getVal(`${id}_End-Date`),
             responsibilities: getVal(`${id}_Responsibilities`),
         })),
-        skills: getIds("Skills").map(id => ({
-            id,
+        skills: skillsIds.map((id: string) => ({
             name: getVal(`${id}_Skill`),
         })),
-        projects: getIds("Projects").map(id => ({
-            id,
-            name: getVal(`${id}_ProjectName`),
-            techStack: getVal(`${id}_TechStack`),
-            link: getVal(`${id}_ProjectLink`),
+        projects: projectsIds.map((id: string) => ({
+            name: getVal(`${id}_Project-Name`),
             description: getVal(`${id}_Description`),
+            link: getVal(`${id}_Link`),
+            techStack: getVal(`${id}_Tech-Stack`),
         })),
-        languages: getIds("Languages").map(id => ({
-            id,
+        languages: languagesIds.map((id: string) => ({
             language: getVal(`${id}_Language`),
             proficiency: getVal(`${id}_Proficiency`),
         })),
-        awards: getIds("Awards").map(id => ({
-            id,
-            name: getVal(`${id}_AwardName`),
+        awards: awardsIds.map((id: string) => ({
+            name: getVal(`${id}_Award-Name`),
             organization: getVal(`${id}_Organization`),
             date: getVal(`${id}_Date`),
             description: getVal(`${id}_Description`),
         })),
-        settings: getSettings(),
-        selectedTemplate: getTemplateId(),
+        settings: JSON.parse(localStorage.getItem("cv_settings") || "{\"education\":true, \"experience\":true, \"skills\":true, \"projects\":true, \"languages\":false, \"awards\":false}"),
+        selectedTemplate: localStorage.getItem("selectedTemplate") || "modern-sidebar",
     };
+
+    cachedData = data;
+    const t2 = performance.now();
+    if (t2 - t1 > 10) {
+        console.warn(`[PERF] getCVData took ${(t2 - t1).toFixed(2)}ms! This is likely the lag source.`);
+    }
+    return data;
 };
-const getTemplateId = (): string => {
-    return localStorage.getItem("selected_template") || "modern";
+
+// ACTIONS
+export const updateCVSettings = (settings: any) => {
+    localStorage.setItem("cv_settings", JSON.stringify(settings));
+    cachedData = null;
+    dispatchCVDataChange();
 };
+
 export const selectTemplate = (id: string) => {
-    localStorage.setItem("selected_template", id);
+    localStorage.setItem("selectedTemplate", id);
+    cachedData = null;
     dispatchCVDataChange();
 };
-export const CV_DATA_CHANGE_EVENT = 'cv-data-change';
-export const dispatchCVDataChange = () => {
-    window.dispatchEvent(new Event(CV_DATA_CHANGE_EVENT));
-};
+
 export const populateSampleData = () => {
-    const sampleProfile = {
-        "First-Name": "Adam",
-        "Last-Name": "Elmi",
-        "Title": "Senior Full Stack Engineeer",
-        "Email": "adam.elmi@example.com",
-        "Phone-Number": "+1 234 567 890",
-        "City": "San Francisco",
-        "Country": "USA",
-    };
-    const linkId = "link_" + Date.now();
-    localStorage.setItem("Profile_Link_IDs", JSON.stringify([linkId]));
-    localStorage.setItem(linkId, "github.com/adam-elmi");
-    Object.entries(sampleProfile).forEach(([key, val]) => localStorage.setItem(key, val));
-    const expId1 = "exp_" + Date.now();
-    const expId2 = "exp_" + (Date.now() + 1);
-    localStorage.setItem("Experience_IDs", JSON.stringify([expId1, expId2]));
-    localStorage.setItem(`${expId1}_Position`, "Senior Developer");
-    localStorage.setItem(`${expId1}_Company`, "Tech Corp");
-    localStorage.setItem(`${expId1}_StartDate`, "2020");
-    localStorage.setItem(`${expId1}_EndDate`, "Present");
-    localStorage.setItem(`${expId1}_Description`, "Led a team of 5 developers to build a cloud-native application.");
-    localStorage.setItem(`${expId1}_Responsibilities`, "• Architected microservices\n• Mentored junior devs\n• Reduced latency by 40%");
-    localStorage.setItem(`${expId2}_Position`, "Web Developer");
-    localStorage.setItem(`${expId2}_Company`, "Web Solutions Inc");
-    localStorage.setItem(`${expId2}_StartDate`, "2018");
-    localStorage.setItem(`${expId2}_EndDate`, "2020");
-    localStorage.setItem(`${expId2}_Responsibilities`, "• Developed responsive websites\n• Integrated payment gateways");
-    const eduId = "edu_" + Date.now();
-    localStorage.setItem("Education_IDs", JSON.stringify([eduId]));
-    localStorage.setItem(`${eduId}_School`, "University of Tech");
-    localStorage.setItem(`${eduId}_Degree`, "B.S. Computer Science");
-    localStorage.setItem(`${eduId}_StartDate`, "2014");
-    localStorage.setItem(`${eduId}_EndDate`, "2018");
-    const skill1 = "skill_" + Date.now();
-    const skill2 = "skill_" + (Date.now() + 1);
-    localStorage.setItem("Skills_IDs", JSON.stringify([skill1, skill2]));
-    localStorage.setItem(`${skill1}_Skill`, "React & TypeScript");
-    localStorage.setItem(`${skill2}_Skill`, "Node.js & Python");
-    const projId = "proj_" + Date.now();
-    localStorage.setItem("Projects_IDs", JSON.stringify([projId]));
-    localStorage.setItem(`${projId}_ProjectName`, "Quick CV");
-    localStorage.setItem(`${projId}_TechStack`, "React, PDF renderer");
-    localStorage.setItem(`${projId}_Description`, "A real-time CV builder with PDF export.");
-    const awardId = "award_" + Date.now();
-    localStorage.setItem("Awards_IDs", JSON.stringify([awardId]));
-    localStorage.setItem(`${awardId}_AwardName`, "Best Developer");
-    localStorage.setItem(`${awardId}_Organization`, "Company");
-    localStorage.setItem(`${awardId}_Date`, "2021");
+    localStorage.setItem("First-Name", "Adam");
+    localStorage.setItem("Last-Name", "Elmi");
+    localStorage.setItem("Title", "Senior Software Engineer");
+    localStorage.setItem("Email-1", "adam@example.com");
+    localStorage.setItem("Phone-1", "+1 234 567 890");
+    localStorage.setItem("City", "New York");
+    localStorage.setItem("Country", "USA");
+    cachedData = null;
     dispatchCVDataChange();
 };
+
+export const clearCVData = () => {
+    localStorage.clear();
+    cachedData = null;
+    dispatchCVDataChange();
+    window.location.reload();
+};
+
 export function useCVData() {
     const [data, setData] = useState<CVData>(getCVData());
     useEffect(() => {
         const handleStorageChange = () => {
+            cachedData = null;
             setData(getCVData());
         };
         window.addEventListener(CV_DATA_CHANGE_EVENT, handleStorageChange);
@@ -246,4 +222,12 @@ export function useCVData() {
         };
     }, []);
     return data;
+}
+
+import { TEMPLATES } from '../Templates';
+
+export function useActiveTemplateConfig(): TemplateConfig {
+    const data = useCVData();
+    const activeTemplate = TEMPLATES.find(t => t.id === data.selectedTemplate) || TEMPLATES[0];
+    return activeTemplate.config;
 }

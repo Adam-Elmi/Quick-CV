@@ -1,0 +1,12 @@
+# Profile
+[div = marginBottom: 30]
+  [h1 = fontSize: 24, fontWeight: bold, margin: 0, textTransform: uppercase]
+    p{First-Name}
+  [end]
+  [h1 = fontSize: 24, fontWeight: bold, margin: 0, textTransform: uppercase, color: "#93c5fd"]
+    p{Last-Name}
+  [end]
+  [div = fontSize: 12, marginTop: 10, color: "#bfdbfe", fontWeight: 500]
+    p{Title}
+  [end]
+[end]

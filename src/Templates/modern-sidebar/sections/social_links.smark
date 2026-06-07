@@ -1,0 +1,18 @@
+# Social Links (Static 1-4)
+[div = marginBottom: 25]
+  [div = fontSize: 12, fontWeight: bold, borderBottom: "1px solid #3b82f6", paddingBottom: 5, marginBottom: 10]
+    SOCIAL
+  [end]
+  [div = fontSize: 10, marginBottom: 5]
+    p{link-1}
+  [end]
+  [div = fontSize: 10, marginBottom: 5]
+    p{link-2}
+  [end]
+  [div = fontSize: 10, marginBottom: 5]
+    p{link-3}
+  [end]
+  [div = fontSize: 10]
+    p{link-4}
+  [end]
+[end]

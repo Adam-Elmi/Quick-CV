@@ -1,0 +1,40 @@
+# Experience Section
+[div = marginTop: 15]
+  [h3 = borderBottom: "1px solid #ddd", paddingBottom: 5, marginBottom: 10, color: "#334155", fontSize: 14, fontWeight: bold, textTransform: uppercase]
+    Experience
+  [end]
+  # Exp 1
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{exp-1-position}
+      [end]
+      [span]
+        p{exp-1-start} - p{exp-1-end}
+      [end]
+    [end]
+    [div = fontSize: 12, fontStyle: italic, color: "#475569"]
+      p{exp-1-company} | p{exp-1-city}
+    [end]
+    [div = fontSize: 11, marginTop: 4]
+      p{exp-1-desc}
+    [end]
+  [end]
+  # Exp 2
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{exp-2-position}
+      [end]
+      [span]
+        p{exp-2-start} - p{exp-2-end}
+      [end]
+    [end]
+    [div = fontSize: 12, fontStyle: italic, color: "#475569"]
+      p{exp-2-company} | p{exp-2-city}
+    [end]
+    [div = fontSize: 11, marginTop: 4]
+      p{exp-2-desc}
+    [end]
+  [end]
+[end]

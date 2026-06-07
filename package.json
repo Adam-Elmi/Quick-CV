@@ -18,7 +18,9 @@
     "react-pdf-html": "^2.1.4",
     "react-router-dom": "^7.0.2",
     "react-syntax-highlighter": "^16.1.0",
-    "tailwindcss": "^4.1.17"
+    "sommark": "^4.1.0",
+    "tailwindcss": "^4.1.17",
+    "vite-plugin-node-polyfills": "^0.26.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",

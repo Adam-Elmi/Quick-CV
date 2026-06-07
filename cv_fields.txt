@@ -5,8 +5,7 @@
 	- Title
 	- Email address
 	- Phone Number
-	- Website
-	- Linkedin
+	- Links
 	- Country
 	- City
 	

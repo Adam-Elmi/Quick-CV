@@ -48,6 +48,7 @@ export default function Projects() {
                                     placeholder="Briefly describe what you built..."
                                     icon="fa-solid fa-align-left"
                                     className="sm:col-span-2 sm:max-w-none"
+                                    multiline={true}
                                 />
                             </div>
                         )}

@@ -1,0 +1,26 @@
+# Skills Section
+[div = marginTop: 15]
+  [h3 = borderBottom: "1px solid #ddd", paddingBottom: 5, marginBottom: 10, color: "#334155", fontSize: 14, fontWeight: bold, textTransform: uppercase]
+    Skills
+  [end]
+  [div = display: flex, flexWrap: wrap, gap: 8]
+    [span = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{skill-1}
+    [end]
+    [span = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{skill-2}
+    [end]
+    [span = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{skill-3}
+    [end]
+    [span = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{skill-4}
+    [end]
+    [span = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{skill-5}
+    [end]
+    [span = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{skill-6}
+    [end]
+  [end]
+[end]

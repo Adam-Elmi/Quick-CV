@@ -3,6 +3,13 @@
 
 <head>
   <meta charset="UTF-8" />
+  <script>
+    window.process = {
+      cwd: () => '/',
+      platform: 'browser',
+      env: {}
+    };
+  </script>
   <link rel="icon" type="image/svg+xml" href="Quick-CV-Icon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quick CV</title>

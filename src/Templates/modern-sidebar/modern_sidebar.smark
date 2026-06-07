@@ -1,0 +1,39 @@
+[import = Profile: "./sections/profile.smark"][end]
+[import = Contact: "./sections/contact.smark"][end]
+[import = SocialLinks: "./sections/social_links.smark"][end]
+[import = Skills: "./sections/skills.smark"][end]
+[import = Experience: "./sections/experience.smark"][end]
+[import = Education: "./sections/education.smark"][end]
+
+# Style
+@_style_@;
+  body { font-family: 'Helvetica', sans-serif; color: #333; margin: 0; padding: 0; }
+  span:empty, div:empty { display: none; }
+@_end_@
+
+# Section title & profile picture
+[div = textAlign: center]
+  p{profile_title}
+[end]
+
+# Main Layout
+[div = display: flex, minHeight: 100%]
+  # Sidebar
+  [div = width: 32%, backgroundColor: "#1e3a8a", color: white, padding: "30px 20px"]
+    # Profile Section
+    [$use-module = Profile][end]
+    # Contact Section
+    [$use-module = Contact][end]
+    # Social Links Section
+    [$use-module = SocialLinks][end]
+    # Skills Section
+    [$use-module = Skills][end]
+  [end]
+  # Main Content
+  [div = padding: "40px 30px"]
+    # Experience Section
+    [$use-module = Experience][end]
+    # Education Section
+    [$use-module = Education][end]
+  [end]
+[end]

@@ -1,0 +1,15 @@
+# Contact Info
+[div = marginBottom: 25]
+  [div = fontSize: 12, fontWeight: bold, borderBottom: "1px solid #3b82f6", paddingBottom: 5, marginBottom: 10]
+    CONTACT
+  [end]
+  [div = fontSize: 10, marginBottom: 5]
+    p{Email}
+  [end]
+  [div = fontSize: 10, marginBottom: 5]
+    p{Phone}
+  [end]
+  [div = fontSize: 10]
+    p{City}, p{Country}
+  [end]
+[end]

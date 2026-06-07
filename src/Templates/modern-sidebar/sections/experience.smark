@@ -1,0 +1,40 @@
+# Experience
+[div = marginBottom: 25]
+  [h2 = fontSize: 16, color: "#1e3a8a", borderBottom: "2px solid #1e3a8a", paddingBottom: 5, marginBottom: 15, fontWeight: bold]
+    EXPERIENCE
+  [end]
+  # Exp 1
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13]
+      [span]
+        p{exp-1-position}
+      [end]
+      [span = color: "#64748b"]
+        p{exp-1-start} - p{exp-1-end}
+      [end]
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 5]
+      p{exp-1-company}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{exp-1-desc}
+    [end]
+  [end]
+  # Exp 2
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13]
+      [span]
+        p{exp-2-position}
+      [end]
+      [span = color: "#64748b"]
+        p{exp-2-start} - p{exp-2-end}
+      [end]
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 5]
+      p{exp-2-company}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{exp-2-desc}
+    [end]
+  [end]
+[end]
