@@ -1,5 +1,5 @@
 // @ts-ignore
-import SomMark, { HTML } from "sommark";
+import SomMark, { HTML } from "sommark/browser";
 
 /**
  * Prepares a flat placeholders object from the structured CV data.
