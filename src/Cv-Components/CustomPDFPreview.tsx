@@ -15,11 +15,14 @@ interface CustomPDFPreviewProps {
 
 export default function CustomPDFPreview({ url, onLoad }: CustomPDFPreviewProps) {
     const [numPages, setNumPages] = useState<number>(0);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const pageRefs = useRef<Map<number, Element>>(new Map());
     
     // Initialize scale from localStorage if it exists
     const [scale, setScale] = useState<number>(() => {
         const savedZoom = localStorage.getItem("cv_zoom_level");
-        return savedZoom ? parseFloat(savedZoom) : 0.8;
+        if (savedZoom) return parseFloat(savedZoom);
+        return window.innerWidth < 640 ? 0.45 : 0.8;
     });
 
     const [containerWidth, setContainerWidth] = useState<number | null>(null);
@@ -88,9 +91,31 @@ export default function CustomPDFPreview({ url, onLoad }: CustomPDFPreviewProps)
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
         setNumPages(numPages);
+        setCurrentPage(1);
         setIsRendering(false);
         if (onLoad) onLoad(numPages);
     }
+
+    useEffect(() => {
+        if (numPages === 0) return;
+        const ratios = new Map<number, number>();
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    const page = Number(entry.target.getAttribute('data-page'));
+                    ratios.set(page, entry.intersectionRatio);
+                });
+                let best = 1, bestRatio = -1;
+                ratios.forEach((ratio, page) => {
+                    if (ratio > bestRatio) { bestRatio = ratio; best = page; }
+                });
+                setCurrentPage(best);
+            },
+            { root: containerRef.current, threshold: [0, 0.25, 0.5, 0.75, 1] }
+        );
+        pageRefs.current.forEach(el => observer.observe(el));
+        return () => observer.disconnect();
+    }, [numPages]);
 
     const handleFilenameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newName = e.target.value;
@@ -121,47 +146,41 @@ export default function CustomPDFPreview({ url, onLoad }: CustomPDFPreviewProps)
 
     if (!bufferedUrl) {
         return (
-            <div className="flex flex-col items-center justify-center h-full text-slate-400 bg-slate-50 gap-4">
-                <div className="w-16 h-16 border-4 border-slate-200 border-t-indigo-500 rounded-full animate-spin"></div>
-                <span className="text-sm font-bold uppercase tracking-widest">Preparing Document...</span>
+            <div className="flex flex-col items-center justify-center h-full gap-4 bg-[#0f0f17]">
+                <div className="w-10 h-10 border-2 border-[#2a2a38] border-t-indigo-500 rounded-full animate-spin"></div>
+                <span className="mono text-[#8b8fa8] text-xs uppercase tracking-widest">Preparing document…</span>
             </div>
         );
     }
 
     return (
-        <div className="flex flex-col items-center w-full h-full overflow-hidden bg-slate-200 shadow-inner rounded-xl border border-slate-300">
-            <div className="w-full flex flex-wrap gap-y-3 justify-between items-center px-6 py-3 bg-white/90 backdrop-blur-md border-b border-slate-300 shadow-sm z-20 sticky top-0">
-                <div className="flex items-center gap-3 flex-1">
-                    <div className="relative group flex items-center bg-slate-50 border border-slate-200 rounded-lg px-3 py-1.5 hover:border-indigo-300 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-100 transition-all w-full max-w-xs">
-                        <i className="fa-solid fa-file-pdf text-red-600 text-xs mr-2"></i>
+        <div className="flex flex-col items-center w-full h-full overflow-hidden bg-[#0f0f17]">
+            <div className="w-full flex flex-wrap gap-y-2 justify-between items-center px-4 py-2.5 bg-[#13131A] border-b border-[#2a2a38] z-20 sticky top-0">
+                <div className="flex items-center gap-2 flex-1 min-w-0">
+                    <div className="relative flex items-center bg-[#1a1a27] border border-[#2a2a38] focus-within:border-indigo-500/60 rounded px-3 py-1.5 transition-colors w-full max-w-xs">
+                        <i className="fa-solid fa-file-pdf text-rose-400 text-xs mr-2 shrink-0"></i>
                         <input
                             type="text"
-                            placeholder="File name (e.g. My_CV)"
+                            placeholder="File name"
                             value={displayName}
                             onChange={handleFilenameChange}
-                            className="bg-transparent border-none outline-none text-xs font-bold text-slate-700 placeholder:text-slate-400 placeholder:font-normal w-full"
+                            className="bg-transparent border-none outline-none text-xs font-medium text-[#c9cbd8] placeholder-[#8b8fa8] w-full"
                         />
-                        <span className="text-[10px] font-bold text-slate-300 ml-1">.pdf</span>
-                        {numPages > 0 && (
-                            <div className="ml-4 pl-4 border-l border-slate-200 flex items-center gap-1.5">
-                                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Pages:</span>
-                                <span className="text-xs font-black text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md min-w-[1.5rem] text-center">{numPages}</span>
-                            </div>
-                        )}
+                        <span className="mono text-[10px] text-[#3d3f52] ml-1 shrink-0">.pdf</span>
                     </div>
                 </div>
-                
-                <div className="flex items-center gap-4 bg-slate-100 p-1 rounded-xl border border-slate-200 ml-4">
+
+                <div className="flex items-center gap-1 bg-[#1a1a27] border border-[#2a2a38] rounded p-0.5 ml-3 shrink-0">
                     <button
                         onClick={zoomOut}
-                        className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-indigo-600 text-slate-500 transition-all active:scale-90"
+                        className="w-7 h-7 flex items-center justify-center rounded text-[#8b8fa8] hover:text-white hover:bg-white/5 transition-colors active:scale-90"
                         title="Zoom Out"
                     >
                         <i className="fa-solid fa-minus text-xs"></i>
                     </button>
-                    <span 
-                        className="text-[11px] font-extrabold text-slate-700 min-w-[3rem] text-center select-none tracking-tighter cursor-pointer hover:text-indigo-600"
-                        title="Reset to Auto-scale"
+                    <span
+                        className="mono text-xs text-[#8b8fa8] min-w-[3rem] text-center select-none cursor-pointer hover:text-white transition-colors"
+                        title="Reset to auto-scale"
                         onClick={() => {
                             localStorage.removeItem("cv_zoom_level");
                             setIsManualZoom(false);
@@ -171,7 +190,7 @@ export default function CustomPDFPreview({ url, onLoad }: CustomPDFPreviewProps)
                     </span>
                     <button
                         onClick={zoomIn}
-                        className="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white hover:text-indigo-600 text-slate-500 transition-all active:scale-90"
+                        className="w-7 h-7 flex items-center justify-center rounded text-[#8b8fa8] hover:text-white hover:bg-white/5 transition-colors active:scale-90"
                         title="Zoom In"
                     >
                         <i className="fa-solid fa-plus text-xs"></i>
@@ -179,18 +198,29 @@ export default function CustomPDFPreview({ url, onLoad }: CustomPDFPreviewProps)
                 </div>
             </div>
 
+            {numPages > 1 && (
+                <div className="w-full flex justify-center px-4 py-1.5 bg-[#13131A] border-b border-[#2a2a38]">
+                    <span className="mono text-[10px] text-[#8b8fa8]">Page {currentPage} / {numPages}</span>
+                </div>
+            )}
+
             <div
                 ref={containerRef}
-                className="flex-1 w-full overflow-auto flex flex-col items-center gap-8 p-8 scroll-smooth scrollbar-thin scrollbar-thumb-slate-400"
+                className="flex-1 w-full overflow-auto flex flex-col items-center gap-6 p-6"
             >
                 <Document
                     file={bufferedUrl}
                     onLoadSuccess={onDocumentLoadSuccess}
-                    className="flex flex-col items-center gap-10"
+                    className="flex flex-col items-center gap-6"
                     loading={null}
                 >
                     {Array.from(new Array(numPages), (_, index) => (
-                        <div key={`page_${index + 1}`} className="shadow-[0_20px_50px_rgba(0,0,0,0.2)] rounded-sm overflow-hidden bg-white ring-1 ring-slate-300 transition-transform duration-300 hover:scale-[1.01]">
+                        <div
+                            key={`page_${index + 1}`}
+                            data-page={index + 1}
+                            ref={el => { if (el) pageRefs.current.set(index + 1, el); else pageRefs.current.delete(index + 1); }}
+                            className="shadow-[0_8px_40px_rgba(0,0,0,0.5)] overflow-hidden bg-white ring-1 ring-white/10"
+                        >
                             <Page
                                 pageNumber={index + 1}
                                 scale={scale}
