@@ -1,6 +1,5 @@
-import PropTypes from "prop-types";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { sections } from "../Utilities/data";
 import { SvgClose } from "../Svg-Components/Svg";
 
@@ -11,45 +10,75 @@ export default function SideBar({
   isVisible: boolean;
   handleVisibility: () => void;
 }) {
-  const stopEvent = (e: React.SyntheticEvent) => {
-    e.stopPropagation();
-  };
+  const location = useLocation();
 
   return (
-    <div
-      onClick={handleVisibility}
-      className={`w-full h-screen transition-all duration-300 ease-in-out z-[999] fixed top-0 left-0 bg-[rgba(0.3,0.3,0.3,0.3)] ${isVisible ? "block opacity-100 visible" : "opacity-0 invisible"
-        }`}
-    >
+    <>
+      {/* Backdrop */}
       <div
-        onClick={stopEvent}
-        className={`bg-[#ffffff] w-[250px] border-r border-slate-200 absolute top-0 left-0 z-[990] h-screen`}
+        onClick={handleVisibility}
+        className={`fixed inset-0 z-[998] bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
+          isVisible ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
+      />
+
+      {/* Drawer */}
+      <div
+        onClick={(e: React.SyntheticEvent) => e.stopPropagation()}
+        className={`fixed top-0 left-0 h-screen w-64 z-[999] bg-[#13131A] border-r border-[#2a2a38] flex flex-col transition-transform duration-300 ease-in-out ${
+          isVisible ? "translate-x-0" : "-translate-x-full"
+        }`}
       >
-        <ul className="flex mono flex-col p-2">
-          <div className="flex justify-between items-center border-b border-slate-200 p-2">
-            <h1 className="bold text-blue-600 text-[1.2rem]">Menu</h1>
-            <button
-              onClick={handleVisibility}
-              className="bold cursor-pointer text-red-500"
-            >
-              <SvgClose />
-            </button>
-          </div>
-          {sections.map((section, id) => (
-            <Link key={id} to={section.path}>
-              <li className="bold text-slate-700 flex gap-2 items-center p-4 border-b border-slate-100 hover:text-indigo-600">
-                {section.icon}
-                {section.section_name}
-              </li>
-            </Link>
-          ))}
-        </ul>
+        {/* Header */}
+        <div className="flex items-center justify-between px-5 h-14 border-b border-[#2a2a38] shrink-0">
+          <Link to="/" onClick={handleVisibility} className="flex items-center gap-1 select-none">
+            <span className="text-white font-bold text-sm tracking-tight">Quick</span>
+            <span className="text-indigo-400 font-bold text-sm tracking-tight">CV</span>
+          </Link>
+          <button
+            onClick={handleVisibility}
+            className="text-[#8b8fa8] hover:text-white transition-colors p-1"
+          >
+            <SvgClose />
+          </button>
+        </div>
+
+        {/* Nav */}
+        <nav className="flex-1 px-2 py-3 overflow-y-auto">
+          <ul className="flex flex-col gap-0.5">
+            {sections.map((section, id) => {
+              const active = location.pathname === section.path;
+              return (
+                <li key={id}>
+                  <Link
+                    to={section.path}
+                    onClick={handleVisibility}
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded text-sm font-medium transition-colors ${
+                      active
+                        ? "bg-indigo-600/20 text-indigo-300"
+                        : "text-[#8b8fa8] hover:text-white hover:bg-white/5"
+                    }`}
+                  >
+                    <span className="text-base shrink-0">{section.icon}</span>
+                    {section.section_name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+
+        {/* Footer */}
+        <div className="px-5 py-4 border-t border-[#2a2a38] shrink-0">
+          <Link
+            to="/create-cv"
+            onClick={handleVisibility}
+            className="flex items-center justify-center gap-2 w-full bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold py-2.5 rounded transition-colors"
+          >
+            Build CV
+          </Link>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
-
-SideBar.propTypes = {
-  isVisible: PropTypes.bool,
-  handleVisibility: PropTypes.func,
-};

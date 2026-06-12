@@ -1,13 +1,17 @@
 * {
-    font-family: "Roboto", sans-serif;
+    font-family: "Inter", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+}
+.mono {
+    font-family: "JetBrains Mono", monospace;
 }
 body {
     width: 100%;
     min-height: 100vh;
     position: relative;
+    background-color: #13131A;
 }
 .activeBtn {
     color: white;
@@ -82,9 +86,6 @@ body {
 
 .bold {
     font-weight: bold;
-}
-.mono {
-    font-family: monospace;
 }
 
 pre {

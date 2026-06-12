@@ -125,20 +125,19 @@ export function SvgArrow(props: React.SVGProps<SVGSVGElement>) {
 export function SvgClose(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width={24}
-      height={24}
+      width={18}
+      height={18}
       {...props}
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
+      viewBox="0 0 24 24"
+      fill="none"
     >
       <path
-        d="M6 1v3h1V2h11v11h-2v1h3V1H6zM1 6v13h13V6H1zm1 1h11v11H2V7zm2.879 2.172-.707.707L6.793 12.5l-2.621 2.621.707.707L7.5 13.207l2.621 2.621.707-.707L8.207 12.5l2.621-2.621-.707-.707L7.5 11.793 4.879 9.172z"
-        style={{
-          fill: "red",
-          fillOpacity: 1,
-          stroke: "none",
-          strokeWidth: 0,
-        }}
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M18 6 6 18M6 6l12 12"
       />
     </svg>
   );
@@ -367,18 +366,18 @@ export function SvgMenu(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={40}
-      height={40}
+      width={20}
+      height={20}
       fill="none"
       {...props}
       viewBox="0 0 24 24"
     >
       <path
-        stroke="#000"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
         strokeWidth={2}
-        d="M4 12h16M4 8h16M4 16h8"
+        d="M4 6h16M4 12h16M4 18h16"
       />
     </svg>
   );

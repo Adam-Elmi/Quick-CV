@@ -13,6 +13,7 @@ export default defineConfig({
     host: true,
   },
   optimizeDeps: {
+    exclude: ["quickjs-emscripten"],
     esbuildOptions: {
       target: "esnext",
     },

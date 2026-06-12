@@ -1,58 +1,55 @@
+import { Link } from "react-router-dom";
 import { platforms } from "../Utilities/data";
+
+const links = [
+  { name: "Home", path: "/" },
+  { name: "Templates", path: "/templates" },
+  { name: "About", path: "/about" },
+  { name: "License", path: "https://github.com/Adam-Elmi/Quick-CV/blob/master/LICENSE" },
+];
+
 export default function Footer() {
   return (
-    /* 
-    ------
-    Footer Container
-    ------
-    */
-    <footer className="flex gap-2 flex-col bg-[#1a1a1a] w-full mt-auto">
-      <div className="flex gap-5 justify-between items-center w-full p-4 max-[768px]:flex-col">
-      {/* Left Section */}
-        <div className="flex flex-col justify-center items-center gap-5 w-[150px] max-[768px]:w-full">
-          <p className="paul text-[2rem] text-white">Quick Cv</p>
-          <div className="flex justify-center gap-2">
-            {platforms.map((platform, id) => (
-              <a
-                key={id}
-                className={`text-white text-[1.2rem] ${platform.icon}`}
-                href={platform.link}
-              ></a>
-            ))}
-          </div>
-        </div>
-        {/* Right Section */}
-        <div className="flex justify-center gap-5 flex-1 flex-wrap">
-          {[
-            {
-              section_name: "Home",
-              path: "/",
-            },
-            {
-              section_name: "Templates",
-              path: "/templates",
-            },
-            {
-              section_name: "About",
-              path: "/about",
-            },
-            {
-              section_name: "License",
-              path: "https://github.com/Adam-Elmi/Quick-CV/blob/master/LICENSE",
-            },
-          ].map((section, id) => (
-            <a key={id} className="text-white leading-8 mono" href={section.path}>
-              {section.section_name}
+    <footer className="bg-[#0a0a10] border-t border-[#2a2a38]">
+      <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-1 select-none shrink-0">
+          <span className="text-white font-bold text-sm tracking-tight">Quick</span>
+          <span className="text-indigo-400 font-bold text-sm tracking-tight">CV</span>
+        </Link>
+
+        {/* Links */}
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
+          {links.map((l, id) => (
+            <a
+              key={id}
+              href={l.path}
+              className="mono text-[#8b8fa8] hover:text-white text-xs transition-colors"
+            >
+              {l.name}
             </a>
+          ))}
+        </nav>
+
+        {/* Social */}
+        <div className="flex items-center gap-4">
+          {platforms.map((p, id) => (
+            <a
+              key={id}
+              href={p.link}
+              className={`${p.icon} text-[#8b8fa8] hover:text-indigo-400 transition-colors text-base`}
+              target="_blank"
+              rel="noopener noreferrer"
+            />
           ))}
         </div>
       </div>
-      <div className="border-t border-gray-600 mt-5 pt-4 mx-16">
-        <p className="text-center text-slate-400 text-[0.8rem] font-[500] h-10 mono">
-          &copy; {new Date().getFullYear()} Quick Cv. All rights reserved.
+
+      <div className="border-t border-[#1e1e2a] py-4 text-center">
+        <p className="mono text-[#3d3f52] text-xs">
+          © {new Date().getFullYear()} Adam Elmi — MIT License
         </p>
       </div>
-      <div className="w-full bg-indigo-500 h-2"></div>
     </footer>
   );
 }

@@ -95,16 +95,12 @@ const steps = [
 
 const platforms = [
   {
-    link: "https://github.com/Adam-Elmi/Quick-CV",
+    link: "https://github.com/Adam-Elmi",
     icon: "fa-brands fa-github",
   },
   {
-    link: "https://discord.gg/quickcv",
+    link: "https://discord.com/users/750205351210778804",
     icon: "fa-brands fa-discord",
-  },
-  {
-    link: "https://x.com",
-    icon: "fa-brands fa-x-twitter",
   },
 ];
 
