@@ -1,0 +1,91 @@
+# Projects Section
+[div = marginTop: 15]
+  [h3 = borderBottom: "1px solid #ddd", paddingBottom: 5, marginBottom: 10, color: "#334155", fontSize: 14, fontWeight: bold, textTransform: uppercase]
+    p{projects_title}
+  [end]
+  # Proj 1
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{proj-1-name}
+      [end]
+      [span = fontSize: 11, fontWeight: normal, fontStyle: italic, color: "#475569"]
+        p{proj-1-tech}
+      [end]
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginTop: 2]
+      p{proj-1-link}
+    [end]
+    [div = fontSize: 11, marginTop: 4, color: "#475569"]
+      p{proj-1-desc}
+    [end]
+  [end]
+  # Proj 2
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{proj-2-name}
+      [end]
+      [span = fontSize: 11, fontWeight: normal, fontStyle: italic, color: "#475569"]
+        p{proj-2-tech}
+      [end]
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginTop: 2]
+      p{proj-2-link}
+    [end]
+    [div = fontSize: 11, marginTop: 4, color: "#475569"]
+      p{proj-2-desc}
+    [end]
+  [end]
+  # Proj 3
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{proj-3-name}
+      [end]
+      [span = fontSize: 11, fontWeight: normal, fontStyle: italic, color: "#475569"]
+        p{proj-3-tech}
+      [end]
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginTop: 2]
+      p{proj-3-link}
+    [end]
+    [div = fontSize: 11, marginTop: 4, color: "#475569"]
+      p{proj-3-desc}
+    [end]
+  [end]
+  # Proj 4
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{proj-4-name}
+      [end]
+      [span = fontSize: 11, fontWeight: normal, fontStyle: italic, color: "#475569"]
+        p{proj-4-tech}
+      [end]
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginTop: 2]
+      p{proj-4-link}
+    [end]
+    [div = fontSize: 11, marginTop: 4, color: "#475569"]
+      p{proj-4-desc}
+    [end]
+  [end]
+  # Proj 5
+  [div = marginBottom: 12]
+    [div = display: flex, justifyContent: space-between, fontWeight: bold, fontSize: 12, color: "#1e293b"]
+      [span]
+        p{proj-5-name}
+      [end]
+      [span = fontSize: 11, fontWeight: normal, fontStyle: italic, color: "#475569"]
+        p{proj-5-tech}
+      [end]
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginTop: 2]
+      p{proj-5-link}
+    [end]
+    [div = fontSize: 11, marginTop: 4, color: "#475569"]
+      p{proj-5-desc}
+    [end]
+  [end]
+[end]

@@ -1,7 +1,7 @@
 # Experience Section
 [div = marginTop: 15]
   [h3 = borderBottom: "1px solid #ddd", paddingBottom: 5, marginBottom: 10, color: "#334155", fontSize: 14, fontWeight: bold, textTransform: uppercase]
-    Experience
+    p{experience_title}
   [end]
   # Exp 1
   [div = marginBottom: 12]

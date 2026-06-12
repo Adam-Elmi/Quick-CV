@@ -1,7 +1,7 @@
 # Skills (Static 1-5)
 [div]
   [div = fontSize: 12, fontWeight: bold, borderBottom: "1px solid #3b82f6", paddingBottom: 5, marginBottom: 10]
-    SKILLS
+    p{skills_title}
   [end]
   [div = fontSize: 10, lineHeight: 1.6]
     [div]

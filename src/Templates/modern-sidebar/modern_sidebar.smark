@@ -2,8 +2,12 @@
 [import = Contact: "./sections/contact.smark"][end]
 [import = SocialLinks: "./sections/social_links.smark"][end]
 [import = Skills: "./sections/skills.smark"][end]
+[import = Languages: "./sections/languages.smark"][end]
+[import = Awards: "./sections/awards.smark"][end]
+[import = Certifications: "./sections/certifications.smark"][end]
 [import = Experience: "./sections/experience.smark"][end]
 [import = Education: "./sections/education.smark"][end]
+[import = Projects: "./sections/projects.smark"][end]
 
 # Style
 @_style_@;
@@ -28,6 +32,12 @@
     [$use-module = SocialLinks][end]
     # Skills Section
     [$use-module = Skills][end]
+    # Languages Section
+    [$use-module = Languages][end]
+    # Awards Section
+    [$use-module = Awards][end]
+    # Certifications Section
+    [$use-module = Certifications][end]
   [end]
   # Main Content
   [div = padding: "40px 30px"]
@@ -35,5 +45,7 @@
     [$use-module = Experience][end]
     # Education Section
     [$use-module = Education][end]
+    # Projects Section
+    [$use-module = Projects][end]
   [end]
 [end]

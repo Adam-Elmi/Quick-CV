@@ -1,7 +1,7 @@
 # Experience
 [div = marginBottom: 25]
   [h2 = fontSize: 16, color: "#1e3a8a", borderBottom: "2px solid #1e3a8a", paddingBottom: 5, marginBottom: 15, fontWeight: bold]
-    EXPERIENCE
+    p{experience_title}
   [end]
   # Exp 1
   [div = marginBottom: 15]

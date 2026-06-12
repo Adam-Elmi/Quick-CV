@@ -1,0 +1,81 @@
+# Projects
+[div = marginBottom: 25]
+  [h2 = fontSize: 16, color: "#1e3a8a", borderBottom: "2px solid #1e3a8a", paddingBottom: 5, marginBottom: 15, fontWeight: bold]
+    p{projects_title}
+  [end]
+  # Proj 1
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{proj-1-name}
+    [end]
+    [div = fontSize: 11, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{proj-1-tech}
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginBottom: 3]
+      p{proj-1-link}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{proj-1-desc}
+    [end]
+  [end]
+  # Proj 2
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{proj-2-name}
+    [end]
+    [div = fontSize: 11, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{proj-2-tech}
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginBottom: 3]
+      p{proj-2-link}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{proj-2-desc}
+    [end]
+  [end]
+  # Proj 3
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{proj-3-name}
+    [end]
+    [div = fontSize: 11, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{proj-3-tech}
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginBottom: 3]
+      p{proj-3-link}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{proj-3-desc}
+    [end]
+  [end]
+  # Proj 4
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{proj-4-name}
+    [end]
+    [div = fontSize: 11, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{proj-4-tech}
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginBottom: 3]
+      p{proj-4-link}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{proj-4-desc}
+    [end]
+  [end]
+  # Proj 5
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{proj-5-name}
+    [end]
+    [div = fontSize: 11, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{proj-5-tech}
+    [end]
+    [div = fontSize: 11, color: "#6366f1", marginBottom: 3]
+      p{proj-5-link}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{proj-5-desc}
+    [end]
+  [end]
+[end]

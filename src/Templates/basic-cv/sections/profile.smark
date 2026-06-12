@@ -8,3 +8,6 @@
 [div = fontSize: 11, color: "#475569", marginTop: 8]
   p{Email} | p{Phone} | p{City} | p{Country}
 [end]
+[div = fontSize: 11, color: "#334155", marginTop: 10, lineHeight: 1.6]
+  p{summary}
+[end]

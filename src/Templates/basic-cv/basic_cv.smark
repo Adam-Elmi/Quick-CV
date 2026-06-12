@@ -3,6 +3,10 @@
 [import = Experience: "./sections/experience.smark"][end]
 [import = Education: "./sections/education.smark"][end]
 [import = Skills: "./sections/skills.smark"][end]
+[import = Projects: "./sections/projects.smark"][end]
+[import = Languages: "./sections/languages.smark"][end]
+[import = Awards: "./sections/awards.smark"][end]
+[import = Certifications: "./sections/certifications.smark"][end]
 
 # Style
 @_style_@;
@@ -13,7 +17,7 @@
 
 # Section title & profile picture
 [div = textAlign: center, marginBottom: 15]
-  [img = src: p{picture}, alt: "Profile Picture", style: "width: 80px; height: 80px; borderRadius: 10px;"][end]
+  [img = src: p{picture}, alt: "Profile Picture", style: "width: 100px; height: 100px; borderRadius: 10px;"][end]
 [end]
 [div = textAlign: center]
   p{profile_title}
@@ -31,3 +35,11 @@
 [$use-module = Education][end]
 # Skills Section
 [$use-module = Skills][end]
+# Projects Section
+[$use-module = Projects][end]
+# Languages Section
+[$use-module = Languages][end]
+# Awards Section
+[$use-module = Awards][end]
+# Certifications Section
+[$use-module = Certifications][end]

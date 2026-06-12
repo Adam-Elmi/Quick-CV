@@ -9,4 +9,7 @@
   [div = fontSize: 12, marginTop: 10, color: "#bfdbfe", fontWeight: 500]
     p{Title}
   [end]
+  [div = fontSize: 10, marginTop: 12, color: "#cbd5e1", lineHeight: 1.6]
+    p{summary}
+  [end]
 [end]

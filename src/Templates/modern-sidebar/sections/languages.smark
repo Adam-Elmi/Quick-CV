@@ -1,0 +1,23 @@
+# Languages
+[div = marginBottom: 25]
+  [div = fontSize: 12, fontWeight: bold, borderBottom: "1px solid #3b82f6", paddingBottom: 5, marginBottom: 10]
+    p{languages_title}
+  [end]
+  [div = fontSize: 10, lineHeight: 1.8]
+    [div]
+      p{lang-1-name}: p{lang-1-level}
+    [end]
+    [div]
+      p{lang-2-name}: p{lang-2-level}
+    [end]
+    [div]
+      p{lang-3-name}: p{lang-3-level}
+    [end]
+    [div]
+      p{lang-4-name}: p{lang-4-level}
+    [end]
+    [div]
+      p{lang-5-name}: p{lang-5-level}
+    [end]
+  [end]
+[end]

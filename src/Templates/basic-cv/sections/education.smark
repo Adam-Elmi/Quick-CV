@@ -1,7 +1,7 @@
 # Education Section
 [div = marginTop: 15]
   [h3 = borderBottom: "1px solid #ddd", paddingBottom: 5, marginBottom: 10, color: "#334155", fontSize: 14, fontWeight: bold, textTransform: uppercase]
-    Education
+    p{education_title}
   [end]
   # Edu 1
   [div = marginBottom: 10]

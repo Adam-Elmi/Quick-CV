@@ -1,0 +1,51 @@
+# Awards
+[div = marginBottom: 25]
+  [h2 = fontSize: 16, color: "#1e3a8a", borderBottom: "2px solid #1e3a8a", paddingBottom: 5, marginBottom: 15, fontWeight: bold]
+    p{awards_title}
+  [end]
+  # Award 1
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{award-1-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{award-1-org}
+    [end]
+    [div = fontSize: 11, color: "#64748b", marginBottom: 3]
+      p{award-1-date}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{award-1-desc}
+    [end]
+  [end]
+  # Award 2
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{award-2-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{award-2-org}
+    [end]
+    [div = fontSize: 11, color: "#64748b", marginBottom: 3]
+      p{award-2-date}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{award-2-desc}
+    [end]
+  [end]
+  # Award 3
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{award-3-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{award-3-org}
+    [end]
+    [div = fontSize: 11, color: "#64748b", marginBottom: 3]
+      p{award-3-date}
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{award-3-desc}
+    [end]
+  [end]
+[end]

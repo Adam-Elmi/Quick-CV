@@ -1,0 +1,86 @@
+# Certifications
+[div = marginBottom: 25]
+  [h2 = fontSize: 16, color: "#1e3a8a", borderBottom: "2px solid #1e3a8a", paddingBottom: 5, marginBottom: 15, fontWeight: bold]
+    p{certifications_title}
+  [end]
+  # Cert 1
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{cert-1-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{cert-1-issuer}
+    [end]
+    [div = display: flex, fontSize: 11, color: "#64748b", marginBottom: 3]
+      [span = marginRight: 12] p{cert-1-issue-date} [end]
+      [span] p{cert-1-expiry-date} [end]
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{cert-1-url}
+    [end]
+  [end]
+  # Cert 2
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{cert-2-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{cert-2-issuer}
+    [end]
+    [div = display: flex, fontSize: 11, color: "#64748b", marginBottom: 3]
+      [span = marginRight: 12] p{cert-2-issue-date} [end]
+      [span] p{cert-2-expiry-date} [end]
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{cert-2-url}
+    [end]
+  [end]
+  # Cert 3
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{cert-3-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{cert-3-issuer}
+    [end]
+    [div = display: flex, fontSize: 11, color: "#64748b", marginBottom: 3]
+      [span = marginRight: 12] p{cert-3-issue-date} [end]
+      [span] p{cert-3-expiry-date} [end]
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{cert-3-url}
+    [end]
+  [end]
+  # Cert 4
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{cert-4-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{cert-4-issuer}
+    [end]
+    [div = display: flex, fontSize: 11, color: "#64748b", marginBottom: 3]
+      [span = marginRight: 12] p{cert-4-issue-date} [end]
+      [span] p{cert-4-expiry-date} [end]
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{cert-4-url}
+    [end]
+  [end]
+  # Cert 5
+  [div = marginBottom: 15]
+    [div = fontWeight: bold, fontSize: 13, color: "#1e293b"]
+      p{cert-5-name}
+    [end]
+    [div = fontSize: 12, color: "#1e40af", fontWeight: 600, marginBottom: 3]
+      p{cert-5-issuer}
+    [end]
+    [div = display: flex, fontSize: 11, color: "#64748b", marginBottom: 3]
+      [span = marginRight: 12] p{cert-5-issue-date} [end]
+      [span] p{cert-5-expiry-date} [end]
+    [end]
+    [div = fontSize: 11, color: "#475569"]
+      p{cert-5-url}
+    [end]
+  [end]
+[end]

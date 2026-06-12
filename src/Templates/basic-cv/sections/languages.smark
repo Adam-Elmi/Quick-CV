@@ -1,0 +1,23 @@
+# Languages Section
+[div = marginTop: 15]
+  [h3 = borderBottom: "1px solid #ddd", paddingBottom: 5, marginBottom: 10, color: "#334155", fontSize: 14, fontWeight: bold, textTransform: uppercase]
+    p{languages_title}
+  [end]
+  [div = display: flex, flexWrap: wrap, gap: 8, flexDirection: column]
+    [div = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{lang-1-name}: p{lang-1-level}
+    [end]
+    [div = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{lang-2-name}: p{lang-2-level}
+    [end]
+    [div = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{lang-3-name}: p{lang-3-level}
+    [end]
+    [div = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{lang-4-name}: p{lang-4-level}
+    [end]
+    [div = backgroundColor: "#f1f5f9", padding: "2px 8px", borderRadius: 4, fontSize: 10]
+      p{lang-5-name}: p{lang-5-level}
+    [end]
+  [end]
+[end]
