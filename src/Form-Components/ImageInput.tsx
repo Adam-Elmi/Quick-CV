@@ -26,12 +26,21 @@ export default function ImageInput({ label, dataId, icon, className }: ImageInpu
     };
   }, [dataId]);
 
+  const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      alert("Unsupported format. Please upload a JPG, PNG or WEBP image.");
+      e.target.value = "";
+      return;
+    }
+
     if (file.size > 2 * 1024 * 1024) {
       alert("Image is too large. Please select an image smaller than 2MB.");
+      e.target.value = "";
       return;
     }
 
@@ -47,56 +56,57 @@ export default function ImageInput({ label, dataId, icon, className }: ImageInpu
 
   const removeImage = (e: React.MouseEvent) => {
     e.preventDefault();
-    e.stopPropagation(); // Stop the click from hitting the <label>
+    e.stopPropagation();
     setPreview("");
     localStorage.removeItem(dataId);
     dispatchCVDataChange();
   };
 
   return (
-    <div className={`w-full flex flex-col items-center gap-2 p-4 bg-slate-50 rounded-xl border border-slate-200 hover:border-indigo-300 transition-all duration-300 ${className || ""}`}>
-      <div className="flex items-center gap-2 self-start mb-1">
-        <div className="w-6 h-6 rounded bg-indigo-50 flex items-center justify-center">
-          <i className={`${icon} text-indigo-600 text-xs`}></i>
-        </div>
-        <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wider">{label}</span>
-      </div>
+    <div className={`w-full ${className || ""}`}>
+      <span className="mono text-[10px] font-bold text-[#8b8fa8] uppercase tracking-wider block mb-2">{label}</span>
 
-      <div className="relative group w-20 h-20">
-        {preview ? (
-          <>
-            <img
-              src={preview}
-              alt="Profile"
-              className="w-full h-full object-cover rounded-2xl shadow-lg border-2 border-white ring-4 ring-indigo-50"
-            />
-            <button
-              type="button"
-              onClick={removeImage}
-              className="absolute -top-2 -right-2 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-red-600 transition-all duration-200 opacity-0 group-hover:opacity-100 z-50 cursor-pointer"
-              title="Remove Image"
-            >
-              <i className="fa-solid fa-trash-can text-xs"></i>
-            </button>
-          </>
-        ) : (
-          <div className="w-full h-full bg-white rounded-2xl border-2 border-dashed border-slate-300 flex flex-col items-center justify-center gap-2 text-slate-400 group-hover:text-indigo-400 group-hover:border-indigo-200 transition-all">
-            <i className="fa-solid fa-camera text-3xl"></i>
-            <span className="text-[10px] font-medium uppercase">No Photo</span>
-          </div>
-        )}
-
-        <label className="absolute inset-0 cursor-pointer flex items-center justify-center rounded-2xl bg-black/0 hover:bg-black/5 transition-colors z-10">
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="hidden"
+      {preview ? (
+        <div className="relative flex items-center gap-4 p-4 bg-[#13131A] rounded-xl border border-[#2a2a38]">
+          <img
+            src={preview}
+            alt="Profile"
+            className="w-20 h-20 object-cover rounded-xl border border-[#2a2a38] ring-2 ring-indigo-500/20 shrink-0"
           />
+          <div className="flex flex-col gap-2">
+            <span className="text-sm text-[#c9cbd8] font-medium">Photo uploaded</span>
+            <span className="text-xs text-[#8b8fa8]">PNG, JPG or WEBP · Max 2MB</span>
+            <div className="flex items-center gap-2 mt-1">
+              <label className="cursor-pointer text-xs font-medium text-indigo-400 hover:text-indigo-300 transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#2a2a38] hover:border-indigo-500/40 hover:bg-indigo-600/5">
+                <i className="fa-solid fa-arrow-up-from-bracket text-[10px]"></i>
+                Replace
+                <input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFileChange} className="hidden" />
+              </label>
+              <button
+                type="button"
+                onClick={removeImage}
+                className="text-xs font-medium text-[#8b8fa8] hover:text-rose-400 transition-colors flex items-center gap-1.5 px-3 py-1.5 rounded border border-[#2a2a38] hover:border-rose-500/40 hover:bg-rose-600/5"
+              >
+                <i className="fa-solid fa-trash text-[10px]"></i>
+                Remove
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : (
+        <label className="cursor-pointer group block">
+          <div className="flex flex-col items-center justify-center gap-3 p-8 bg-[#13131A] rounded-xl border-2 border-dashed border-[#2a2a38] hover:border-indigo-500/50 hover:bg-indigo-600/5 transition-all duration-200">
+            <div className="w-12 h-12 rounded-xl bg-[#1a1a27] border border-[#2a2a38] flex items-center justify-center group-hover:border-indigo-500/40 transition-colors">
+              <i className="fa-solid fa-camera text-xl text-[#3d3f52] group-hover:text-indigo-400 transition-colors"></i>
+            </div>
+            <div className="text-center">
+              <p className="text-sm font-medium text-[#c9cbd8] group-hover:text-white transition-colors">Click to upload photo</p>
+              <p className="text-xs text-[#8b8fa8] mt-0.5">PNG, JPG or WEBP · Max 2MB</p>
+            </div>
+          </div>
+          <input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleFileChange} className="hidden" />
         </label>
-      </div>
-
-      <p className="text-[10px] text-slate-400 font-medium">PNG, JPG or WEBP (Max 2MB)</p>
+      )}
     </div>
   );
 }
