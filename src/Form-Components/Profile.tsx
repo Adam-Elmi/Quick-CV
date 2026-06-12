@@ -7,10 +7,10 @@ export default function Profile() {
   const config = useActiveTemplateConfig();
 
   return (
-    <div className="flex flex-col gap-8 border-2 border-slate-100 rounded-md bg-white p-2 m-4">
-      <h1 className="p-1 text-xl bold border-b-[1.5px] w-fit border-slate-100 text-slate-500 m-auto">
+    <div className="flex flex-col gap-6 border border-[#2a2a38] rounded-lg bg-[#1a1a27] p-4 m-4">
+      <h2 className="mono text-xs font-bold uppercase tracking-widest text-[#8b8fa8] pb-3 border-b border-[#2a2a38] text-center">
         Profile Summary
-      </h1>
+      </h2>
       <form className="flex flex-col gap-4 flex-wrap justify-center">
         {/* Adaptive Image Input */}
         {config.features.picture && (
@@ -56,6 +56,16 @@ export default function Profile() {
             icon="fa-solid fa-star"
             className="sm:col-span-2 sm:max-w-none"
             required={config.requiredFields.includes("Title")}
+          />
+          <InputWrapper
+            dataId="Summary"
+            type="text"
+            label="Professional Summary"
+            placeholder="A brief summary about yourself..."
+            icon="fa-solid fa-align-left"
+            className="sm:col-span-2 sm:max-w-none"
+            multiline={true}
+            required={config.requiredFields.includes("Summary")}
           />
           <InputWrapper
             dataId="Email-1"
