@@ -13,6 +13,7 @@
     "@react-pdf/renderer": "^4.3.1",
     "@tailwindcss/vite": "^4.1.17",
     "react": "^18.3.1",
+    "react-colorful": "^5.7.0",
     "react-dom": "^18.3.1",
     "react-pdf": "^10.3.0",
     "react-pdf-html": "^2.1.4",
