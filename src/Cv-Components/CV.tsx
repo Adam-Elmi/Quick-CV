@@ -264,6 +264,7 @@ export default function CV() {
   const currentTemplateId = cvData.selectedTemplate || "modern-sidebar";
   const activeConfig = (TEMPLATES.find(t => t.id === currentTemplateId) || TEMPLATES[0]).config;
 
+  const hidden = new Set(activeConfig.hiddenSections ?? []);
   const sectionList = [
     { label: "Profile",        node: <Profile        key="Profile"        /> },
     { label: "Education",      node: <Education      key="Education"      /> },
@@ -273,7 +274,7 @@ export default function CV() {
     { label: "Languages",      node: <Languages      key="Languages"      /> },
     { label: "Awards",         node: <Awards         key="Awards"         /> },
     { label: "Certifications", node: <Certifications key="Certifications" /> },
-  ];
+  ].filter(s => !hidden.has(s.label));
 
   const htmlWithFont = useMemo(() => {
     const family = cvData.fontFamily || "Helvetica";

@@ -94,6 +94,7 @@ export interface TemplateConfig {
     defaults?: Record<string, string>;
     demoData?: Record<string, string>;
     fonts?: Array<{ family: string; src?: string; label?: string }>;
+    hiddenSections?: string[];
 }
 
 export interface FieldStyle {
