@@ -14,6 +14,7 @@ import { SvgHome, SvgTemplate } from "../Svg-Components/Svg";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { createPortal } from "react-dom";
 import { useCVData, updatePageSize, updateFontFamily, selectTemplate, populateSampleData, clearCVData } from "../Utilities/cvDataStore";
+import { FONTS } from "../Utilities/fonts";
 import StorageTracker from "../Helper-Components/StorageTracker";
 import { TEMPLATES } from "../Templates";
 
@@ -232,6 +233,8 @@ export default function CV() {
 
   useEffect(() => {
     if (cvData.selectedTemplate !== prevTemplateRef.current) {
+      const newTemplate = TEMPLATES.find(t => t.id === cvData.selectedTemplate) || TEMPLATES[0];
+      updateFontFamily(newTemplate.config.defaultFont || FONTS[0].family);
       setIsLazy(true);
       setDebouncedData(cvData);
       prevTemplateRef.current = cvData.selectedTemplate;
@@ -355,21 +358,17 @@ export default function CV() {
           </div>
         </div>
 
-        {activeConfig.fonts && activeConfig.fonts.length > 0 && (
-          <div className="w-px h-4 bg-[#2a2a38] shrink-0" />
-        )}
+        <div className="w-px h-4 bg-[#2a2a38] shrink-0" />
 
         {/* Font family */}
-        {activeConfig.fonts && activeConfig.fonts.length > 0 && (
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-[10px] text-[#4a4c5e] uppercase tracking-widest">Font</span>
-            <FontSelector
-              fonts={activeConfig.fonts}
-              value={cvData.fontFamily}
-              onChange={updateFontFamily}
-            />
-          </div>
-        )}
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-[10px] text-[#4a4c5e] uppercase tracking-widest">Font</span>
+          <FontSelector
+            fonts={FONTS}
+            value={cvData.fontFamily}
+            onChange={updateFontFamily}
+          />
+        </div>
       </div>
 
       {/* Mobile Edit / Preview tab bar — hidden on lg+ where panels sit side by side */}

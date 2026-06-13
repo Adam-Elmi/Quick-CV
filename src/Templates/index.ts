@@ -1,5 +1,7 @@
 import { transpileCV, registerVirtualModule } from "../Utilities/sommarkRenderer";
 import { Font } from "@react-pdf/renderer";
+import { FONTS } from "../Utilities/fonts";
+import { TemplateConfig } from "../Utilities/cvDataStore";
 import basic_cv_src from "./basic-cv/basic_cv.smark?raw";
 import modern_sidebar_src from "./modern-sidebar/modern_sidebar.smark?raw";
 import { basicCvConfig } from "./basic-cv/config";
@@ -52,35 +54,15 @@ registerVirtualModule("/templates/modern-sidebar/sections/languages.smark", mode
 registerVirtualModule("/templates/modern-sidebar/sections/awards.smark", modern_awards_smark);
 registerVirtualModule("/templates/modern-sidebar/sections/certifications.smark", modern_certifications_smark);
 
-// Register web fonts declared by all template configs (built-ins like Helvetica need no registration)
-const _allConfigs = [basicCvConfig, modernSidebarConfig];
+// Register web fonts from the central FONTS list (built-ins like Helvetica need no registration)
 const _registeredFonts = new Set<string>();
-_allConfigs.forEach(config => {
-    config.fonts?.forEach(font => {
-        if (font.src && !_registeredFonts.has(font.family)) {
-            Font.register({ family: font.family, src: font.src });
-            _registeredFonts.add(font.family);
-        }
-    });
+FONTS.forEach(font => {
+    if (font.src && !_registeredFonts.has(font.family)) {
+        Font.register({ family: font.family, src: font.src });
+        _registeredFonts.add(font.family);
+    }
 });
 
-export interface TemplateConfig {
-    name: string;
-    description: string;
-    features: {
-        picture: boolean;
-        socialLinks: { max: number };
-        skills: { max: number };
-    };
-    requiredFields: string[];
-    /**
-     * Fallback values for empty placeholders, keyed by placeholder name.
-     * Define these to keep your template's layout intact when a field is left blank.
-     * Example: { "First-Name": "Your Name", "education_title": "EDUCATION" }
-     */
-    defaults?: Record<string, string>;
-    fonts?: Array<{ family: string; src?: string; label?: string }>;
-}
 
 export interface Template {
     id: string;

@@ -11,11 +11,7 @@ export const modernSidebarConfig = {
     }
   },
   requiredFields: ["First-Name", "Last-Name", "Email-1", "Title"],
-  fonts: [
-    { family: "Helvetica",   label: "Helvetica"   },
-    { family: "Times-Roman", label: "Times Roman" },
-    { family: "Courier",     label: "Courier"     },
-  ],
+  defaultFont: "Helvetica",
   demoData: {
     "First-Name": "Adam",
     "Last-Name":  "Elmi",

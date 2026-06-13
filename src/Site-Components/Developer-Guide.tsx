@@ -77,7 +77,7 @@ const steps = [
   },
   {
     label: "3. Configure in config.ts",
-    description: "Set the template name, fonts, demo data, field defaults, and which sections to hide.",
+    description: "Set the template name, default font, demo data, field defaults, and which sections to hide. Available fonts are defined globally in src/Utilities/fonts.ts.",
     code: `export const myTemplateConfig = {
   name: "My Template",
   description: "A clean one-column layout.",
@@ -86,10 +86,7 @@ const steps = [
     socialLinks: { max: 3 },
     skills: { max: 8 },
   },
-  fonts: [
-    { family: "Helvetica", label: "Helvetica" },
-    { family: "Times-Roman", label: "Times Roman" },
-  ],
+  defaultFont: "Helvetica",
   hiddenSections: ["Certifications"],
   demoData: {
     "First-Name": "Adam",

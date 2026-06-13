@@ -12,11 +12,7 @@ export const basicCvConfig = {
     "street-1": false
   },
   requiredFields: ["First-Name", "Last-Name", "Email-1"],
-  fonts: [
-    { family: "Helvetica",   label: "Helvetica"   },
-    { family: "Times-Roman", label: "Times Roman" },
-    { family: "Courier",     label: "Courier"     },
-  ],
+  defaultFont: "Helvetica",
   demoData: {
     "First-Name": "Adam",
     "Last-Name":  "Elmi",
